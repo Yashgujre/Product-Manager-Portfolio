@@ -6,7 +6,7 @@
   <title>Yash Gujre | Overview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -25,90 +25,258 @@
     </div>
   </header>
 
-  <main>
-    <section id="overview" class="section hero shell reveal" data-delay="0">
-      <div class="grid-12">
-        <div class="col-8">
-          <p class="eyebrow">Product Strategy and Execution</p>
-          <h1>I build enterprise products that turn complexity into measurable outcomes.</h1>
-          <p class="lead">Product Manager with 5+ years across healthcare, fintech, pharma, and operations platforms. I focus on discovery, prioritization, and execution systems that improve adoption, speed, and business impact.</p>
-          <div class="overview-cta-row">
-            <a class="btn btn-primary" href="case-studies.html">Explore Case Studies</a>
-            <a class="btn btn-secondary" href="metrics.html">View Impact Metrics</a>
-            <a class="text-link" href="framework.html">Explore Framework</a>
-          </div>
+  <main data-ov-root>
+    <div class="ov-quick-nav" aria-label="Overview navigation shortcuts">
+      <div class="ov-progress-track"><span data-ov-progress></span></div>
+      <a href="#overview">Top</a>
+      <a href="#ov-impact">Impact</a>
+      <a href="#ov-build">Build</a>
+      <a href="#ov-work">Work</a>
+      <a href="#ov-philosophy">Philosophy</a>
+    </div>
+
+    <section id="overview" class="section hero shell reveal ov-hero" data-delay="0">
+      <div class="ov-hero-backdrop" aria-hidden="true">
+        <span class="ov-glow ov-glow-a"></span>
+        <span class="ov-glow ov-glow-b"></span>
+        <span class="ov-glow ov-glow-c"></span>
+      </div>
+
+      <div class="ov-hero-content">
+        <p class="eyebrow">Product Strategy and Execution</p>
+        <h1>
+          <span>Enterprise products that convert</span>
+          <span>complex operations into</span>
+          <span>measurable business outcomes.</span>
+        </h1>
+        <p class="lead">Product Manager with 5+ years across healthcare, fintech, pharmaceutical operations, and enterprise systems. I build delivery models where discovery, compliance, and execution move together.</p>
+
+        <div class="ov-hero-rotator" data-ov-rotator>
+          <span>Discovery -> Delivery -> Impact</span>
         </div>
-        <div class="col-12">
-          <div class="proof-bar" aria-label="Proof metrics">
-            <span>$15M+ Quality Impact</span>
-            <span>292% ROI</span>
-            <span>78% Audit Risk Reduction</span>
-            <span>99.7% Uptime</span>
-            <span>30-40% Faster Interventions</span>
-          </div>
+
+        <div class="overview-cta-row">
+          <a class="btn btn-primary" href="case-studies.html">Explore Case Studies</a>
+          <a class="btn btn-secondary" href="#ov-impact">View Impact Metrics</a>
+          <a class="text-link" href="framework.html">Explore Framework</a>
+        </div>
+
+        <div class="ov-floating-metrics" aria-label="Quick proof metrics">
+          <button data-ov-scroll="#ov-impact"><strong>$15M+</strong><span>Quality impact</span></button>
+          <button data-ov-scroll="#ov-impact"><strong>292%</strong><span>Peak ROI</span></button>
+          <button data-ov-scroll="#ov-work"><strong>5+</strong><span>Years in product</span></button>
+          <button data-ov-scroll="#ov-philosophy"><strong>99.7%</strong><span>Reliability benchmark</span></button>
+        </div>
+
+        <a class="ov-scroll-cue" href="#ov-impact">Discover My Impact ↓</a>
+      </div>
+    </section>
+
+    <section id="ov-impact" class="section section-divider shell reveal" data-delay="70">
+      <div class="ov-section-head">
+        <h2>Impact at a Glance</h2>
+        <p>Switch perspective by impact type, industry, or product portfolio view.</p>
+      </div>
+
+      <div class="ov-impact-view-toggle" role="toolbar" aria-label="Impact dashboard views">
+        <button class="active" data-ov-impact-view="impact">By Impact Type</button>
+        <button data-ov-impact-view="industry">By Industry</button>
+        <button data-ov-impact-view="product">By Product</button>
+      </div>
+
+      <div class="ov-impact-grid" data-ov-impact-grid>
+        <article class="ov-impact-card" data-impact='{"impact":{"value":"15","prefix":"$","suffix":"M+","label":"Quality Impact","context":"Across healthcare delivery"},"industry":{"value":"11","prefix":"$","suffix":"M+","label":"Healthcare Value","context":"Healthcare programs"},"product":{"value":"4.2","prefix":"$","suffix":"M","label":"Care Coordination","context":"Single product impact"}}'>
+          <div class="ov-impact-icon">💰</div>
+          <strong data-ov-value>$15M+</strong>
+          <p data-ov-label>Quality Impact</p>
+          <small data-ov-context>Across healthcare delivery</small>
+          <div class="ov-mini-bar"><span data-ov-bar="92"></span></div>
+          <a href="metrics.html">See how this was achieved -></a>
+        </article>
+
+        <article class="ov-impact-card" data-impact='{"impact":{"value":"292","prefix":"","suffix":"%","label":"ROI Delivered","context":"Supply chain and credit"},"industry":{"value":"180","prefix":"","suffix":"%","label":"Fintech ROI","context":"Decisioning platform"},"product":{"value":"292","prefix":"","suffix":"%","label":"Supply Chain Module","context":"Largest ROI program"}}'>
+          <div class="ov-impact-icon">📈</div>
+          <strong data-ov-value>292%</strong>
+          <p data-ov-label>ROI Delivered</p>
+          <small data-ov-context>Supply chain and credit</small>
+          <div class="ov-mini-bar"><span data-ov-bar="100"></span></div>
+          <a href="metrics.html">See how this was achieved -></a>
+        </article>
+
+        <article class="ov-impact-card" data-impact='{"impact":{"value":"78","prefix":"","suffix":"%","label":"Risk Reduction","context":"Audit and default controls"},"industry":{"value":"78","prefix":"","suffix":"%","label":"Healthcare Risk Drop","context":"Grant platform"},"product":{"value":"22","prefix":"","suffix":"%","label":"Default Reduction","context":"Trade credit model"}}'>
+          <div class="ov-impact-icon">🛡️</div>
+          <strong data-ov-value>78%</strong>
+          <p data-ov-label>Risk Reduction</p>
+          <small data-ov-context>Audit and default controls</small>
+          <div class="ov-mini-bar"><span data-ov-bar="78"></span></div>
+          <a href="metrics.html">See how this was achieved -></a>
+        </article>
+
+        <article class="ov-impact-card" data-impact='{"impact":{"value":"99.7","prefix":"","suffix":"%","label":"Platform Uptime","context":"Regulated platform reliability"},"industry":{"value":"99.8","prefix":"","suffix":"%","label":"Financial Platform Uptime","context":"Trade credit operations"},"product":{"value":"99.7","prefix":"","suffix":"%","label":"Grant Platform Uptime","context":"Sustained release quality"}}'>
+          <div class="ov-impact-icon">⚙️</div>
+          <strong data-ov-value>99.7%</strong>
+          <p data-ov-label>Platform Uptime</p>
+          <small data-ov-context>Regulated platform reliability</small>
+          <div class="ov-mini-bar"><span data-ov-bar="99"></span></div>
+          <a href="metrics.html">See how this was achieved -></a>
+        </article>
+
+        <article class="ov-impact-card" data-impact='{"impact":{"value":"40","prefix":"","suffix":"%","label":"Intervention Speed Gains","context":"Healthcare delivery workflows"},"industry":{"value":"90","prefix":"","suffix":"%","label":"Reconciliation Effort Reduction","context":"Pharma operations"},"product":{"value":"74","prefix":"","suffix":"%","label":"Referral Speed Improvement","context":"Care platform metric"}}'>
+          <div class="ov-impact-icon">⚡</div>
+          <strong data-ov-value>40%</strong>
+          <p data-ov-label>Intervention Speed Gains</p>
+          <small data-ov-context>Healthcare delivery workflows</small>
+          <div class="ov-mini-bar"><span data-ov-bar="72"></span></div>
+          <a href="metrics.html">See how this was achieved -></a>
+        </article>
+      </div>
+
+      <div class="ov-impact-footer">
+        <span>Benchmark context: Industry average uptime 85% vs delivered 99.7%.</span>
+        <a class="text-link" href="metrics.html">View Complete Metrics Dashboard</a>
+      </div>
+    </section>
+
+    <section id="ov-map" class="section section-divider shell reveal" data-delay="100">
+      <div class="ov-section-head">
+        <h2>Product Portfolio Map</h2>
+        <p>Interactive flow from industries to product types to measurable outcomes.</p>
+      </div>
+
+      <div class="ov-journey-map" data-ov-map>
+        <div>
+          <h3>Industries</h3>
+          <button data-ov-map-filter="healthcare">Healthcare</button>
+          <button data-ov-map-filter="financial">Financial</button>
+          <button data-ov-map-filter="pharma">Pharmaceutical</button>
+        </div>
+        <div>
+          <h3>Product Types</h3>
+          <p>API Platforms</p>
+          <p>B2B Workflows</p>
+          <p>Analytics + Decisioning</p>
+          <p>Compliance Systems</p>
+        </div>
+        <div>
+          <h3>Outcomes</h3>
+          <p>Revenue Growth</p>
+          <p>Cost Reduction</p>
+          <p>Risk Mitigation</p>
+          <p>Operational Velocity</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-divider shell reveal" data-delay="80">
-      <div class="grid-12">
-        <div class="col-12">
-          <h2>What I Actually Build</h2>
-        </div>
-        <div class="col-12 overview-build-grid">
-          <article class="overview-build-card">
-            <h3>API-first enterprise platforms</h3>
-            <p>Built for reliability, integration flexibility, and long-term extensibility across ecosystems.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Regulated systems</h3>
-            <p>Compliance-aware product design for HIPAA, SOX, and FDA 21 CFR Part 11 contexts.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Embedded B2B ecosystems</h3>
-            <p>Partner-facing workflows that reduce handoff friction and improve operational outcomes.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Analytics-driven products</h3>
-            <p>Instrumentation, experimentation, and KPI governance embedded directly into delivery.</p>
-          </article>
-        </div>
+    <section id="ov-build" class="section section-divider shell reveal" data-delay="120">
+      <div class="ov-section-head">
+        <h2>What I Actually Build</h2>
+        <p>Explore capabilities by capability, industry, or outcome lens.</p>
+      </div>
+
+      <div class="ov-build-tabs" role="toolbar" aria-label="Capability views">
+        <button class="active" data-ov-cap-view="capability">By Capability</button>
+        <button data-ov-cap-view="industry">By Industry</button>
+        <button data-ov-cap-view="outcome">By Outcome</button>
+      </div>
+
+      <div class="ov-build-grid" data-ov-cap-grid></div>
+
+      <div class="ov-build-footer">
+        <a class="btn btn-secondary" href="case-studies.html">See Products in Action</a>
       </div>
     </section>
 
-    <section class="section section-divider shell reveal" data-delay="120">
-      <div class="grid-12">
-        <div class="col-12">
-          <h2>Worked at</h2>
+    <section id="ov-work" class="section section-divider shell reveal" data-delay="160">
+      <div class="ov-section-head">
+        <h2>Worked at</h2>
+        <p>Career progression across healthcare, financial, and operations environments.</p>
+      </div>
+
+      <div class="ov-work-timeline" data-ov-work>
+        <div class="ov-work-nodes" role="tablist" aria-label="Company timeline">
+          <button class="active" data-ov-company="centene">Centene</button>
+          <button data-ov-company="capital-one">Capital One</button>
+          <button data-ov-company="galderma">Galderma</button>
+          <button data-ov-company="prism">Prism Health</button>
+          <button data-ov-company="utd">UT Dallas</button>
         </div>
-        <div class="col-12 logo-strip" aria-label="Company logos">
-          <span class="logo-wordmark">Centene</span>
-          <span class="logo-wordmark">Capital One</span>
-          <span class="logo-wordmark">Galderma</span>
-          <span class="logo-wordmark">Prism Health</span>
-          <span class="logo-wordmark">UT Dallas</span>
-        </div>
+
+        <article class="ov-work-detail" data-ov-company-detail>
+          <h3>Centene</h3>
+          <p><strong>Role:</strong> Senior Product Manager</p>
+          <p><strong>Duration:</strong> 2021-2024</p>
+          <p><strong>Focus:</strong> Healthcare platform delivery, B2B care coordination, compliance-first workflows.</p>
+          <p><strong>Impact:</strong> 30-40% faster interventions, $18M grant renewals enabled, 95% SLA compliance.</p>
+          <a class="text-link" href="experience.html">See Experience Stories</a>
+        </article>
+      </div>
+
+      <div class="ov-heatmap">
+        <h3>Industry Expertise Snapshot</h3>
+        <div class="ov-heat-row"><span>Healthcare</span><b style="width: 80%">80%</b></div>
+        <div class="ov-heat-row"><span>Financial Technology</span><b style="width: 50%">50%</b></div>
+        <div class="ov-heat-row"><span>Pharmaceutical Operations</span><b style="width: 40%">40%</b></div>
+        <div class="ov-heat-row"><span>Enterprise Operations</span><b style="width: 70%">70%</b></div>
       </div>
     </section>
 
-    <section class="section section-divider shell reveal" data-delay="200">
-      <div class="grid-12">
-        <div class="col-12">
-          <h2>My Product Philosophy</h2>
-        </div>
-        <div class="col-12 philosophy-grid">
-          <article class="philosophy-card">
-            <p>Start with economic model, not features.</p>
-          </article>
-          <article class="philosophy-card">
-            <p>Embed compliance into architecture, not as an afterthought.</p>
-          </article>
-          <article class="philosophy-card">
-            <p>Build once, then scale across markets and use cases.</p>
-          </article>
-          <article class="philosophy-card">
-            <p>Instrument everything and iterate using evidence.</p>
-          </article>
+    <section id="ov-philosophy" class="section section-divider shell reveal" data-delay="200">
+      <div class="ov-section-head">
+        <h2>My Product Philosophy</h2>
+        <p>A practical framework I apply repeatedly across products and industries.</p>
+      </div>
+
+      <div class="ov-philo-toggle" role="toolbar" aria-label="Philosophy comparison mode">
+        <button class="active" data-ov-philo-mode="my">My Approach</button>
+        <button data-ov-philo-mode="traditional">Traditional Approach</button>
+      </div>
+
+      <div class="ov-philo-grid">
+        <article class="ov-philo-card" data-my="Start with economic model, not features." data-traditional="Start with feature backlog, validate impact later.">
+          <h3>Discovery First</h3>
+          <p data-ov-philo-text>Start with economic model, not features.</p>
+          <button data-ov-philo-expand>See application</button>
+          <div class="ov-philo-detail" hidden>Applied in trade credit and supply chain products to align release decisions with value realization and risk profile.</div>
+        </article>
+
+        <article class="ov-philo-card" data-my="Embed compliance into architecture, not as an afterthought." data-traditional="Add compliance checks near release stage.">
+          <h3>Architecture Discipline</h3>
+          <p data-ov-philo-text>Embed compliance into architecture, not as an afterthought.</p>
+          <button data-ov-philo-expand>See application</button>
+          <div class="ov-philo-detail" hidden>Applied in grant and care platforms with mapped controls, audit evidence paths, and release gating criteria.</div>
+        </article>
+
+        <article class="ov-philo-card" data-my="Build once, then scale across markets and use cases." data-traditional="Rebuild similar workflows per team or market.">
+          <h3>Scale by Design</h3>
+          <p data-ov-philo-text>Build once, then scale across markets and use cases.</p>
+          <button data-ov-philo-expand>See application</button>
+          <div class="ov-philo-detail" hidden>Used API-first and modular orchestration patterns to reuse platform capabilities across partner ecosystems.</div>
+        </article>
+
+        <article class="ov-philo-card" data-my="Instrument everything and iterate using evidence." data-traditional="Launch and measure only high-level KPIs later.">
+          <h3>Evidence Loops</h3>
+          <p data-ov-philo-text>Instrument everything and iterate using evidence.</p>
+          <button data-ov-philo-expand>See application</button>
+          <div class="ov-philo-detail" hidden>KPI instrumentation and review cadences embedded into every major release and governance decision.</div>
+        </article>
+      </div>
+
+      <div class="ov-philo-flow" aria-hidden="true">
+        <span>Discovery</span>
+        <span>Architecture</span>
+        <span>Scale</span>
+        <span>Evidence</span>
+      </div>
+    </section>
+
+    <section class="section section-divider shell reveal" data-delay="240">
+      <div class="ov-final-cta">
+        <h2>Ready to Transform Your Product Outcomes?</h2>
+        <p>Explore full case studies, metrics, and delivery framework details or start a conversation.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="contact.html">Discuss Your Challenge</a>
+          <a class="btn btn-secondary" href="case-studies.html">Share This Success Story</a>
+          <a class="text-link" href="experience.html">Explore Similar Challenges</a>
         </div>
       </div>
     </section>

@@ -545,3 +545,340 @@ if (xpRoot) {
   updateViewed();
   resetHighlightTicker();
 }
+
+const ovRoot = document.querySelector('[data-ov-root]');
+if (ovRoot) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const quickProgress = ovRoot.querySelector('[data-ov-progress]');
+  const scrollButtons = Array.from(ovRoot.querySelectorAll('[data-ov-scroll]'));
+  scrollButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-ov-scroll');
+      const node = target ? document.querySelector(target) : null;
+      if (node) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const updateScrollProgress = () => {
+    if (!quickProgress) return;
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    quickProgress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+  };
+  updateScrollProgress();
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+  const rotator = ovRoot.querySelector('[data-ov-rotator] span');
+  if (rotator) {
+    const lines = [
+      'Discovery -> Delivery -> Impact',
+      'Data-Driven Decisions at Scale',
+      'Compliance-First, Execution-Ready',
+      'Platform Thinking, Product Outcomes',
+    ];
+    let index = 0;
+    if (!reduceMotion) {
+      setInterval(() => {
+        index = (index + 1) % lines.length;
+        rotator.parentElement.style.opacity = '0';
+        setTimeout(() => {
+          rotator.textContent = lines[index];
+          rotator.parentElement.style.opacity = '1';
+        }, 180);
+      }, 3400);
+    }
+  }
+
+  const impactViewButtons = Array.from(ovRoot.querySelectorAll('[data-ov-impact-view]'));
+  const impactCards = Array.from(ovRoot.querySelectorAll('.ov-impact-card'));
+
+  const animateMetricValue = (el, rawValue, prefix = '', suffix = '') => {
+    if (reduceMotion) {
+      el.textContent = `${prefix}${rawValue}${suffix}`;
+      return;
+    }
+    const target = Number(rawValue);
+    if (!Number.isFinite(target)) {
+      el.textContent = `${prefix}${rawValue}${suffix}`;
+      return;
+    }
+    const decimals = String(rawValue).includes('.') ? 1 : 0;
+    const duration = 600;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = (target * eased).toFixed(decimals);
+      el.textContent = `${prefix}${value}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const applyImpactView = (mode) => {
+    impactViewButtons.forEach((btn) => btn.classList.toggle('active', btn.getAttribute('data-ov-impact-view') === mode));
+    impactCards.forEach((card) => {
+      const raw = card.getAttribute('data-impact');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      const snapshot = data[mode];
+      if (!snapshot) return;
+
+      const valueEl = card.querySelector('[data-ov-value]');
+      const labelEl = card.querySelector('[data-ov-label]');
+      const contextEl = card.querySelector('[data-ov-context]');
+      const barEl = card.querySelector('[data-ov-bar]');
+
+      if (valueEl) animateMetricValue(valueEl, snapshot.value, snapshot.prefix || '', snapshot.suffix || '');
+      if (labelEl) labelEl.textContent = snapshot.label || '';
+      if (contextEl) contextEl.textContent = snapshot.context || '';
+      if (barEl) {
+        const lookup = { impact: 88, industry: 76, product: 68 };
+        const width = snapshot.suffix === '%' ? Math.min(100, Number(snapshot.value)) : lookup[mode];
+        barEl.style.width = `${width}%`;
+      }
+    });
+  };
+
+  impactViewButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-ov-impact-view') || 'impact';
+      applyImpactView(mode);
+    });
+  });
+  applyImpactView('impact');
+
+  const capabilityTabs = Array.from(ovRoot.querySelectorAll('[data-ov-cap-view]'));
+  const capabilityGrid = ovRoot.querySelector('[data-ov-cap-grid]');
+  const capabilityData = {
+    capability: [
+      {
+        icon: 'API',
+        title: 'API-first enterprise platforms',
+        copy: 'Built for interoperability, controlled rollout, and long-term extensibility.',
+        meta: ['Used in 3/4 products', '$8M+ value enabled'],
+        examples: 'Examples: Trade Credit, Care Coordination, Supply Chain',
+      },
+      {
+        icon: 'Shield',
+        title: 'Regulated systems',
+        copy: 'Compliance integrated into architecture across HIPAA and audit-heavy environments.',
+        meta: ['Used in 2/4 products', '100% control mapping'],
+        examples: 'Examples: Grant Platform, Care Coordination',
+      },
+      {
+        icon: 'Flow',
+        title: 'Embedded B2B ecosystems',
+        copy: 'Partner-centered workflow systems designed for cross-organization operations.',
+        meta: ['Used in 3/4 products', '50+ partner organizations'],
+        examples: 'Examples: Care Coordination, Trade Credit, Grant Ops',
+      },
+      {
+        icon: 'Data',
+        title: 'Analytics-driven products',
+        copy: 'KPI instrumentation and experimentation loops built into delivery from day one.',
+        meta: ['Used in 4/4 products', 'Outcome governance by metric'],
+        examples: 'Examples: Supply Chain, Credit Decisioning, Grant Management',
+      },
+    ],
+    industry: [
+      {
+        icon: 'Health',
+        title: 'Healthcare Technology',
+        copy: 'Care operations, grant compliance, and intervention optimization platforms.',
+        meta: ['2 major products', '30-40% intervention speed gains'],
+        examples: 'Care Coordination + Grant Management',
+      },
+      {
+        icon: 'Fin',
+        title: 'Financial Technology',
+        copy: 'Decisioning infrastructure for conversion growth and default risk control.',
+        meta: ['1 major platform', '22% default reduction'],
+        examples: 'B2B Trade Credit Decisioning',
+      },
+      {
+        icon: 'Pharma',
+        title: 'Pharmaceutical Operations',
+        copy: 'Post-ERP reconciliation and visibility for finance and operations reliability.',
+        meta: ['1 major module', '292% ROI'],
+        examples: 'Supply Chain Analytics Module',
+      },
+      {
+        icon: 'Ops',
+        title: 'Enterprise Operations',
+        copy: 'Cross-functional platform operating models with measurable service outcomes.',
+        meta: ['4/4 products', 'Instrumentation-first delivery'],
+        examples: 'Shared methods across all products',
+      },
+    ],
+    outcome: [
+      {
+        icon: 'Rev',
+        title: 'Revenue Growth',
+        copy: 'Decisioning and enablement systems that increase approved and completed transactions.',
+        meta: ['Up to $1.6M year-1 impact', '8-12% conversion lift'],
+        examples: 'Trade Credit, Care Programs',
+      },
+      {
+        icon: 'Cost',
+        title: 'Cost Reduction',
+        copy: 'Workflow redesign and automation to reduce manual overhead and service costs.',
+        meta: ['$400K+ annual savings', '90% reconciliation effort reduction'],
+        examples: 'Care Coordination, Supply Chain',
+      },
+      {
+        icon: 'Risk',
+        title: 'Risk Mitigation',
+        copy: 'Policy and architecture controls reducing audit exposure and credit defaults.',
+        meta: ['78% audit risk reduction', '22% default reduction'],
+        examples: 'Grant Management, Trade Credit',
+      },
+      {
+        icon: 'Ops',
+        title: 'Operational Excellence',
+        copy: 'Faster execution cycles with uptime, SLA, and throughput accountability.',
+        meta: ['99.7% uptime', '95% SLA compliance'],
+        examples: 'Care Coordination, Grant Platform',
+      },
+    ],
+  };
+
+  const renderCapabilities = (mode) => {
+    if (!capabilityGrid) return;
+    const cards = capabilityData[mode] || [];
+    capabilityGrid.innerHTML = cards
+      .map(
+        (item) => `
+        <article class="ov-build-card">
+          <div class="ov-build-icon">${item.icon}</div>
+          <h3>${item.title}</h3>
+          <p>${item.copy}</p>
+          <div class="ov-build-meta">${item.meta.map((m) => `<span>${m}</span>`).join('')}</div>
+          <p class="ov-build-examples">${item.examples}</p>
+        </article>`
+      )
+      .join('');
+  };
+
+  capabilityTabs.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-ov-cap-view') || 'capability';
+      capabilityTabs.forEach((b) => b.classList.toggle('active', b === btn));
+      renderCapabilities(mode);
+    });
+  });
+  renderCapabilities('capability');
+
+  const workContainer = ovRoot.querySelector('[data-ov-work]');
+  if (workContainer) {
+    const workButtons = Array.from(workContainer.querySelectorAll('[data-ov-company]'));
+    const detailCard = workContainer.querySelector('[data-ov-company-detail]');
+    const workData = {
+      centene: {
+        name: 'Centene',
+        role: 'Senior Product Manager',
+        duration: '2021-2024',
+        focus: 'Healthcare platform delivery, B2B care coordination, compliance-first workflows.',
+        impact: '30-40% faster interventions, $18M grant renewals enabled, 95% SLA compliance.',
+      },
+      'capital-one': {
+        name: 'Capital One',
+        role: 'Product Management, Trade Credit',
+        duration: '2020-2021',
+        focus: 'Real-time B2B credit decisioning and risk automation.',
+        impact: '8-12% conversion lift, 22% default reduction, 95% manual review reduction.',
+      },
+      galderma: {
+        name: 'Galderma',
+        role: 'Product Manager, Operations',
+        duration: '2019-2020',
+        focus: 'Supply chain reconciliation and visibility after ERP migration.',
+        impact: '292% ROI, $3.5M annual benefit, major incident reduction.',
+      },
+      prism: {
+        name: 'Prism Health',
+        role: 'Product Manager, Compliance Operations',
+        duration: '2022-2023',
+        focus: 'Grant operations and compliance workflow modernization.',
+        impact: '78% audit risk reduction, 30% efficiency gain, sustained uptime.',
+      },
+      utd: {
+        name: 'UT Dallas',
+        role: 'Product Ownership, Self-Service Platform',
+        duration: 'Earlier Career',
+        focus: 'Self-service operations and backlog reduction for academic services.',
+        impact: '80% fewer in-person visits, 847 backlog eliminated, 35% satisfaction lift.',
+      },
+    };
+
+    const setCompany = (key) => {
+      const data = workData[key];
+      if (!data || !detailCard) return;
+      workButtons.forEach((btn) => btn.classList.toggle('active', btn.getAttribute('data-ov-company') === key));
+      detailCard.innerHTML = `
+        <h3>${data.name}</h3>
+        <p><strong>Role:</strong> ${data.role}</p>
+        <p><strong>Duration:</strong> ${data.duration}</p>
+        <p><strong>Focus:</strong> ${data.focus}</p>
+        <p><strong>Impact:</strong> ${data.impact}</p>
+        <a class="text-link" href="experience.html">See Experience Stories</a>
+      `;
+    };
+
+    workButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-ov-company');
+        if (key) setCompany(key);
+      });
+    });
+  }
+
+  const philoModeButtons = Array.from(ovRoot.querySelectorAll('[data-ov-philo-mode]'));
+  const philoCards = Array.from(ovRoot.querySelectorAll('.ov-philo-card'));
+  const philoExpandButtons = Array.from(ovRoot.querySelectorAll('[data-ov-philo-expand]'));
+
+  const setPhiloMode = (mode) => {
+    philoModeButtons.forEach((btn) => btn.classList.toggle('active', btn.getAttribute('data-ov-philo-mode') === mode));
+    philoCards.forEach((card) => {
+      const text = card.querySelector('[data-ov-philo-text]');
+      if (text) {
+        text.textContent = mode === 'traditional' ? card.dataset.traditional || '' : card.dataset.my || '';
+      }
+    });
+  };
+
+  philoModeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-ov-philo-mode') || 'my';
+      setPhiloMode(mode);
+    });
+  });
+  setPhiloMode('my');
+
+  philoExpandButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const detail = btn.parentElement?.querySelector('.ov-philo-detail');
+      if (!detail) return;
+      const nextHidden = !detail.hidden;
+      detail.hidden = nextHidden;
+      btn.textContent = nextHidden ? 'See application' : 'Hide application';
+    });
+  });
+
+  const mapButtons = Array.from(ovRoot.querySelectorAll('[data-ov-map-filter]'));
+  const industrySelect = ovRoot.querySelector('[data-xp-filter="industry"], [data-ov-filter="industry"], #xp-industry, #ov-industry');
+  mapButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      mapButtons.forEach((b) => b.classList.toggle('active', b === btn));
+      const value = btn.getAttribute('data-ov-map-filter');
+      if (industrySelect && value) {
+        industrySelect.value = value;
+        industrySelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      const target = document.querySelector('#ov-build');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
