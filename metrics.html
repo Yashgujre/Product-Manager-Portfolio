@@ -58,38 +58,32 @@
     </section>
 
     <section class="section section-divider shell reveal" data-delay="80">
-      <div class="metrics-controls">
-        <div class="filter-row" role="toolbar" aria-label="Metric filters">
-          <button class="filter-chip active" data-filter="all">All</button>
-          <button class="filter-chip" data-filter="operational">Operational</button>
-          <button class="filter-chip" data-filter="financial">Financial</button>
-          <button class="filter-chip" data-filter="adoption">Adoption</button>
-          <button class="filter-chip" data-filter="performance">Performance</button>
-          <button class="filter-chip" data-filter="compliance">Compliance</button>
-        </div>
-        <div class="search-wrap">
-          <label for="metric-search" class="sr-only">Search metrics</label>
-          <input id="metric-search" class="metric-search" type="search" placeholder="Search products or metrics" data-metric-search />
-        </div>
+      <div class="metrics-section-head">
+        <h2>Product Impact Showcase</h2>
+        <p>Each product is mapped from challenge to delivery model to measurable business impact.</p>
       </div>
 
-      <div class="product-metrics-grid" data-metric-cards>
-        <article class="product-metric-card" data-card-cats="operational financial adoption performance compliance" data-card-text="care coordination platform healthcare nonprofit medicaid sla hipaa roi interventions">
+      <div class="product-metrics-grid">
+        <article class="product-metric-card">
           <div class="product-card-header">
             <p class="case-label">Product</p>
             <h2>Care Coordination Platform</h2>
             <p class="case-subtitle">Care network operations platform for member interventions and partner execution tracking.</p>
           </div>
 
-          <div class="story-strip">
-            <div>
-              <p class="exp-label">The Challenge</p>
+          <div class="story-flow">
+            <article class="flow-step">
+              <p class="flow-label">Challenge</p>
               <p>Fragmented referral coordination created delayed interventions, duplicate work, and inconsistent outcomes visibility.</p>
-            </div>
-            <div>
-              <p class="exp-label">The Solution</p>
+            </article>
+            <article class="flow-step">
+              <p class="flow-label">Solution</p>
               <p>Structured partner workflows, real-time care context, SLA tracking, and integrated behavioral screening flows.</p>
-            </div>
+            </article>
+            <article class="flow-step flow-step-impact">
+              <p class="flow-label">Impact</p>
+              <p>Intervention turnaround accelerated by up to 40% with 95% SLA compliance and 17x intervention ROI.</p>
+            </article>
           </div>
 
           <div class="metrics-kpi-grid">
@@ -105,39 +99,48 @@
             <div class="progress-row"><span>Platform uptime</span><div class="progress-track"><div class="progress-fill" data-progress="99.7"></div></div><b>99.7%</b></div>
           </div>
 
-          <button class="expand-btn" data-expand-btn>View full metric breakdown</button>
-          <div class="expand-panel" data-expand-panel>
-            <ul class="phase-list">
-              <li>2.5M+ members supported</li>
-              <li>50+ nonprofit partners</li>
-              <li>$10-15M quality impact</li>
-              <li>750+ labor hours saved per partner</li>
-              <li>HIPAA compliant with 7-year audit retention</li>
-            </ul>
-            <div class="compare-block">
-              <div><p>Before Platform</p><strong>4.2-day referral acknowledgment</strong></div>
-              <div><p>With Platform</p><strong>1.1-day referral acknowledgment</strong></div>
+          <div class="detail-panels">
+            <div class="detail-box">
+              <p class="detail-title">Scale and controls</p>
+              <ul class="phase-list">
+                <li>2.5M+ members supported</li>
+                <li>50+ nonprofit partners</li>
+                <li>$10-15M quality impact</li>
+                <li>750+ labor hours saved per partner</li>
+                <li>HIPAA compliant with 7-year audit retention</li>
+              </ul>
+            </div>
+            <div class="detail-box">
+              <p class="detail-title">Before vs after</p>
+              <div class="compare-block">
+                <div><p>Before Platform</p><strong>4.2-day referral acknowledgment</strong></div>
+                <div><p>With Platform</p><strong>1.1-day referral acknowledgment</strong></div>
+              </div>
             </div>
           </div>
           <a class="text-link" href="case-studies.html">Request detailed case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="product-metric-card" data-card-cats="operational financial adoption performance" data-card-text="trade credit decisioning platform fintech conversion defaults latency auc roc">
+        <article class="product-metric-card">
           <div class="product-card-header">
             <p class="case-label">Product</p>
             <h2>Trade Credit Decisioning Platform</h2>
             <p class="case-subtitle">Real-time decision platform for B2B credit approvals, risk controls, and exposure management.</p>
           </div>
 
-          <div class="story-strip">
-            <div>
-              <p class="exp-label">The Challenge</p>
+          <div class="story-flow">
+            <article class="flow-step">
+              <p class="flow-label">Challenge</p>
               <p>Manual approvals (2-7 days) caused checkout abandonment and inconsistent credit risk handling.</p>
-            </div>
-            <div>
-              <p class="exp-label">The Solution</p>
+            </article>
+            <article class="flow-step">
+              <p class="flow-label">Solution</p>
               <p>API-first decisioning engine with model scoring, risk monitoring, and automated routing at scale.</p>
-            </div>
+            </article>
+            <article class="flow-step flow-step-impact">
+              <p class="flow-label">Impact</p>
+              <p>Sub-500ms automated decisions lifted conversion up to 12% and reduced defaults by 22%.</p>
+            </article>
           </div>
 
           <div class="metrics-kpi-grid">
@@ -153,37 +156,46 @@
             <div class="progress-row"><span>Decision latency target</span><div class="progress-track"><div class="progress-fill" data-progress="95"></div></div><b>&lt;500ms</b></div>
           </div>
 
-          <button class="expand-btn" data-expand-btn>View full metric breakdown</button>
-          <div class="expand-panel" data-expand-panel>
-            <ul class="phase-list">
-              <li>$2.5B+ credit exposure managed</li>
-              <li>50,000+ decisions per month per client</li>
-              <li>8-12% B2B conversion lift</li>
-            </ul>
-            <div class="compare-block">
-              <div><p>Before Platform</p><strong>2-7 day manual approval flow</strong></div>
-              <div><p>With Platform</p><strong>Sub-500ms automated decisioning</strong></div>
+          <div class="detail-panels">
+            <div class="detail-box">
+              <p class="detail-title">Scale and controls</p>
+              <ul class="phase-list">
+                <li>$2.5B+ credit exposure managed</li>
+                <li>50,000+ decisions per month per client</li>
+                <li>8-12% B2B conversion lift</li>
+              </ul>
+            </div>
+            <div class="detail-box">
+              <p class="detail-title">Before vs after</p>
+              <div class="compare-block">
+                <div><p>Before Platform</p><strong>2-7 day manual approval flow</strong></div>
+                <div><p>With Platform</p><strong>Sub-500ms automated decisioning</strong></div>
+              </div>
             </div>
           </div>
           <a class="text-link" href="case-studies.html">Request detailed case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="product-metric-card" data-card-cats="operational financial adoption performance" data-card-text="supply chain visibility reconciliation events reporting automation incidents roi">
+        <article class="product-metric-card">
           <div class="product-card-header">
             <p class="case-label">Product</p>
             <h2>Supply Chain Visibility Platform</h2>
             <p class="case-subtitle">Cross-system reconciliation and analytics platform for operational control and reporting reliability.</p>
           </div>
 
-          <div class="story-strip">
-            <div>
-              <p class="exp-label">The Challenge</p>
+          <div class="story-flow">
+            <article class="flow-step">
+              <p class="flow-label">Challenge</p>
               <p>Fragmented post-ERP workflows drove high manual reporting load and frequent production incidents.</p>
-            </div>
-            <div>
-              <p class="exp-label">The Solution</p>
+            </article>
+            <article class="flow-step">
+              <p class="flow-label">Solution</p>
               <p>Unified event instrumentation, reconciliation logic, and decision dashboards across supply chain operations.</p>
-            </div>
+            </article>
+            <article class="flow-step flow-step-impact">
+              <p class="flow-label">Impact</p>
+              <p>Automation reached 70% reporting coverage while delivering 292% ROI and 60% fewer incidents.</p>
+            </article>
           </div>
 
           <div class="metrics-kpi-grid">
@@ -199,36 +211,45 @@
             <div class="progress-row"><span>NPS change</span><div class="progress-track"><div class="progress-fill" data-progress="25"></div></div><b>+25</b></div>
           </div>
 
-          <button class="expand-btn" data-expand-btn>View full metric breakdown</button>
-          <div class="expand-panel" data-expand-panel>
-            <ul class="phase-list">
-              <li>Millions of events processed per month</li>
-              <li>Downward trend in incident frequency after release</li>
-            </ul>
-            <div class="compare-block">
-              <div><p>Before Platform</p><strong>Manual reporting-heavy operations</strong></div>
-              <div><p>With Platform</p><strong>Automated reporting and proactive reconciliation</strong></div>
+          <div class="detail-panels">
+            <div class="detail-box">
+              <p class="detail-title">Scale and controls</p>
+              <ul class="phase-list">
+                <li>Millions of events processed per month</li>
+                <li>Downward trend in incident frequency after release</li>
+              </ul>
+            </div>
+            <div class="detail-box">
+              <p class="detail-title">Before vs after</p>
+              <div class="compare-block">
+                <div><p>Before Platform</p><strong>Manual reporting-heavy operations</strong></div>
+                <div><p>With Platform</p><strong>Automated reporting and proactive reconciliation</strong></div>
+              </div>
             </div>
           </div>
           <a class="text-link" href="case-studies.html">Request detailed case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="product-metric-card" data-card-cats="operational financial performance compliance" data-card-text="grant management platform audit risk hipaa uptime security compliance">
+        <article class="product-metric-card">
           <div class="product-card-header">
             <p class="case-label">Product</p>
             <h2>Grant Management Platform</h2>
             <p class="case-subtitle">Governance and funding operations platform for compliance-focused nonprofit healthcare delivery.</p>
           </div>
 
-          <div class="story-strip">
-            <div>
-              <p class="exp-label">The Challenge</p>
+          <div class="story-flow">
+            <article class="flow-step">
+              <p class="flow-label">Challenge</p>
               <p>Manual grant tracking increased audit exposure and drove high administrative overhead.</p>
-            </div>
-            <div>
-              <p class="exp-label">The Solution</p>
+            </article>
+            <article class="flow-step">
+              <p class="flow-label">Solution</p>
               <p>Centralized controls, mapped compliance requirements, and automated review/reporting workflows.</p>
-            </div>
+            </article>
+            <article class="flow-step flow-step-impact">
+              <p class="flow-label">Impact</p>
+              <p>Audit risk dropped by 78% while maintaining zero security incidents and 99.7% platform uptime.</p>
+            </article>
           </div>
 
           <div class="metrics-kpi-grid">
@@ -243,32 +264,38 @@
             <div class="progress-row"><span>Security incidents</span><div class="progress-track"><div class="progress-fill" data-progress="100"></div></div><b>0 incidents</b></div>
           </div>
 
-          <button class="expand-btn" data-expand-btn>View full metric breakdown</button>
-          <div class="expand-panel" data-expand-panel>
-            <ul class="phase-list">
-              <li>Control mapping completeness maintained at 100%</li>
-              <li>Sustained uptime and zero security incidents post-launch</li>
-            </ul>
+          <div class="detail-panels">
+            <div class="detail-box">
+              <p class="detail-title">Scale and controls</p>
+              <ul class="phase-list">
+                <li>Control mapping completeness maintained at 100%</li>
+                <li>Sustained uptime and zero security incidents post-launch</li>
+              </ul>
+            </div>
           </div>
           <a class="text-link" href="case-studies.html">Request detailed case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="product-metric-card" data-card-cats="operational adoption performance" data-card-text="self-service operations portal backlog satisfaction in-person incident traffic">
+        <article class="product-metric-card">
           <div class="product-card-header">
             <p class="case-label">Product</p>
             <h2>Self-Service Operations Portal</h2>
             <p class="case-subtitle">Digital operations portal replacing in-person service queues with self-service completion flows.</p>
           </div>
 
-          <div class="story-strip">
-            <div>
-              <p class="exp-label">The Challenge</p>
+          <div class="story-flow">
+            <article class="flow-step">
+              <p class="flow-label">Challenge</p>
               <p>In-person traffic and unresolved backlog created service bottlenecks and user dissatisfaction.</p>
-            </div>
-            <div>
-              <p class="exp-label">The Solution</p>
+            </article>
+            <article class="flow-step">
+              <p class="flow-label">Solution</p>
               <p>Self-service transaction workflows with integrated support and incident response playbooks.</p>
-            </div>
+            </article>
+            <article class="flow-step flow-step-impact">
+              <p class="flow-label">Impact</p>
+              <p>In-person demand dropped by 80% while eliminating 847 backlog items and supporting 8x traffic spikes.</p>
+            </article>
           </div>
 
           <div class="metrics-kpi-grid">
@@ -282,12 +309,14 @@
             <div class="progress-row"><span>Incident response speed</span><div class="progress-track"><div class="progress-fill" data-progress="90"></div></div><b>6-hour resolution</b></div>
           </div>
 
-          <button class="expand-btn" data-expand-btn>View full metric breakdown</button>
-          <div class="expand-panel" data-expand-panel>
-            <ul class="phase-list">
-              <li>Major backlog category closed with sustained self-service adoption</li>
-              <li>High-volume event performance validated during 8x traffic spike</li>
-            </ul>
+          <div class="detail-panels">
+            <div class="detail-box">
+              <p class="detail-title">Scale and controls</p>
+              <ul class="phase-list">
+                <li>Major backlog category closed with sustained self-service adoption</li>
+                <li>High-volume event performance validated during 8x traffic spike</li>
+              </ul>
+            </div>
           </div>
           <a class="text-link" href="case-studies.html">Request detailed case study <span aria-hidden="true">→</span></a>
         </article>

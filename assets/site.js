@@ -131,47 +131,6 @@ if (progressEls.length) {
   progressEls.forEach((el) => progressObserver.observe(el));
 }
 
-const expandButtons = document.querySelectorAll('[data-expand-btn]');
-expandButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const panel = btn.parentElement?.querySelector('[data-expand-panel]');
-    if (!panel) return;
-    const open = panel.classList.toggle('open');
-    btn.textContent = open ? 'Hide metric breakdown' : 'View full metric breakdown';
-  });
-});
-
-const filterButtons = document.querySelectorAll('[data-filter]');
-const metricCards = document.querySelectorAll('[data-metric-cards] .product-metric-card');
-const metricSearch = document.querySelector('[data-metric-search]');
-
-const applyMetricFilters = () => {
-  const activeFilter = document.querySelector('[data-filter].active')?.dataset.filter || 'all';
-  const query = (metricSearch?.value || '').trim().toLowerCase();
-
-  metricCards.forEach((card) => {
-    const categories = card.dataset.cardCats || '';
-    const haystack = card.dataset.cardText || '';
-    const categoryMatch = activeFilter === 'all' || categories.includes(activeFilter);
-    const queryMatch = !query || haystack.includes(query);
-    card.classList.toggle('hidden-by-filter', !(categoryMatch && queryMatch));
-  });
-};
-
-filterButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyMetricFilters();
-  });
-});
-
-if (metricSearch) {
-  metricSearch.addEventListener('input', applyMetricFilters);
-}
-
-applyMetricFilters();
-
 const roiInvestment = document.querySelector('[data-roi-investment]');
 const roiBenefit = document.querySelector('[data-roi-benefit]');
 const roiYears = document.querySelector('[data-roi-years]');
