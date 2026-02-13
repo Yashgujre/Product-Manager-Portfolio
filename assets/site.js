@@ -12,20 +12,28 @@ if (navToggle && nav) {
 }
 
 const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const delay = Number(entry.target.getAttribute('data-delay') || 0);
-      entry.target.style.transitionDelay = `${delay}ms`;
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.15 }
-);
 
-reveals.forEach((node) => revealObserver.observe(node));
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const delay = Number(entry.target.getAttribute('data-delay') || 0);
+        entry.target.style.transitionDelay = `${delay}ms`;
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.01,
+      rootMargin: '0px 0px -8% 0px',
+    }
+  );
+
+  reveals.forEach((node) => revealObserver.observe(node));
+} else {
+  reveals.forEach((node) => node.classList.add('visible'));
+}
 
 const sectionIds = ['overview', 'metrics', 'experience', 'case-studies', 'framework', 'contact'];
 const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));
