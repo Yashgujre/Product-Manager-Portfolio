@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yash Gujre | Calculators</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo-prism.svg" />
+  <title>Yash Gujre | Decision Making Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -28,116 +29,23 @@
   <main>
     <section class="section shell reveal" data-delay="0">
       <p class="eyebrow">Tools</p>
-      <h1>Calculators</h1>
-      <p class="lead">Select a calculator to view the active case type.</p>
+      <h1>Decision Making Systems</h1>
+      <p class="lead">All systems are listed below and currently in development.</p>
+
       <div class="calculator-panel">
-        <label class="calculator-label" for="calculator-select">Choose calculator</label>
-        <select id="calculator-select" class="calculator-select" data-calculator-select>
-          <option value="Product design">Product design</option>
-          <option value="Product improvement">Product improvement</option>
-          <option value="Analytical cases">Analytical cases</option>
-          <option value="Estimation strategy cases">Estimation strategy cases</option>
-          <option value="GTM system design and trade-off execution planning">GTM system design and trade-off execution planning</option>
-          <option value="Crisis risk response">Crisis risk response</option>
-          <option value="Customer journey mapping">Customer journey mapping</option>
-          <option value="Cost benefit analysis">Cost benefit analysis</option>
-        </select>
-        <div class="calculator-result" data-calculator-result>
-          <p class="calculator-result-label">Selected calculator</p>
-          <h3 data-calculator-title>Product design</h3>
-        </div>
-
-        <div class="calculator-builder" data-product-design-builder>
-          <h3>Product Design Inputs</h3>
-          <p>Choose inputs below, add custom context, and generate a detailed case study.</p>
-          <div class="calculator-grid">
-            <label class="calculator-label" for="pd-product">Product name</label>
-            <select id="pd-product" class="calculator-select" data-pd-product>
-              <option value="TaskFlow">TaskFlow</option>
-              <option value="CareBridge">CareBridge</option>
-              <option value="FinPilot">FinPilot</option>
-              <option value="PulseCommerce">PulseCommerce</option>
-              <option value="custom">Custom product name</option>
-            </select>
-
-            <label class="calculator-label" for="pd-product-custom">Custom product name (optional)</label>
-            <input id="pd-product-custom" class="calculator-input" type="text" data-pd-product-custom placeholder="e.g., Sarovai Coach" />
-
-            <label class="calculator-label" for="pd-user-type">User type</label>
-            <select id="pd-user-type" class="calculator-select" data-pd-user-type>
-              <option value="consumer">Consumer</option>
-              <option value="enterprise">Enterprise</option>
-              <option value="you-decide">You decide</option>
-            </select>
-
-            <label class="calculator-label" for="pd-scale">User scale</label>
-            <select id="pd-scale" class="calculator-select" data-pd-scale>
-              <option value="unknown">Unknown</option>
-              <option value="lt100k">&lt;100K</option>
-              <option value="100k-1m">100K-1M</option>
-              <option value="gt1m">&gt;1M</option>
-            </select>
-
-            <label class="calculator-label" for="pd-goal">Primary goal</label>
-            <select id="pd-goal" class="calculator-select" data-pd-goal>
-              <option value="engagement">Engagement</option>
-              <option value="acquisition">Acquisition</option>
-              <option value="activation">Activation</option>
-              <option value="retention">Retention</option>
-              <option value="revenue">Revenue</option>
-              <option value="experience">Experience/Reliability</option>
-            </select>
-
-            <label class="calculator-label" for="pd-platform">Platform</label>
-            <select id="pd-platform" class="calculator-select" data-pd-platform>
-              <option value="mobile">Mobile</option>
-              <option value="web">Web</option>
-              <option value="multi">Multi-platform</option>
-              <option value="voice">Voice</option>
-              <option value="hardware">Hardware</option>
-            </select>
-
-            <label class="calculator-label" for="pd-budget">Budget</label>
-            <select id="pd-budget" class="calculator-select" data-pd-budget>
-              <option value="unknown">Unknown</option>
-              <option value="lt500k">&lt;$500K</option>
-              <option value="500k-2m">$500K-$2M</option>
-              <option value="gt2m">&gt;$2M</option>
-            </select>
-
-            <label class="calculator-label" for="pd-timeline">Timeline</label>
-            <select id="pd-timeline" class="calculator-select" data-pd-timeline>
-              <option value="6-12">6-12 months</option>
-              <option value="lt6">&lt;6 months</option>
-              <option value="gt12">&gt;12 months</option>
-            </select>
-
-            <label class="calculator-label" for="pd-state">Product state</label>
-            <select id="pd-state" class="calculator-select" data-pd-state>
-              <option value="scratch">From scratch</option>
-              <option value="improvement">Existing product improvement</option>
-            </select>
-
-            <label class="calculator-label" for="pd-savvy">User savviness</label>
-            <select id="pd-savvy" class="calculator-select" data-pd-savvy>
-              <option value="moderate">Moderate</option>
-              <option value="low">Low</option>
-              <option value="high">High</option>
-            </select>
-
-            <label class="calculator-label" for="pd-problem">Problem statement (optional)</label>
-            <textarea id="pd-problem" class="calculator-input calculator-textarea" data-pd-problem placeholder="What is the core problem this product solves?"></textarea>
-
-            <label class="calculator-label" for="pd-notes">Additional notes (optional)</label>
-            <textarea id="pd-notes" class="calculator-input calculator-textarea" data-pd-notes placeholder="Context, constraints, interviewer signals, domain details, etc."></textarea>
-          </div>
-
-          <button class="btn btn-primary" type="button" data-pd-generate>Generate Case Study</button>
-          <article class="case-study-output" data-pd-output hidden>
-            <div data-pd-output-text></div>
-          </article>
+        <p class="calculator-result-label">Available Systems</p>
+        <div class="pd-report">
+          <article class="pd-report-section"><h4>Product design</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Product improvement</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Analytical cases</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Estimation strategy cases</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>GTM system design and trade-off execution planning</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Crisis risk response</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Customer journey mapping</h4><p>Coming soon</p></article>
+          <article class="pd-report-section"><h4>Cost benefit analysis</h4><p>Coming soon</p></article>
         </div>
       </div>
+
       <div class="overview-cta-row">
         <a class="btn btn-primary" href="metrics.html">Back to Metrics</a>
       </div>
