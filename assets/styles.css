@@ -1443,6 +1443,11 @@ p {
 /* Experience Immersive Redesign */
 .xp-hero {
   padding-top: 104px;
+  padding-bottom: 42px;
+}
+
+.xp-hero + .section {
+  padding-top: 48px;
 }
 
 .xp-hero-card {
