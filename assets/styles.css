@@ -596,6 +596,53 @@ p {
   margin-bottom: 12px;
 }
 
+.case-card-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.case-card-list li {
+  color: var(--body);
+  line-height: 1.6;
+}
+
+.case-data-table-wrap {
+  margin-top: 14px;
+  overflow-x: auto;
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.case-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.case-data-table th,
+.case-data-table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--body);
+  vertical-align: top;
+}
+
+.case-data-table th {
+  color: var(--heading);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.case-data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 [data-theme="dark"] .case-premium-hero {
   border-color: #2c3a57;
 }
