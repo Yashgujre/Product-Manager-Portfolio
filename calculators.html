@@ -46,6 +46,80 @@
           <p class="calculator-result-label">Selected calculator</p>
           <h3 data-calculator-title>Product design</h3>
         </div>
+
+        <div class="calculator-builder" data-product-design-builder>
+          <h3>Product Design Inputs</h3>
+          <p>Choose inputs below and generate a detailed case study.</p>
+          <div class="calculator-grid">
+            <label class="calculator-label" for="pd-user-type">User type</label>
+            <select id="pd-user-type" class="calculator-select" data-pd-user-type>
+              <option value="consumer">Consumer</option>
+              <option value="enterprise">Enterprise</option>
+              <option value="you-decide">You decide</option>
+            </select>
+
+            <label class="calculator-label" for="pd-scale">User scale</label>
+            <select id="pd-scale" class="calculator-select" data-pd-scale>
+              <option value="unknown">Unknown</option>
+              <option value="lt100k">&lt;100K</option>
+              <option value="100k-1m">100K-1M</option>
+              <option value="gt1m">&gt;1M</option>
+            </select>
+
+            <label class="calculator-label" for="pd-goal">Primary goal</label>
+            <select id="pd-goal" class="calculator-select" data-pd-goal>
+              <option value="engagement">Engagement</option>
+              <option value="acquisition">Acquisition</option>
+              <option value="activation">Activation</option>
+              <option value="retention">Retention</option>
+              <option value="revenue">Revenue</option>
+              <option value="experience">Experience/Reliability</option>
+            </select>
+
+            <label class="calculator-label" for="pd-platform">Platform</label>
+            <select id="pd-platform" class="calculator-select" data-pd-platform>
+              <option value="mobile">Mobile</option>
+              <option value="web">Web</option>
+              <option value="multi">Multi-platform</option>
+              <option value="voice">Voice</option>
+              <option value="hardware">Hardware</option>
+            </select>
+
+            <label class="calculator-label" for="pd-budget">Budget</label>
+            <select id="pd-budget" class="calculator-select" data-pd-budget>
+              <option value="unknown">Unknown</option>
+              <option value="lt500k">&lt;$500K</option>
+              <option value="500k-2m">$500K-$2M</option>
+              <option value="gt2m">&gt;$2M</option>
+            </select>
+
+            <label class="calculator-label" for="pd-timeline">Timeline</label>
+            <select id="pd-timeline" class="calculator-select" data-pd-timeline>
+              <option value="6-12">6-12 months</option>
+              <option value="lt6">&lt;6 months</option>
+              <option value="gt12">&gt;12 months</option>
+            </select>
+
+            <label class="calculator-label" for="pd-state">Product state</label>
+            <select id="pd-state" class="calculator-select" data-pd-state>
+              <option value="scratch">From scratch</option>
+              <option value="improvement">Existing product improvement</option>
+            </select>
+
+            <label class="calculator-label" for="pd-savvy">User savviness</label>
+            <select id="pd-savvy" class="calculator-select" data-pd-savvy>
+              <option value="moderate">Moderate</option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary" type="button" data-pd-generate>Generate Case Study</button>
+          <article class="case-study-output" data-pd-output hidden>
+            <h3>Generated Product Design Case Study</h3>
+            <pre data-pd-output-text></pre>
+          </article>
+        </div>
       </div>
       <div class="overview-cta-row">
         <a class="btn btn-primary" href="metrics.html">Back to Metrics</a>

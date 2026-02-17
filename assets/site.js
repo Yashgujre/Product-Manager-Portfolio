@@ -145,6 +145,10 @@ const roiYears = document.querySelector('[data-roi-years]');
 const roiResult = document.querySelector('[data-roi-result]');
 const calculatorSelect = document.querySelector('[data-calculator-select]');
 const calculatorTitle = document.querySelector('[data-calculator-title]');
+const pdBuilder = document.querySelector('[data-product-design-builder]');
+const pdGenerateBtn = document.querySelector('[data-pd-generate]');
+const pdOutput = document.querySelector('[data-pd-output]');
+const pdOutputText = document.querySelector('[data-pd-output-text]');
 
 const updateRoi = () => {
   if (!roiInvestment || !roiBenefit || !roiYears || !roiResult) return;
@@ -165,9 +169,88 @@ updateRoi();
 if (calculatorSelect && calculatorTitle) {
   const updateCalculatorTitle = () => {
     calculatorTitle.textContent = calculatorSelect.value;
+    if (pdBuilder) {
+      pdBuilder.hidden = calculatorSelect.value.toLowerCase() !== 'product design';
+    }
   };
   calculatorSelect.addEventListener('change', updateCalculatorTitle);
   updateCalculatorTitle();
+}
+
+const pdGoalMap = {
+  acquisition: ['Total sign-ups/month', 'New accounts created', 'New activated users/month'],
+  activation: ['Activation rate', '% new users reaching milestone', 'Newly activated users/period'],
+  engagement: ['WAU/MAU', 'DAU/MAU stickiness', 'Core actions per user per week'],
+  retention: ['D30 retention rate', 'Churn rate', 'Returning users per period'],
+  revenue: ['MRR/ARR', 'ARPU/ARPA', 'LTV'],
+  experience: ['Task success rate', 'CSAT/NPS', 'Support tickets per 1k users'],
+};
+
+const pdGoalLabel = {
+  acquisition: 'Acquisition',
+  activation: 'Activation',
+  engagement: 'Engagement',
+  retention: 'Retention',
+  revenue: 'Revenue',
+  experience: 'Experience/Reliability',
+};
+
+const pdScaleReach = {
+  lt100k: 12000,
+  '100k-1m': 90000,
+  gt1m: 320000,
+  unknown: 100000,
+};
+
+const pdValue = (key) => {
+  const node = document.querySelector(`[data-pd-${key}]`);
+  return node ? node.value : '';
+};
+
+const buildProductDesignCaseStudy = () => {
+  const userType = pdValue('user-type') || 'consumer';
+  const scale = pdValue('scale') || 'unknown';
+  const goal = pdValue('goal') || 'engagement';
+  const platform = pdValue('platform') || 'mobile';
+  const budget = pdValue('budget') || 'unknown';
+  const timeline = pdValue('timeline') || '6-12';
+  const state = pdValue('state') || 'scratch';
+  const savvy = pdValue('savvy') || 'moderate';
+
+  const resolvedType = userType === 'you-decide' ? 'consumer (assumed)' : userType;
+  const scaleNarrative = scale === 'gt1m' ? 'large-scale audience with network effects opportunities' : scale === 'lt100k' ? 'smaller audience where personalization drives value' : 'mid-to-large audience with balanced growth and product depth';
+  const virality = scale === 'gt1m' ? 'Include invite loops and referral mechanics.' : 'Virality is secondary to core user value.';
+  const budgetNarrative = budget === 'lt500k' ? 'Budget is constrained, so MVP scope is enforced.' : budget === 'unknown' ? 'Budget assumed moderate.' : 'Budget allows phased delivery.';
+  const timelineNarrative = timeline === 'lt6' ? 'Timeline is aggressive; prioritize quick wins and narrow scope.' : timeline === 'gt12' ? 'Longer horizon enables deeper optimization after MVP.' : 'Default timeline supports MVP and iteration.';
+  const platformNarrative = platform === 'web' ? 'Prioritize accessibility and keyboard-first interaction patterns.' : platform === 'mobile' ? 'Prioritize mobile-first task clarity and low-friction actions.' : 'Design for primary mobile usage with cross-platform continuity.';
+  const stateNarrative = state === 'improvement' ? 'This is an improvement motion; focus on the highest-friction journey gaps.' : 'This is a net-new product flow using full CIRCLES structure.';
+  const savvyNarrative = savvy === 'low' ? 'Use progressive disclosure and simplified interaction paths.' : savvy === 'high' ? 'Support advanced actions and configurable workflows.' : 'Use balanced guidance with clear defaults.';
+  const northStars = pdGoalMap[goal] || pdGoalMap.engagement;
+
+  const reach = pdScaleReach[scale] || pdScaleReach.unknown;
+  const impactTop = goal === 'revenue' ? 5 : goal === 'activation' ? 3 : 2;
+  const confidence = timeline === 'lt6' ? 0.8 : 1;
+  const effortTop = budget === 'lt500k' ? 1 : 0.8;
+  const topScore = Math.round((reach * impactTop * confidence) / effortTop);
+  const secondaryScore = Math.round((reach * 2 * 0.8) / 1);
+
+  const persona = resolvedType.includes('enterprise')
+    ? 'Operations manager (35-45) handling high ticket volume and SLA pressure'
+    : 'Busy professional (28-40) optimizing time and reducing decision fatigue';
+  const pain = resolvedType.includes('enterprise')
+    ? 'Fragmented tooling causes slow execution, handoff delays, and reporting blind spots.'
+    : 'Current workflow feels high effort, inconsistent, and hard to trust during critical moments.';
+
+  const output = `1) Phase 1 - Clarify the Question\nTarget users: ${resolvedType}. Scale: ${scaleNarrative}\nPrimary goal: ${pdGoalLabel[goal] || 'Engagement'}\nNorth-star metric options: ${northStars.join('; ')}\nConstraints summary: ${budgetNarrative} ${timelineNarrative}\nPlatform direction: ${platformNarrative}\nProduct state: ${stateNarrative}\nDefaults applied: ${userType === 'you-decide' ? 'User type defaulted to consumer. ' : ''}${scale === 'unknown' ? 'Scale defaulted to ~1M behavior profile. ' : ''}${budget === 'unknown' ? 'Budget defaulted to moderate.' : ''}\n\n2) Phase 2 - Identify Users & Pain Points\nPrimary persona: ${persona}\nTop pain points:\n- ${pain}\n- Users struggle to reach value quickly during onboarding and first core action.\n- Existing alternatives do not provide clear feedback loops.\nUser needs:\n- As a user, I want a guided setup so that I can reach first value quickly.\n- As a user, I want transparent status and recommendations so that I can act confidently.\n- As a user, I want low-friction recovery when something fails so that I do not abandon the flow.\nPersona logic: ${savvyNarrative}\n\n3) Phase 3 - Prioritize Features (RICE)\nFeature A: Guided onboarding + first-success milestone\n- Reach: ${reach}, Impact: ${impactTop}, Confidence: ${confidence}, Effort: ${effortTop}\n- RICE score: ${topScore}\nFeature B: Smart recommendations and next-best action feed\n- Reach: ${reach}, Impact: 2, Confidence: 0.8, Effort: 1\n- RICE score: ${secondaryScore}\nDecision: Prioritize top 1-2 features for MVP, defer lower-score enhancements.\nSuccess metric tie: Optimize ${northStars[0]} as primary KPI.\n\n4) Phase 4 - Brainstorm Solutions\nConcept 1: Adaptive onboarding path that changes by persona and intent.\nConcept 2: Context-aware dashboard showing progress, blockers, and next steps.\nConcept 3: Recovery assistant for failure states with one-tap remediation.\nConcept 4: Nudges and reminders tied to incomplete core actions.\nConcept 5: Collaboration/share hook for referrals or team handoffs.\nTrade-off notes: ${virality}\n\n5) Phase 5 - Define Metrics & Success\nPrimary KPI target: Improve ${northStars[0]} by 20% in first 90 days.\nSupporting KPIs: ${northStars[1]}; ${northStars[2]}\nGuardrails: Error rate, support tickets per 1k users, task completion drop-off.\nAccessibility success criteria: Keyboard navigation coverage and screen-reader flow validation for core paths.\n\n6) Phase 6 - Design the Flow\nHappy path (5 steps):\n1. User lands and chooses intent.\n2. User completes guided setup with minimal required fields.\n3. User reaches first milestone and sees immediate value confirmation.\n4. System recommends next best action based on profile/context.\n5. User completes core action and gets progress summary.\nEdge cases:\n- No internet or service disruption -> save progress and retry queue.\n- Validation/auth failure -> clear error recovery with pre-filled context.\nEmotional outcome: User feels confident, supported, and in control.\n\n7) Phase 7 - Rollout & Risks\nRollout plan:\n- Phase 1 (MVP pilot): Launch feature A to limited cohort.\n- Phase 2 (Iterate): Tune onboarding friction, recommendation relevance, and error recovery.\n- Phase 3 (Scale): Expand to full audience and introduce advanced optimization.\nRisks and mitigations:\n- Technical integration risk -> instrumentation-first rollout and fallback paths.\n- Adoption risk -> A/B test onboarding variants and monitor conversion funnels.\n- Compliance/accessibility risk -> pre-launch audits and continuous guardrail checks.\n\n8) Phase 8 - Final Summary\nFor ${persona}, prioritized features focus on reducing friction and accelerating time-to-value.\nRecommended solution combines guided onboarding, contextual recommendations, and resilient recovery flows.\nThis balances user needs, feasibility, and impact, with expected uplift on ${northStars[0]} and measurable quality guardrails.\nRollout is phased to reduce risk while preserving speed.\nNext step: run pilot experiment design and baseline KPI instrumentation before full launch.`;
+
+  return output;
+};
+
+if (pdGenerateBtn && pdOutput && pdOutputText) {
+  pdGenerateBtn.addEventListener('click', () => {
+    pdOutputText.textContent = buildProductDesignCaseStudy();
+    pdOutput.hidden = false;
+  });
 }
 
 const rotator = document.querySelector('[data-rotator]');

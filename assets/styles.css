@@ -1349,6 +1349,43 @@ p {
   letter-spacing: 0.05em;
 }
 
+.calculator-builder {
+  margin-top: 16px;
+  border-top: 1px solid var(--divider);
+  padding-top: 16px;
+}
+
+.calculator-builder h3 {
+  font-size: 1.25rem;
+}
+
+.calculator-grid {
+  margin: 14px 0 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.case-study-output {
+  margin-top: 16px;
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  background: rgba(13, 22, 38, 0.55);
+  padding: 16px;
+}
+
+.case-study-output h3 {
+  margin-bottom: 10px;
+}
+
+.case-study-output pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+  color: var(--body);
+}
+
 .roi-form {
   margin-top: 16px;
   display: grid;
@@ -1492,6 +1529,10 @@ p {
   .roi-widget-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .calculator-grid {
+    grid-template-columns: 1fr;
   }
 }
 
