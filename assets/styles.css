@@ -529,6 +529,75 @@ p {
   color: var(--body);
 }
 
+.case-study-premium {
+  display: grid;
+  gap: 28px;
+}
+
+.case-premium-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  border-radius: 16px;
+  padding: 40px;
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(91, 141, 255, 0.18) 0%, rgba(91, 141, 255, 0) 46%),
+    radial-gradient(100% 100% at 0% 100%, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0) 48%),
+    var(--surface);
+  box-shadow: 0 20px 40px rgba(2, 8, 20, 0.24);
+}
+
+.case-premium-hero h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 10px;
+}
+
+.case-premium-hero .case-subtitle {
+  margin-bottom: 14px;
+}
+
+.case-premium-metrics {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.case-premium-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.case-premium-grid .case-showcase-card {
+  border-radius: 14px;
+  padding: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%),
+    var(--surface);
+  box-shadow: 0 14px 30px rgba(2, 8, 20, 0.2);
+}
+
+.case-premium-grid .case-showcase-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 38px rgba(2, 8, 20, 0.26);
+}
+
+.case-premium-grid .case-showcase-card .case-copy {
+  max-width: 72ch;
+}
+
+[data-theme="dark"] .case-premium-hero {
+  border-color: #2c3a57;
+}
+
+[data-theme="dark"] .case-premium-grid .case-showcase-card {
+  border-color: #2c3a57;
+  background:
+    linear-gradient(180deg, rgba(163, 195, 255, 0.07) 0%, rgba(163, 195, 255, 0) 100%),
+    #131f33;
+}
+
 .framework-hero h2 {
   font-size: clamp(2.6rem, 4.4vw, 3.2rem);
   margin-bottom: 18px;
@@ -953,6 +1022,10 @@ p {
   .contact-actions {
     justify-content: flex-start;
   }
+
+  .case-premium-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -1023,6 +1096,18 @@ p {
 
   .case-showcase-card {
     padding: 32px;
+  }
+
+  .case-premium-hero {
+    padding: 28px;
+  }
+
+  .case-premium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-premium-metrics {
+    grid-template-columns: 1fr;
   }
 
   .overview-cta-row {
