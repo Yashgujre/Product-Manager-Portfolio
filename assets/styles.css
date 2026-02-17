@@ -1653,19 +1653,26 @@ p {
 .xp-jump-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 10px;
 }
 
 .xp-jump-links a {
-  color: #95accb;
+  color: #d5e4fa;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
   width: fit-content;
+  border: 1px solid #426290;
+  border-radius: 999px;
+  background: rgba(17, 31, 53, 0.92);
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 180ms ease-in-out;
 }
 
 .xp-jump-links a:hover {
-  color: #ecf4ff;
-  border-color: #5b8dff;
+  color: #ffffff;
+  border-color: #6d95d1;
+  background: rgba(33, 54, 87, 0.95);
 }
 
 .xp-progress {
