@@ -1118,7 +1118,7 @@ p {
 .product-metrics-grid {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) !important;
   gap: 24px;
 }
 
