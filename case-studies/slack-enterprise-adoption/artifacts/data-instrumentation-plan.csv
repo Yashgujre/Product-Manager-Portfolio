@@ -1,0 +1,7 @@
+event_name,phase,metric_mapped,definition
+workspace_created,discover,acquisition,New workspace initialized
+teammate_invited,define,activation,At least one teammate invited
+channel_created,design,activation,At least one project channel created
+integration_connected,build,engagement,At least one integration configured
+messages_sent_2000,launch,activation,Team crosses 2000 total messages
+workspace_upgraded_paid,optimize,revenue,Free workspace upgrades to paid plan

@@ -1,0 +1,5 @@
+experiment,hypothesis,primary_metric,observed_result,decision
+Onboarding sequence redesign,Optimized ordering increases activation,7 day activation,+18%,Roll out
+Notification tuning,Balanced defaults improve retention,30 day retention,Positive lift without mute spike,Roll out with guardrails
+Search ranking update,Better relevance improves repeat usage,Search satisfaction,Improved relevance and retention correlation,Continue iteration
+Magic link authentication,Lower auth friction boosts signup completion,Signup completion,+22%,Set as default

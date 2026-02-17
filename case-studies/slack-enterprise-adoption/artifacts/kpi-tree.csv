@@ -1,0 +1,7 @@
+metric_layer,metric_name,target,notes
+north_star,Messages per org per week,Increase QoQ,Primary PLG health signal
+activation,Teams reaching 2000 messages in 14 days,60%,Leading indicator
+engagement,DAU/MAU,>65%,Habit strength proxy
+revenue,Free to paid conversion,>3%,Monetization efficiency
+expansion,Net revenue retention,>120%,Contract growth quality
+business,3 year ROI per enterprise deployment,>$10M,Enterprise value proof
