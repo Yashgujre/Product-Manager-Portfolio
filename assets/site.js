@@ -314,22 +314,38 @@ if (xpRoot) {
   const getVisibleCards = () =>
     xpCards.filter((card) => !card.classList.contains('filtered-out'));
 
-  const updateStoryVisibility = () => {
+  const updateCardModeVisibility = () => {
     const visibleCards = getVisibleCards();
-    if (state.view !== 'story') {
-      xpCards.forEach((card) => card.classList.remove('story-hidden'));
+    if (state.view === 'story') {
+      xpCards.forEach((card) => card.classList.remove('compare-hidden'));
+      if (!visibleCards.length) return;
+      if (state.storyIndex >= visibleCards.length) state.storyIndex = 0;
+      const activeCard = visibleCards[state.storyIndex];
+
+      xpCards.forEach((card) => {
+        card.classList.toggle('story-hidden', card !== activeCard);
+        if (card !== activeCard) collapseCard(card);
+      });
+      expandCard(activeCard);
       return;
     }
 
-    if (!visibleCards.length) return;
-    if (state.storyIndex >= visibleCards.length) state.storyIndex = 0;
-    const activeCard = visibleCards[state.storyIndex];
+    if (state.view === 'comparison') {
+      xpCards.forEach((card) => card.classList.remove('story-hidden'));
+      visibleCards.forEach((card, index) => {
+        card.classList.toggle('compare-hidden', index > 1);
+        if (index <= 1) {
+          expandCard(card);
+        } else {
+          collapseCard(card);
+        }
+      });
+      return;
+    }
 
     xpCards.forEach((card) => {
-      card.classList.toggle('story-hidden', card !== activeCard);
-      if (card !== activeCard) collapseCard(card);
+      card.classList.remove('story-hidden', 'compare-hidden');
     });
-    expandCard(activeCard);
   };
 
   const renderActiveFilters = () => {
@@ -366,7 +382,7 @@ if (xpRoot) {
     });
 
     renderActiveFilters();
-    updateStoryVisibility();
+    updateCardModeVisibility();
   };
 
   const updateViewMode = () => {
@@ -376,7 +392,7 @@ if (xpRoot) {
     viewButtons.forEach((btn) => {
       btn.classList.toggle('active', btn.getAttribute('data-xp-view') === state.view);
     });
-    updateStoryVisibility();
+    updateCardModeVisibility();
   };
 
   viewButtons.forEach((btn) => {
@@ -462,7 +478,7 @@ if (xpRoot) {
 
       if (state.view === 'story') {
         state.storyIndex = (state.storyIndex + 1) % visibleCards.length;
-        updateStoryVisibility();
+        updateCardModeVisibility();
         visibleCards[state.storyIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
