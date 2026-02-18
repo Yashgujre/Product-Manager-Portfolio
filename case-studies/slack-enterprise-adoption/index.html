@@ -170,7 +170,7 @@
 
         <article class="case-showcase-card case-pm-perspective">
           <p class="case-section-label">PM Perspective</p>
-          <p class="case-copy">Slack's most underrated bet was making the free tier genuinely valuable instead of using hard limits to force upgrades. That choice raised near-term infrastructure cost but created deeper behavioral lock-in before any procurement conversation started. The IBM rollout reinforces a key PM lesson: enterprise sales velocity often comes from patiently compounding product usage signals, then converting once governance risk is already de-risked by adoption. The one strategic tradeoff I would revisit is the north star metric, because message volume can reward activity without proving workflow quality or business throughput.</p>
+          <p class="case-copy">Slack's most underrated bet was making the free tier useful enough for teams to run real work, not just trial workflows, before asking for payment. If I were PM at a company with a similar freemium motion, I'd instrument behavioral lock-in signals such as integrations created, channels with 5+ members, and weekly search queries before ever surfacing an upgrade prompt. The IBM rollout shows why this works at enterprise scale: months 1 to 12 should prove cross-team pull in-product, and only then should months 12 to 18 focus on procurement blockers like security, identity, and compliance. I would also challenge the north star metric of messages sent per org per week and pair it with workflow-quality indicators like cross-functional channel creation and integration-triggered events so activity is tied to business value, not just chatter volume.</p>
         </article>
 
         <article class="case-showcase-card">
@@ -269,12 +269,12 @@
         <article class="case-showcase-card">
           <p class="case-section-label">Technical Architecture and Trade-Offs</p>
           <ul class="case-card-list">
-            <li>WebSocket-first real-time architecture with fallback behavior.</li>
-            <li>Channel-based ACL and retention model for governance.</li>
-            <li>Elasticsearch-backed full-text retrieval at scale.</li>
-            <li>API/event platform for integrations and interactive workflows.</li>
-            <li>Enterprise Grid for multi-workspace governance patterns.</li>
-            <li>AES-256 at rest and TLS in transit with enterprise key options.</li>
+            <li>WebSocket-first real-time architecture with fallback behavior. This was a product bet as much as an engineering one because real-time presence and response loops made Slack feel alive, which is critical for daily habit formation.</li>
+            <li>Channel-based ACL and retention model for governance. Modeling permissions and retention at the channel layer let Slack preserve transparency for end users while giving enterprise admins enforceable controls they could trust.</li>
+            <li>Elasticsearch-backed full-text retrieval at scale. Investing in retrieval quality turned communication history into a switching cost without requiring any overt lock-in mechanic.</li>
+            <li>API/event platform for integrations and interactive workflows. Opening the product through APIs shifted Slack from a messaging app to a workflow hub, increasing ecosystem dependence and expansion opportunities.</li>
+            <li>Enterprise Grid for multi-workspace governance patterns. Grid let Slack scale from team adoption to enterprise standardization without forcing every business unit into one rigid operating model.</li>
+            <li>AES-256 at rest and TLS in transit with enterprise key options. Security depth here was a growth enabler because it removed procurement friction in regulated accounts that otherwise would have blocked expansion.</li>
           </ul>
         </article>
 
@@ -327,19 +327,9 @@
         </article>
 
         <article class="case-showcase-card">
-          <p class="case-section-label">Moat and Defensibility</p>
-          <ul class="case-card-list">
-            <li>Strong network effects inside teams and across organizations.</li>
-            <li>High switching costs from historical context and workflows.</li>
-            <li>Integration ecosystem depth with platform dependency.</li>
-            <li>Cross-org communication edges from Slack Connect.</li>
-          </ul>
-        </article>
-
-        <article class="case-showcase-card">
           <p class="case-section-label">Competition and Strategic Response</p>
-          <p class="case-copy">The report presents Microsoft Teams as the largest competitive threat due to Office bundling. Slack's response emphasized UX quality, integration breadth, and cross-org collaboration capabilities.</p>
-          <p class="case-copy">The company was acquired by Salesforce for $27.7B (announced December 2020), extending enterprise distribution and platform integration potential.</p>
+          <p class="case-copy">The report presents Microsoft Teams as Slack's primary strategic threat because Office bundling lowered adoption friction for incumbents inside enterprise accounts. Slack's response was to differentiate where bundled parity was weakest: superior UX quality, broader integration coverage across non-Microsoft tools, and cross-org collaboration via Slack Connect that increased utility beyond a single company's internal stack.</p>
+          <p class="case-copy">Slack's structural moat came from layered network effects inside teams and across business units, switching costs tied to historical context and embedded workflows, deep integration ecosystem dependency, and Slack Connect as a cross-company distribution layer. Those reinforcing advantages helped explain why Salesforce announced a $27.7B acquisition in December 2020: Slack was not just a chat product, but a durable collaboration platform with defensible expansion economics.</p>
         </article>
 
         <article class="case-showcase-card case-showcase-card-wide">
