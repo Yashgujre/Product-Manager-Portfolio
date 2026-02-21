@@ -194,6 +194,22 @@ p {
   align-items: center;
 }
 
+.profile-photo-frame {
+  margin: 0;
+  border: 1px solid var(--divider);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 14px 34px rgba(10, 22, 40, 0.12);
+}
+
+.profile-photo {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 .proof-bar {
   margin-top: 40px;
   border: 1px solid var(--divider);
