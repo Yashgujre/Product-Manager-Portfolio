@@ -1,27 +1,93 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="assets/logo-prism.svg" />
-  <title>Blog | Yash Gujre</title>
+  <title>Yash Gujre | Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-<header class="site-header"><div class="container header-wrap"><a class="brand" href="index.html"><span class="logo-mark">YG</span><span class="logo-text">Yash Gujre</span></a><button class="nav-toggle" data-nav-toggle>Menu</button><nav class="site-nav" data-nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="experience.html">Skills</a><a href="templates.html">Templates</a><a class="active" href="blog.html">Blog</a><a href="ai-agents.html">AI Agents</a><a href="contact.html">Let's Talk</a></nav></div></header>
-<main class="container">
-  <section class="hero"><span class="kicker">Blog & Resources</span><h1>Frameworks, strategy, experimentation</h1><p class="subtitle">Seven complete articles from your content package are listed here.</p></section>
-  <section class="section grid grid-2">
-    <article class="card"><h3>Product Framework</h3><p>The complete end-to-end product management journey across 12 phases, from market discovery to scaling and lifecycle management.</p><p><a href="framework.html">Read Product Framework</a></p></article>
-    <article class="card"><h3>From API Spec to PRD</h3><p>Framework for enterprise B2B: Problem -> Capability -> Data Model -> API -> PRD.</p></article>
-    <article class="card"><h3>RICE Is Not Enough</h3><p>Introduces RICE-CR with compliance risk multiplier for regulated environments.</p></article>
-    <article class="card"><h3>Compliance-First A/B Testing</h3><p>Playbook for experiments under HIPAA/FCRA/FDA constraints.</p></article>
-    <article class="card"><h3>B2B Discovery with Ride-Alongs</h3><p>Why observational discovery reveals root workflow friction interviews miss.</p></article>
-    <article class="card"><h3>PLG in Enterprise</h3><p>How friction reduction and instrumentation drove 55% adoption without marketing spend.</p></article>
-    <article class="card"><h3>Building a $3.5M Business Case</h3><p>Bottom-up financial modeling and phased investment strategy that got funded in two weeks.</p></article>
-  </section>
-</main>
-<footer class="site-footer"><div class="container">© 2026 Yash Gujre.</div></footer>
-<script src="assets/site.js"></script>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="index.html">Overview</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="experience.html">Experience</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="framework.html">Framework</a>
+        <a class="active" href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="blog" class="section section-divider shell reveal" data-delay="300">
+      <header class="case-showcase-header">
+        <h2>Blog</h2>
+        <p>Frameworks, strategy, and experimentation notes from enterprise product work.</p>
+      </header>
+
+      <div class="case-showcase-grid">
+        <article class="case-showcase-card case-showcase-card-wide">
+          <p class="case-label">Featured</p>
+          <h3>Product Framework</h3>
+          <p class="case-subtitle">End-to-End Product Delivery Framework</p>
+          <p class="case-copy">The complete product management journey across 12 phases, from market discovery and strategy to launch, optimization, and lifecycle scaling.</p>
+          <p class="case-section-label">What You Get</p>
+          <p class="case-copy">Phase-by-phase workflows, key deliverables, and practical templates to run product work with consistency and measurable outcomes.</p>
+          <a href="framework.html" class="text-link">Read Product Framework <span aria-hidden="true">-></span></a>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>From API Spec to PRD</h3>
+          <p class="case-copy">A practical workflow for enterprise B2B teams: Problem -> Capability -> Data Model -> API -> PRD.</p>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>RICE Is Not Enough</h3>
+          <p class="case-copy">How to extend prioritization with a compliance risk multiplier for regulated product environments.</p>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>Compliance-First A/B Testing</h3>
+          <p class="case-copy">A field-ready playbook for experiments under HIPAA, FCRA, and FDA constraints.</p>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>B2B Discovery with Ride-Alongs</h3>
+          <p class="case-copy">Why observational discovery reveals root workflow friction that interviews often miss.</p>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>PLG in Enterprise</h3>
+          <p class="case-copy">How friction reduction and instrumentation drove stronger adoption without heavy marketing spend.</p>
+        </article>
+
+        <article class="case-showcase-card">
+          <p class="case-label">Blog Post</p>
+          <h3>Building a $3.5M Business Case</h3>
+          <p class="case-copy">A bottom-up financial modeling approach that accelerated executive approval and funding decisions.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+  </footer>
+
+  <script src="assets/site.js"></script>
 </body>
 </html>
