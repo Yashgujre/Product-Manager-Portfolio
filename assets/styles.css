@@ -194,8 +194,15 @@ p {
   align-items: center;
 }
 
+.hero-photo-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .profile-photo-frame {
   margin: 0;
+  width: min(100%, 360px);
   border: 1px solid var(--divider);
   border-radius: 14px;
   overflow: hidden;
@@ -1279,6 +1286,15 @@ p {
     grid-column: span 12;
   }
 
+  .hero-photo-col {
+    justify-content: flex-start;
+  }
+
+  .profile-photo-frame {
+    width: min(100%, 320px);
+    margin-top: 8px;
+  }
+
   .metrics-grid {
     gap: 16px;
   }
@@ -1443,6 +1459,10 @@ p {
   .proof-bar span:not(:last-child)::after {
     content: "";
     margin-left: 0;
+  }
+
+  .profile-photo-frame {
+    width: min(100%, 260px);
   }
 
   .overview-build-grid,
