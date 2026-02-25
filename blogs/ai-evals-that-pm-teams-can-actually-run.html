@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-prism.svg" />
+  <title>Yash Gujre | AI Evals That PM Teams Can Actually Run</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../index.html">Overview</a>
+        <a href="../metrics.html">Metrics</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a class="active" href="../blog.html">Blog</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-divider shell reveal" data-delay="260">
+      <header class="case-showcase-header">
+        <h2>AI Evals That PM Teams Can Actually Run</h2>
+        <p>Detailed article from the Product Management and AI framework series.</p>
+        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
+      </header>
+
+      <article class="case-showcase-card case-showcase-card-wide">
+
+            <p class="case-label">AI Evals Framework</p>
+            <h3>AI Evals That PM Teams Can Actually Run</h3>
+            <p class="case-copy">AI evals should not be an isolated research exercise. PM teams need a lightweight, repeatable operating system that turns quality measurement into product decisions. This article outlines a practical setup that works for small teams and scales to enterprise governance.</p>
+            <p class="case-section-label">Step 1: Define Product-Critical Behaviors</p>
+            <ul class="case-card-list">
+              <li>List the top 5 user jobs where AI quality directly impacts trust and business value.</li>
+              <li>Translate each job into measurable behaviors such as grounded response, action correctness, or format adherence.</li>
+              <li>Assign a severity score for failure: minor annoyance, workflow block, legal risk, or financial impact.</li>
+            </ul>
+            <p class="case-section-label">Step 2: Build a Tiered Eval Suite</p>
+            <ul class="case-card-list">
+              <li><strong>Smoke Set:</strong> 20 to 30 fast checks for core regressions before every release.</li>
+              <li><strong>Quality Set:</strong> 100+ representative tasks scored weekly for quality trends.</li>
+              <li><strong>Safety Set:</strong> adversarial prompts for policy violations, leakage, and harmful outputs.</li>
+              <li><strong>Golden Set:</strong> high-value production-like examples owned jointly by PM, design, and domain experts.</li>
+            </ul>
+            <p class="case-section-label">Step 3: Score with Human and Automated Signals</p>
+            <ul class="case-card-list">
+              <li>Combine rubric-based human scoring with deterministic checks for structure and policy.</li>
+              <li>Track precision and recall of evaluator prompts to avoid misleading pass rates.</li>
+              <li>Log disagreement cases and review them weekly to improve rubric clarity.</li>
+            </ul>
+            <p class="case-section-label">Step 4: Connect Evals to Launch Gates</p>
+            <ul class="case-card-list">
+              <li>Define minimum pass thresholds by workflow risk level.</li>
+              <li>Block release when critical-category quality regresses beyond tolerance.</li>
+              <li>Require mitigation plan and re-test before rollout resumes.</li>
+            </ul>
+            <p class="case-section-label">Step 5: Turn Eval Results into Roadmap Inputs</p>
+            <ul class="case-card-list">
+              <li>Cluster failures by root cause: retrieval quality, prompt design, model limitation, or UX confusion.</li>
+              <li>Create explicit backlog items with owner, severity, and expected quality lift.</li>
+              <li>Re-run targeted eval slices after fixes to verify improvement before closing work.</li>
+            </ul>
+            <p class="case-section-label">Common PM Pitfalls and Fixes</p>
+            <ul class="case-card-list">
+              <li><strong>Pitfall:</strong> chasing one aggregate score. <strong>Fix:</strong> report by workflow and severity tier.</li>
+              <li><strong>Pitfall:</strong> running evals only pre-launch. <strong>Fix:</strong> schedule weekly and pre-release runs.</li>
+              <li><strong>Pitfall:</strong> no ownership model. <strong>Fix:</strong> assign PM owner for eval health and action tracking.</li>
+            </ul>
+          
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+</body>
+</html>

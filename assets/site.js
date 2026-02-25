@@ -36,11 +36,14 @@ if ('IntersectionObserver' in window) {
 }
 
 const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));
-const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+const pathname = window.location.pathname;
+const currentPath = pathname.split('/').pop() || 'index.html';
+const isBlogDetailPage = pathname.includes('/blogs/');
 navLinks.forEach((link) => {
   const target = link.getAttribute('href');
   const targetPath = target ? target.split('/').pop() : '';
-  link.classList.toggle('active', targetPath === currentPath);
+  const isActive = targetPath === currentPath || (isBlogDetailPage && targetPath === 'blog.html');
+  link.classList.toggle('active', isActive);
 });
 
 const parseMetricValue = (value) => {

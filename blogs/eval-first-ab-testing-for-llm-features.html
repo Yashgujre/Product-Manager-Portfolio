@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-prism.svg" />
+  <title>Yash Gujre | Eval-First A/B Testing for LLM Features</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../index.html">Overview</a>
+        <a href="../metrics.html">Metrics</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a class="active" href="../blog.html">Blog</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-divider shell reveal" data-delay="260">
+      <header class="case-showcase-header">
+        <h2>Eval-First A/B Testing for LLM Features</h2>
+        <p>Detailed article from the Product Management and AI framework series.</p>
+        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
+      </header>
+
+      <article class="case-showcase-card case-showcase-card-wide">
+
+            <p class="case-label">Experimentation Framework</p>
+            <h3>Eval-First A/B Testing for LLM Features</h3>
+            <p class="case-copy">A/B tests alone are too noisy for fast-moving LLM iterations. Start with offline evals to filter bad options, then run online experiments only on strong candidates.</p>
+            <p class="case-section-label">Two-Stage Validation</p>
+            <ul class="case-card-list">
+              <li><strong>Offline Stage:</strong> Evaluate groundedness, instruction following, and policy compliance.</li>
+              <li><strong>Online Stage:</strong> Measure task completion, user trust, and measurable business impact.</li>
+              <li><strong>Guardrail Stage:</strong> Monitor toxicity, data leakage, and unsafe action suggestions continuously.</li>
+            </ul>
+            <p class="case-section-label">Practical Rules</p>
+            <ul class="case-card-list">
+              <li>Do not launch variants that fail offline safety and quality thresholds.</li>
+              <li>Use fixed benchmark sets so weekly changes remain comparable.</li>
+              <li>Treat regressions in critical flows as launch blockers, not minor issues.</li>
+            </ul>
+          
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+</body>
+</html>
