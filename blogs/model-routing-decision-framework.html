@@ -7,10 +7,10 @@
   <title>Yash Gujre | Model Routing Decision Framework</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
-<body>
+<body class="editorial-page">
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="../index.html">Yash Gujre</a>
@@ -26,38 +26,69 @@
     </div>
   </header>
 
-  <main>
-    <section class="section section-divider shell reveal" data-delay="260">
-      <header class="case-showcase-header">
-        <h2>Model Routing Decision Framework</h2>
-        <p>Detailed article from the Product Management and AI framework series.</p>
-        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
-      </header>
+  <main class="editorial-main">
+    <article class="editorial-article reveal" data-delay="120">
+      <p class="editorial-label">Platform Framework</p>
+      <h1 class="editorial-title">Model Routing Decision Framework</h1>
+      <p class="editorial-subtitle">Detailed article from the Product Management and AI framework series.</p>
 
-      <article class="case-showcase-card case-showcase-card-wide">
+      <div class="editorial-author-row">
+        <img src="../assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
+        <div>
+          <p class="editorial-author-name">Yash Gujre</p>
+          <p class="editorial-author-meta">Product Manager · 9 min read · Updated February 2026</p>
+        </div>
+      </div>
 
-            <p class="case-label">Platform Framework</p>
-            <h3>Model Routing Decision Framework</h3>
-            <p class="case-copy">One model cannot optimize for every workload. Routing lets you match tasks to the right model profile and keep performance within cost and latency constraints.</p>
-            <p class="case-section-label">Routing Dimensions</p>
+      <figure class="editorial-hero">
+        <img src="../assets/framework-journey.svg" alt="Product framework visual" />
+        <figcaption>Practical frameworks are most useful when they drive better day-to-day decisions.</figcaption>
+      </figure>
+
+      <div class="editorial-body">
+        <p class="case-copy">One model cannot optimize for every workload. Routing lets you match tasks to the right model profile and keep performance within cost and latency constraints.</p>
+            <h2>Routing Dimensions</h2>
             <ul class="case-card-list">
               <li><strong>Complexity:</strong> reasoning depth and context-window requirements.</li>
               <li><strong>Latency:</strong> acceptable response time by user workflow.</li>
               <li><strong>Cost:</strong> token budget limits by segment or account tier.</li>
               <li><strong>Risk:</strong> safety-sensitive requests routed to stricter pipelines.</li>
             </ul>
-            <p class="case-section-label">Architecture Pattern</p>
+            <h2>Architecture Pattern</h2>
             <ul class="case-card-list">
               <li>Start with a lightweight classifier to label intent and complexity.</li>
               <li>Apply deterministic routing rules with fallback for timeout or safety block.</li>
               <li>Track per-route quality and cost so routing policy can be tuned weekly.</li>
             </ul>
-          
-      </article>
-    </section>
+
+        <div class="editorial-cta">
+          <h3>Continue the framework series</h3>
+          <p>Explore more PM, AI, and design articles and apply one framework to your next delivery cycle.</p>
+          <a class="btn btn-primary" href="../blog.html">Back to all blogs</a>
+        </div>
+      </div>
+
+      <section class="editorial-related" aria-label="Related posts">
+        <h3>Related posts</h3>
+        <div class="editorial-related-grid">
+          <a class="editorial-related-card" href="ai-evals-that-pm-teams-can-actually-run.html">
+            <p>AI Evals Framework</p>
+            <h4>AI Evals That PM Teams Can Actually Run</h4>
+          </a>
+          <a class="editorial-related-card" href="prompt-to-prd-operating-framework.html">
+            <p>Execution Framework</p>
+            <h4>Prompt-to-PRD Operating Framework</h4>
+          </a>
+          <a class="editorial-related-card" href="design-tokens-for-generative-interfaces.html">
+            <p>Design System Framework</p>
+            <h4>Design Tokens for Generative Interfaces</h4>
+          </a>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <footer class="footer shell">
+  <footer class="footer shell editorial-footer">
     <p>© 2026 Yash Gujre</p>
   </footer>
 

@@ -7,10 +7,10 @@
   <title>Yash Gujre | Skill Portfolio Strategy for PM Teams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
-<body>
+<body class="editorial-page">
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="../index.html">Yash Gujre</a>
@@ -26,38 +26,69 @@
     </div>
   </header>
 
-  <main>
-    <section class="section section-divider shell reveal" data-delay="260">
-      <header class="case-showcase-header">
-        <h2>Skill Portfolio Strategy for PM Teams</h2>
-        <p>Detailed article from the Product Management and AI framework series.</p>
-        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
-      </header>
+  <main class="editorial-main">
+    <article class="editorial-article reveal" data-delay="120">
+      <p class="editorial-label">Claude Skills Framework</p>
+      <h1 class="editorial-title">Skill Portfolio Strategy for PM Teams</h1>
+      <p class="editorial-subtitle">Detailed article from the Product Management and AI framework series.</p>
 
-      <article class="case-showcase-card case-showcase-card-wide">
+      <div class="editorial-author-row">
+        <img src="../assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
+        <div>
+          <p class="editorial-author-name">Yash Gujre</p>
+          <p class="editorial-author-meta">Product Manager · 9 min read · Updated February 2026</p>
+        </div>
+      </div>
 
-            <p class="case-label">Claude Skills Framework</p>
-            <h3>Skill Portfolio Strategy for PM Teams</h3>
-            <p class="case-copy">Teams often build many prompts but few reliable workflows. A skill portfolio gives PM, design, and engineering a shared operating layer that improves consistency and output quality.</p>
-            <p class="case-section-label">Portfolio Structure</p>
+      <figure class="editorial-hero">
+        <img src="../assets/framework-journey.svg" alt="Product framework visual" />
+        <figcaption>Practical frameworks are most useful when they drive better day-to-day decisions.</figcaption>
+      </figure>
+
+      <div class="editorial-body">
+        <p class="case-copy">Teams often build many prompts but few reliable workflows. A skill portfolio gives PM, design, and engineering a shared operating layer that improves consistency and output quality.</p>
+            <h2>Portfolio Structure</h2>
             <ul class="case-card-list">
               <li><strong>Discovery Skills:</strong> Interview synthesis, competitor teardown, opportunity tree drafting.</li>
               <li><strong>Definition Skills:</strong> PRD drafting, acceptance criteria drafting, risk logging.</li>
               <li><strong>Delivery Skills:</strong> sprint planning support, release notes, go-to-market briefs.</li>
               <li><strong>Learning Skills:</strong> experiment readouts, KPI diagnosis, postmortem generation.</li>
             </ul>
-            <p class="case-section-label">Governance and Quality</p>
+            <h2>Governance and Quality</h2>
             <ul class="case-card-list">
               <li>Version skills with owner, update date, and known failure modes.</li>
               <li>Attach examples of good input format and bad input format for each skill.</li>
               <li>Measure skill adoption, reuse, and downstream document quality over time.</li>
             </ul>
-          
-      </article>
-    </section>
+
+        <div class="editorial-cta">
+          <h3>Continue the framework series</h3>
+          <p>Explore more PM, AI, and design articles and apply one framework to your next delivery cycle.</p>
+          <a class="btn btn-primary" href="../blog.html">Back to all blogs</a>
+        </div>
+      </div>
+
+      <section class="editorial-related" aria-label="Related posts">
+        <h3>Related posts</h3>
+        <div class="editorial-related-grid">
+          <a class="editorial-related-card" href="ai-evals-that-pm-teams-can-actually-run.html">
+            <p>AI Evals Framework</p>
+            <h4>AI Evals That PM Teams Can Actually Run</h4>
+          </a>
+          <a class="editorial-related-card" href="prompt-to-prd-operating-framework.html">
+            <p>Execution Framework</p>
+            <h4>Prompt-to-PRD Operating Framework</h4>
+          </a>
+          <a class="editorial-related-card" href="design-tokens-for-generative-interfaces.html">
+            <p>Design System Framework</p>
+            <h4>Design Tokens for Generative Interfaces</h4>
+          </a>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <footer class="footer shell">
+  <footer class="footer shell editorial-footer">
     <p>© 2026 Yash Gujre</p>
   </footer>
 

@@ -7,10 +7,10 @@
   <title>Yash Gujre | Agentic Product Discovery Framework</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
-<body>
+<body class="editorial-page">
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="../index.html">Yash Gujre</a>
@@ -26,20 +26,28 @@
     </div>
   </header>
 
-  <main>
-    <section class="section section-divider shell reveal" data-delay="260">
-      <header class="case-showcase-header">
-        <h2>Agentic Product Discovery Framework</h2>
-        <p>Detailed article from the Product Management and AI framework series.</p>
-        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
-      </header>
+  <main class="editorial-main">
+    <article class="editorial-article reveal" data-delay="120">
+      <p class="editorial-label">AI PM Framework</p>
+      <h1 class="editorial-title">Agentic Product Discovery Framework</h1>
+      <p class="editorial-subtitle">Detailed article from the Product Management and AI framework series.</p>
 
-      <article class="case-showcase-card case-showcase-card-wide">
+      <div class="editorial-author-row">
+        <img src="../assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
+        <div>
+          <p class="editorial-author-name">Yash Gujre</p>
+          <p class="editorial-author-meta">Product Manager · 9 min read · Updated February 2026</p>
+        </div>
+      </div>
 
-            <p class="case-label">AI PM Framework</p>
-            <h3>Agentic Product Discovery Framework</h3>
-            <p class="case-copy">Most teams jump from idea to prototype and only later realize the workflow should never have been automated. This framework prevents that waste by scoring each candidate workflow before engineering work starts.</p>
-            <p class="case-section-label">Discovery Scoring Model</p>
+      <figure class="editorial-hero">
+        <img src="../assets/framework-journey.svg" alt="Product framework visual" />
+        <figcaption>Practical frameworks are most useful when they drive better day-to-day decisions.</figcaption>
+      </figure>
+
+      <div class="editorial-body">
+        <p class="case-copy">Most teams jump from idea to prototype and only later realize the workflow should never have been automated. This framework prevents that waste by scoring each candidate workflow before engineering work starts.</p>
+            <h2>Discovery Scoring Model</h2>
             <ul class="case-card-list">
               <li><strong>Task Frequency:</strong> How often does the user perform this workflow per week?</li>
               <li><strong>Failure Cost:</strong> What is the business impact when the task is done poorly or slowly?</li>
@@ -47,19 +55,42 @@
               <li><strong>Data Readiness:</strong> Do you have reliable data sources and clear ground-truth labels?</li>
               <li><strong>Risk Surface:</strong> What is the security, privacy, compliance, and brand exposure level?</li>
             </ul>
-            <p class="case-section-label">Execution Steps</p>
+            <h2>Execution Steps</h2>
             <ul class="case-card-list">
               <li>Map top 20 user workflows and rank by pain, frequency, and monetization potential.</li>
               <li>Select top 3 candidates and run two-week shadow pilots with humans still in control.</li>
               <li>Track completion rate, correction rate, and time saved per attempt.</li>
               <li>Promote only workflows that beat baseline quality and stay within risk thresholds.</li>
             </ul>
-          
-      </article>
-    </section>
+
+        <div class="editorial-cta">
+          <h3>Continue the framework series</h3>
+          <p>Explore more PM, AI, and design articles and apply one framework to your next delivery cycle.</p>
+          <a class="btn btn-primary" href="../blog.html">Back to all blogs</a>
+        </div>
+      </div>
+
+      <section class="editorial-related" aria-label="Related posts">
+        <h3>Related posts</h3>
+        <div class="editorial-related-grid">
+          <a class="editorial-related-card" href="ai-evals-that-pm-teams-can-actually-run.html">
+            <p>AI Evals Framework</p>
+            <h4>AI Evals That PM Teams Can Actually Run</h4>
+          </a>
+          <a class="editorial-related-card" href="prompt-to-prd-operating-framework.html">
+            <p>Execution Framework</p>
+            <h4>Prompt-to-PRD Operating Framework</h4>
+          </a>
+          <a class="editorial-related-card" href="design-tokens-for-generative-interfaces.html">
+            <p>Design System Framework</p>
+            <h4>Design Tokens for Generative Interfaces</h4>
+          </a>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <footer class="footer shell">
+  <footer class="footer shell editorial-footer">
     <p>© 2026 Yash Gujre</p>
   </footer>
 

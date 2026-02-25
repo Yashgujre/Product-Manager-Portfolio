@@ -7,10 +7,10 @@
   <title>Yash Gujre | AI Evals That PM Teams Can Actually Run</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
-<body>
+<body class="editorial-page">
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="../index.html">Yash Gujre</a>
@@ -26,62 +26,93 @@
     </div>
   </header>
 
-  <main>
-    <section class="section section-divider shell reveal" data-delay="260">
-      <header class="case-showcase-header">
-        <h2>AI Evals That PM Teams Can Actually Run</h2>
-        <p>Detailed article from the Product Management and AI framework series.</p>
-        <a href="../blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
-      </header>
+  <main class="editorial-main">
+    <article class="editorial-article reveal" data-delay="120">
+      <p class="editorial-label">AI Evals Framework</p>
+      <h1 class="editorial-title">AI Evals That PM Teams Can Actually Run</h1>
+      <p class="editorial-subtitle">Detailed article from the Product Management and AI framework series.</p>
 
-      <article class="case-showcase-card case-showcase-card-wide">
+      <div class="editorial-author-row">
+        <img src="../assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
+        <div>
+          <p class="editorial-author-name">Yash Gujre</p>
+          <p class="editorial-author-meta">Product Manager · 9 min read · Updated February 2026</p>
+        </div>
+      </div>
 
-            <p class="case-label">AI Evals Framework</p>
-            <h3>AI Evals That PM Teams Can Actually Run</h3>
-            <p class="case-copy">AI evals should not be an isolated research exercise. PM teams need a lightweight, repeatable operating system that turns quality measurement into product decisions. This article outlines a practical setup that works for small teams and scales to enterprise governance.</p>
-            <p class="case-section-label">Step 1: Define Product-Critical Behaviors</p>
+      <figure class="editorial-hero">
+        <img src="../assets/framework-journey.svg" alt="Product framework visual" />
+        <figcaption>Practical frameworks are most useful when they drive better day-to-day decisions.</figcaption>
+      </figure>
+
+      <div class="editorial-body">
+        <p class="case-copy">AI evals should not be an isolated research exercise. PM teams need a lightweight, repeatable operating system that turns quality measurement into product decisions. This article outlines a practical setup that works for small teams and scales to enterprise governance.</p>
+            <h2>Step 1: Define Product-Critical Behaviors</h2>
             <ul class="case-card-list">
               <li>List the top 5 user jobs where AI quality directly impacts trust and business value.</li>
               <li>Translate each job into measurable behaviors such as grounded response, action correctness, or format adherence.</li>
               <li>Assign a severity score for failure: minor annoyance, workflow block, legal risk, or financial impact.</li>
             </ul>
-            <p class="case-section-label">Step 2: Build a Tiered Eval Suite</p>
+            <h2>Step 2: Build a Tiered Eval Suite</h2>
             <ul class="case-card-list">
               <li><strong>Smoke Set:</strong> 20 to 30 fast checks for core regressions before every release.</li>
               <li><strong>Quality Set:</strong> 100+ representative tasks scored weekly for quality trends.</li>
               <li><strong>Safety Set:</strong> adversarial prompts for policy violations, leakage, and harmful outputs.</li>
               <li><strong>Golden Set:</strong> high-value production-like examples owned jointly by PM, design, and domain experts.</li>
             </ul>
-            <p class="case-section-label">Step 3: Score with Human and Automated Signals</p>
+            <h2>Step 3: Score with Human and Automated Signals</h2>
             <ul class="case-card-list">
               <li>Combine rubric-based human scoring with deterministic checks for structure and policy.</li>
               <li>Track precision and recall of evaluator prompts to avoid misleading pass rates.</li>
               <li>Log disagreement cases and review them weekly to improve rubric clarity.</li>
             </ul>
-            <p class="case-section-label">Step 4: Connect Evals to Launch Gates</p>
+            <h2>Step 4: Connect Evals to Launch Gates</h2>
             <ul class="case-card-list">
               <li>Define minimum pass thresholds by workflow risk level.</li>
               <li>Block release when critical-category quality regresses beyond tolerance.</li>
               <li>Require mitigation plan and re-test before rollout resumes.</li>
             </ul>
-            <p class="case-section-label">Step 5: Turn Eval Results into Roadmap Inputs</p>
+            <h2>Step 5: Turn Eval Results into Roadmap Inputs</h2>
             <ul class="case-card-list">
               <li>Cluster failures by root cause: retrieval quality, prompt design, model limitation, or UX confusion.</li>
               <li>Create explicit backlog items with owner, severity, and expected quality lift.</li>
               <li>Re-run targeted eval slices after fixes to verify improvement before closing work.</li>
             </ul>
-            <p class="case-section-label">Common PM Pitfalls and Fixes</p>
+            <h2>Common PM Pitfalls and Fixes</h2>
             <ul class="case-card-list">
               <li><strong>Pitfall:</strong> chasing one aggregate score. <strong>Fix:</strong> report by workflow and severity tier.</li>
               <li><strong>Pitfall:</strong> running evals only pre-launch. <strong>Fix:</strong> schedule weekly and pre-release runs.</li>
               <li><strong>Pitfall:</strong> no ownership model. <strong>Fix:</strong> assign PM owner for eval health and action tracking.</li>
             </ul>
-          
-      </article>
-    </section>
+
+        <div class="editorial-cta">
+          <h3>Continue the framework series</h3>
+          <p>Explore more PM, AI, and design articles and apply one framework to your next delivery cycle.</p>
+          <a class="btn btn-primary" href="../blog.html">Back to all blogs</a>
+        </div>
+      </div>
+
+      <section class="editorial-related" aria-label="Related posts">
+        <h3>Related posts</h3>
+        <div class="editorial-related-grid">
+          <a class="editorial-related-card" href="prompt-to-prd-operating-framework.html">
+            <p>Execution Framework</p>
+            <h4>Prompt-to-PRD Operating Framework</h4>
+          </a>
+          <a class="editorial-related-card" href="design-tokens-for-generative-interfaces.html">
+            <p>Design System Framework</p>
+            <h4>Design Tokens for Generative Interfaces</h4>
+          </a>
+          <a class="editorial-related-card" href="agentic-product-discovery-framework.html">
+            <p>AI PM Framework</p>
+            <h4>Agentic Product Discovery Framework</h4>
+          </a>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <footer class="footer shell">
+  <footer class="footer shell editorial-footer">
     <p>© 2026 Yash Gujre</p>
   </footer>
 
