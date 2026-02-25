@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="assets/logo-prism.svg" />
-  <title>Yash Gujre | Framework</title>
+  <title>Yash Gujre | Product Framework Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,359 +16,112 @@
       <a class="brand" href="index.html">Yash Gujre</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
       <nav class="nav-pills" data-nav>
-        <a href="index.html">🏠 Overview</a>
-        <a href="metrics.html">📊 Metrics</a>
-        <a href="experience.html">💼 Experience</a>
-        <a href="case-studies.html">📚 Case Studies</a>
-        <a href="blog.html">✍️ Blogs</a>
-        <a href="contact.html">📬 Contact</a>
+        <a href="index.html">Overview</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="experience.html">Experience</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a class="active" href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="framework" class="section section-divider shell reveal" data-delay="400">
-      <header class="framework-hero">
-        <p class="eyebrow">End-to-End Product Delivery Framework</p>
-        <h2>The Complete Product Management Journey: From Discovery to Scale</h2>
-        <p class="framework-intro">A systematic, battle-tested framework for building products users love and businesses value. Navigate all 12 phases from market discovery to sustainable growth with structured workflows, proven frameworks, and ready-to-use templates.</p>
+    <section id="framework" class="section section-divider shell reveal" data-delay="280">
+      <header class="case-showcase-header">
+        <p class="eyebrow">Framework Blog</p>
+        <h2>The Product Management Framework I Actually Use</h2>
+        <p>How I move from messy discovery to measurable outcomes without overcomplicating the process.</p>
       </header>
 
-      <article class="framework-journey-card">
-        <img src="assets/framework-journey.svg" alt="Circular 12-phase product management journey map" />
+      <article class="case-showcase-card case-showcase-card-wide">
+        <p class="case-copy">Most product frameworks look great on slides and fail in real teams. The issue is not the framework itself. The issue is that teams treat phases like checkpoints instead of learning loops. In practice, product work is iterative, cross-functional, and full of uncertainty. This write-up is my practical version of a full-cycle product framework that can survive real constraints: limited time, incomplete data, shifting priorities, and cross-team dependencies.</p>
+        <p class="case-copy">The goal is simple: reduce ambiguity early, increase execution quality in the middle, and create compounding learning after launch.</p>
       </article>
 
-      <div class="framework-block">
-        <h3 class="framework-subtitle">The 12-Phase Journey</h3>
-        <div class="phase-grid">
-          <article class="phase-card" id="framework-phase-1">
-            <p class="phase-kicker">Phase 1</p>
-            <h4>Market Discovery and Problem Definition</h4>
-            <p class="phase-tagline">Validate problems worth solving</p>
-            <p class="phase-copy">Before building anything, understand who experiences the problem and confirm they will pay to solve it.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Conduct user interviews and shadowing sessions.</li>
-              <li>Define Jobs-to-Be-Done and validate problem severity.</li>
-              <li>Size market opportunity and identify opportunity spaces.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Research synthesis report.</li>
-              <li>Problem validation matrix.</li>
-              <li>Market opportunity sizing and opportunity tree.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Market Discovery Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="320">
+        <h3>1. Discovery: Start With Pain, Not Features</h3>
+        <p class="case-copy">Good roadmaps start with validated pain. I look for workflows where users repeatedly lose time, money, or confidence. Discovery is not about collecting opinions. It is about identifying patterns in behavior and decisions.</p>
+        <ul class="case-card-list">
+          <li>Interview users around specific moments, not generic satisfaction.</li>
+          <li>Map the current workflow and mark points of friction.</li>
+          <li>Quantify pain frequency and severity before solution ideation.</li>
+          <li>Write a one-sentence problem statement with a clear target user.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-2">
-            <p class="phase-kicker">Phase 2</p>
-            <h4>Product Strategy and Vision</h4>
-            <p class="phase-tagline">Define where you are going and why</p>
-            <p class="phase-copy">Craft a compelling vision that aligns stakeholders and a strategy that charts your path to product-market fit.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Articulate vision, mission, and target segments.</li>
-              <li>Set strategic goals with success metrics and OKRs.</li>
-              <li>Align stakeholders on strategic direction.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Product vision statement.</li>
-              <li>Strategy one-pager and persona profiles.</li>
-              <li>Value proposition canvas and metric tree.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Strategy Workshop Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="360">
+        <h3>2. Strategy: Choose a Bet You Can Explain in One Minute</h3>
+        <p class="case-copy">Strategy is about choosing what not to do. I define one primary outcome, the user segment we are prioritizing, and the reason this is the right bet now. If that cannot be explained quickly, the team will drift in execution.</p>
+        <ul class="case-card-list">
+          <li>Set one measurable business outcome and one user outcome.</li>
+          <li>Declare explicit non-goals to prevent scope creep.</li>
+          <li>Identify the top assumptions that could break the bet.</li>
+          <li>Align stakeholders on trade-offs before planning delivery.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-3">
-            <p class="phase-kicker">Phase 3</p>
-            <h4>Competitive and Landscape Analysis</h4>
-            <p class="phase-tagline">Understand the battlefield</p>
-            <p class="phase-copy">Map your competitive environment, identify threats and opportunities, and sharpen your differentiation strategy.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Map competitive landscape and feature parity.</li>
-              <li>Analyze pricing and positioning strategies.</li>
-              <li>Identify market gaps and defensible moats.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Competitive matrix and comparison grid.</li>
-              <li>Positioning map and SWOT analysis.</li>
-              <li>Differentiation strategy document.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Competitive Intelligence Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="400">
+        <h3>3. Definition: Convert Intent Into Buildable Clarity</h3>
+        <p class="case-copy">A PRD should reduce coordination cost. If engineering, design, or QA need constant interpretation, the spec is not done. I focus on decision clarity, edge cases, and measurable acceptance criteria.</p>
+        <ul class="case-card-list">
+          <li>Document the user journey before listing requirements.</li>
+          <li>Write acceptance criteria as verifiable behaviors.</li>
+          <li>Capture edge cases and failure handling early.</li>
+          <li>Log decisions and unresolved questions in one place.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-4">
-            <p class="phase-kicker">Phase 4</p>
-            <h4>Experience Design and Workflow Modeling</h4>
-            <p class="phase-tagline">Design how users will succeed</p>
-            <p class="phase-copy">Map end-to-end journeys and create intuitive workflows that reduce friction at every touchpoint.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Map current and future-state user journeys.</li>
-              <li>Create user flows, IA, and wireframes.</li>
-              <li>Build prototypes and run usability tests.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Journey maps and task flows.</li>
-              <li>Wireframes and prototype links.</li>
-              <li>Usability test reports and design foundations.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use UX Design Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="440">
+        <h3>4. Delivery: Protect Momentum With Tight Feedback Loops</h3>
+        <p class="case-copy">Execution fails when teams optimize for output instead of outcomes. During delivery, I run short decision loops and keep scope disciplined. The team needs fast answers, not perfect documents.</p>
+        <ul class="case-card-list">
+          <li>Run weekly risk reviews with PM, design, and engineering together.</li>
+          <li>Resolve blockers in hours, not sprint boundaries.</li>
+          <li>Track changes against the original problem and success metric.</li>
+          <li>Escalate trade-offs explicitly when timeline, scope, and quality collide.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-5">
-            <p class="phase-kicker">Phase 5</p>
-            <h4>Technical Feasibility and Architecture Planning</h4>
-            <p class="phase-tagline">Ensure buildability at scale</p>
-            <p class="phase-copy">Validate architecture choices, scalability assumptions, and technical dependencies before execution accelerates.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Assess technical feasibility and constraints.</li>
-              <li>Plan architecture, data models, and infrastructure.</li>
-              <li>Estimate effort and define risk controls.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Feasibility assessment and architecture diagrams.</li>
-              <li>Data schemas and technical risk register.</li>
-              <li>Complexity estimates and ADRs.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Technical Planning Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="480">
+        <h3>5. Launch: Treat Go-Live as the Start of Learning</h3>
+        <p class="case-copy">Launching is not the finish line. It is the beginning of reality. I define success windows before launch, so the team knows what signals matter in week 1, week 4, and quarter 1.</p>
+        <ul class="case-card-list">
+          <li>Define launch guardrails for quality, reliability, and support volume.</li>
+          <li>Instrument key events before release, not after.</li>
+          <li>Run customer feedback loops immediately after rollout.</li>
+          <li>Publish a launch readout with wins, misses, and next decisions.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-6">
-            <p class="phase-kicker">Phase 6</p>
-            <h4>Requirements and Product Specification</h4>
-            <p class="phase-tagline">Document what to build</p>
-            <p class="phase-copy">Translate strategy into build-ready requirements that engineering can implement and QA can validate.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Write user stories with acceptance criteria.</li>
-              <li>Define functional and non-functional requirements.</li>
-              <li>Align dependencies, metrics, and edge cases.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>PRD with acceptance criteria.</li>
-              <li>Functional specs and API contracts.</li>
-              <li>Risk and dependency map.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use PRD Writing Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="520">
+        <h3>6. Optimization: Build a Compounding Product System</h3>
+        <p class="case-copy">The strongest product teams compound learning. They do not just ship features. They improve the system that produces features. I use a monthly cycle to convert outcomes into better prioritization, better specs, and better decisions.</p>
+        <ul class="case-card-list">
+          <li>Review feature performance against the original hypothesis.</li>
+          <li>Retire low-impact work and reallocate effort quickly.</li>
+          <li>Refine your prioritization model based on actual delivery and adoption data.</li>
+          <li>Turn recurring issues into reusable product patterns.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-7">
-            <p class="phase-kicker">Phase 7</p>
-            <h4>Roadmapping and Delivery Planning</h4>
-            <p class="phase-tagline">Sequence work for maximum impact</p>
-            <p class="phase-copy">Prioritize ruthlessly and communicate a roadmap that balances business outcomes with technical constraints.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Prioritize with RICE and value vs effort models.</li>
-              <li>Sequence features and release milestones.</li>
-              <li>Plan sprints, velocity, and critical path.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Now-Next-Later roadmap.</li>
-              <li>Quarterly release plan.</li>
-              <li>Stakeholder communication deck.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Roadmap Planning Assistant</a></p>
-          </article>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="560">
+        <h3>A Practical Weekly Operating Cadence</h3>
+        <p class="case-copy">If you want this framework to stick, operational rhythm matters more than templates. This is the weekly cadence I use:</p>
+        <ul class="case-card-list">
+          <li><strong>Monday:</strong> prioritize top opportunities and decide focus.</li>
+          <li><strong>Tuesday:</strong> clarify requirements and design decisions.</li>
+          <li><strong>Wednesday:</strong> resolve delivery risks and validate assumptions.</li>
+          <li><strong>Thursday:</strong> review metrics, user signals, and quality issues.</li>
+          <li><strong>Friday:</strong> publish decisions, learnings, and next-week direction.</li>
+        </ul>
+      </article>
 
-          <article class="phase-card" id="framework-phase-8">
-            <p class="phase-kicker">Phase 8</p>
-            <h4>Execution and Development</h4>
-            <p class="phase-tagline">Ship high-quality work on time</p>
-            <p class="phase-copy">Guide development with clarity, unblock teams quickly, and maintain momentum through strong delivery rituals.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Run agile ceremonies and manage backlog.</li>
-              <li>Make trade-off decisions with stakeholders.</li>
-              <li>Track velocity, burndown, and execution risk.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Sprint goals and commitments.</li>
-              <li>Decision logs and progress reports.</li>
-              <li>Retrospective action items.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Agile Execution Assistant</a></p>
-          </article>
-
-          <article class="phase-card" id="framework-phase-9">
-            <p class="phase-kicker">Phase 9</p>
-            <h4>Quality, Risk and Validation</h4>
-            <p class="phase-tagline">Ensure it works, is secure, and delights</p>
-            <p class="phase-copy">Validate readiness through comprehensive testing, proactive risk mitigation, and clear launch criteria.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Plan functional, performance, and security testing.</li>
-              <li>Run beta programs and acceptance validation.</li>
-              <li>Establish go and no-go criteria.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Test plans and bug triage logs.</li>
-              <li>Security and performance reports.</li>
-              <li>Launch readiness checklist.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Quality Assurance Assistant</a></p>
-          </article>
-
-          <article class="phase-card" id="framework-phase-10">
-            <p class="phase-kicker">Phase 10</p>
-            <h4>Go-To-Market and Launch</h4>
-            <p class="phase-tagline">Bring it to customers successfully</p>
-            <p class="phase-copy">Orchestrate launch sequencing, messaging, and enablement to drive adoption and long-term success.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Develop GTM strategy and launch messaging.</li>
-              <li>Prepare sales and customer communication plans.</li>
-              <li>Execute staged rollout and monitor launch metrics.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>GTM strategy and launch plan.</li>
-              <li>Messaging framework and enablement assets.</li>
-              <li>Launch metrics dashboard.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Launch Planning Assistant</a></p>
-          </article>
-
-          <article class="phase-card" id="framework-phase-11">
-            <p class="phase-kicker">Phase 11</p>
-            <h4>Post-Launch Measurement and Optimization</h4>
-            <p class="phase-tagline">Learn and improve rapidly</p>
-            <p class="phase-copy">Measure what matters, analyze behavior, and iterate quickly to improve product-market fit and retention.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Track adoption, engagement, and retention metrics.</li>
-              <li>Run funnel analysis and user research loops.</li>
-              <li>Prioritize experiments and optimization backlog.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Analytics dashboard setup.</li>
-              <li>Post-launch analysis and feedback synthesis.</li>
-              <li>A/B test plans and results.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Analytics and Optimization Assistant</a></p>
-          </article>
-
-          <article class="phase-card" id="framework-phase-12">
-            <p class="phase-kicker">Phase 12</p>
-            <h4>Iteration, Scaling and Lifecycle Management</h4>
-            <p class="phase-tagline">Evolve, grow, and steward long-term</p>
-            <p class="phase-copy">Scale what works, sunset what does not, and continuously evolve your long-term product strategy.</p>
-            <p class="phase-label">Tasks</p>
-            <ul class="phase-list">
-              <li>Manage continuous iteration cycles and scaling plans.</li>
-              <li>Expand to new segments and markets.</li>
-              <li>Balance innovation with lifecycle optimization.</li>
-            </ul>
-            <p class="phase-label">Key Deliverables</p>
-            <ul class="phase-list">
-              <li>Quarterly strategy reviews and lifecycle map.</li>
-              <li>Technical roadmap (18-24 months).</li>
-              <li>Feature sunset and expansion playbooks.</li>
-            </ul>
-            <p class="phase-tools">Tools and Templates: <a href="#" class="framework-inline-link">Access Templates</a> · Claude Skill: <a href="#" class="framework-inline-link">Use Lifecycle Management Assistant</a></p>
-          </article>
-        </div>
-      </div>
-
-      <div class="framework-block">
-        <h3 class="framework-subtitle">Key Principles Across All Phases</h3>
-        <div class="principles-grid">
-          <article class="principle-card"><h4>Start with the user</h4><p>Every decision traces back to user needs.</p></article>
-          <article class="principle-card"><h4>Measure everything</h4><p>Data informs decisions without replacing judgment.</p></article>
-          <article class="principle-card"><h4>Iterate relentlessly</h4><p>Ship, learn, improve, and repeat.</p></article>
-          <article class="principle-card"><h4>Collaborate cross-functionally</h4><p>PM is the conductor, not the solo performer.</p></article>
-          <article class="principle-card"><h4>Balance trade-offs</h4><p>Time, quality, and scope require explicit choices.</p></article>
-          <article class="principle-card"><h4>Think big, start small</h4><p>Set bold vision and execute pragmatically.</p></article>
-          <article class="principle-card"><h4>Communicate constantly</h4><p>Clear updates prevent misalignment and drift.</p></article>
-          <article class="principle-card"><h4>Stay customer-obsessed</h4><p>When uncertain, go back to users.</p></article>
-        </div>
-      </div>
-
-      <div class="framework-block framework-meta-grid">
-        <article class="framework-meta-card">
-          <h3>How to Use This Framework</h3>
-          <p><strong>For Product Managers:</strong> Navigate your current phase, use templates, and accelerate work with phase-specific AI skills.</p>
-          <p><strong>For Product Teams:</strong> Build common language and consistent execution across product, design, engineering, and operations.</p>
-          <p><strong>For Organizations:</strong> Scale product excellence with standardized methods and durable institutional knowledge.</p>
-        </article>
-        <article class="framework-meta-card">
-          <h3>What Is Included</h3>
-          <ul class="phase-list">
-            <li>Templates library across all 12 phases (Docs, Sheets, Notion, Figma, Miro).</li>
-            <li>Claude skills with phase-specific prompts, workflows, and guidance.</li>
-            <li>Knowledge base with frameworks, examples, and implementation guides.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="framework-block">
-        <h3 class="framework-subtitle">Get Started</h3>
-        <div class="start-grid">
-          <article class="start-card"><h4>Start from Phase 1</h4><p>Ideal for new products or major initiatives.</p></article>
-          <article class="start-card"><h4>Jump to Current Phase</h4><p>Focus on where your product is right now.</p></article>
-          <article class="start-card"><h4>Explore Full Journey</h4><p>Review all 12 phases and identify capability gaps.</p></article>
-          <article class="start-card"><h4>Access Tools Immediately</h4><p>Use templates and AI assistants from day one.</p></article>
-        </div>
-      </div>
-
-      <div class="framework-block">
-        <h3 class="framework-subtitle">FAQ</h3>
-        <div class="faq-list">
-          <details>
-            <summary>Do I need to follow all 12 phases in order?</summary>
-            <p>The phases are logically sequenced, but you can adapt based on product context, team maturity, and business urgency.</p>
-          </details>
-          <details>
-            <summary>How long does each phase take?</summary>
-            <p>Duration varies by product complexity and organization size. Some phases run continuously, while others are periodic.</p>
-          </details>
-          <details>
-            <summary>Can this framework work for feature development?</summary>
-            <p>Yes. Individual features can compress multiple phases while preserving the same core activities and rigor.</p>
-          </details>
-          <details>
-            <summary>What if I join an existing product in flight?</summary>
-            <p>Start at the current phase, then back-reference earlier phases to identify gaps and tighten execution quality.</p>
-          </details>
-          <details>
-            <summary>Are templates and AI skills free?</summary>
-            <p>Pricing information will be shared with the framework resource release.</p>
-          </details>
-        </div>
-      </div>
-
-      <div class="framework-block framework-cta">
-        <h3>Ready to Transform Your Product Management?</h3>
-        <div class="cta-actions">
-          <a class="btn btn-primary full-mobile" href="#">Access Framework Resources</a>
-          <a class="btn btn-secondary full-mobile" href="#framework-phase-1">Download Phase 1 Templates</a>
-          <a class="btn btn-secondary full-mobile" href="#">Try Claude Skills</a>
-        </div>
-        <div class="signup-box">
-          <h4>Stay Updated</h4>
-          <p>Subscribe to get updates when new templates, skills, and resources are added.</p>
-          <form class="signup-form" action="#" method="post">
-            <label for="framework-email" class="sr-only">Email address</label>
-            <input id="framework-email" name="email" type="email" placeholder="Email address" />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
-        </div>
-        <p class="framework-about">This framework provides product managers with a systematic, comprehensive approach to building successful products, grounded in real execution and continuously refined through practice.</p>
-        <p class="framework-license">© 2024 - Licensed under [License Type]</p>
-      </div>
+      <article class="case-showcase-card case-showcase-card-wide reveal" data-delay="600">
+        <h3>Final Takeaway</h3>
+        <p class="case-copy">A useful product framework is not a rigid process map. It is a decision system. When done well, it helps teams ask better questions, make faster trade-offs, and create durable user value. If your framework is adding complexity without improving decisions, simplify it. Keep the core loop: understand pain, make a clear bet, ship with discipline, and learn fast.</p>
+        <a href="blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a>
+      </article>
     </section>
   </main>
 
