@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +7,10 @@
   <title>Yash Gujre | Product Framework Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body>
+<body class="editorial-page">
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="index.html">Yash Gujre</a>
@@ -26,62 +26,106 @@
     </div>
   </header>
 
-  <main>
-    <section id="framework" class="section section-divider shell reveal" data-delay="260">
-      <header class="case-showcase-header">
-        <p class="eyebrow">Framework Blog</p>
-        <h2>The Product Management Framework I Actually Use</h2>
-        <p>A practical, narrative view of how I go from uncertainty to shipped outcomes and then back to learning.</p>
-      </header>
+  <main class="editorial-main">
+    <article class="editorial-article reveal" data-delay="120">
+      <p class="editorial-label">Product Framework Journal</p>
+      <h1 class="editorial-title">The Product Operating Framework I Trust When the Stakes Are Real</h1>
+      <p class="editorial-subtitle">A long-form breakdown of how I run discovery, strategy, delivery, and optimization as one continuous decision system.</p>
 
-      <article class="reveal" data-delay="320">
-        <p class="case-copy">Most product frameworks are clean diagrams that make messy work look linear. Real product execution is rarely linear. It is a sequence of decisions made under pressure, with incomplete information, limited resources, and teams that are moving at different speeds. Over time, I stopped treating frameworks as rigid phase gates and started treating them as a decision system. That shift made my work faster, clearer, and more resilient when plans changed.</p>
+      <div class="editorial-author-row">
+        <img src="assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
+        <div>
+          <p class="editorial-author-name">Yash Gujre</p>
+          <p class="editorial-author-meta">Product Manager · 12 min read · Updated February 2026</p>
+        </div>
+      </div>
 
-        <p class="case-copy">When I say framework, I do not mean a template library or a checklist to complete for compliance. I mean a way to think. A strong framework helps a team answer three recurring questions. Are we solving a real problem? Are we solving it in the right way? Are we learning fast enough to improve the next decision? If the process cannot answer those questions, it becomes ceremony. If it can answer them consistently, it becomes leverage.</p>
+      <div class="editorial-engagement" aria-label="Engagement stats">
+        <span>2.6K views</span>
+        <span>184 saves</span>
+        <span>47 comments</span>
+      </div>
 
-        <h3>Start With the Problem, Not the Backlog</h3>
-        <p class="case-copy">The first mistake I see in product teams is starting with features. Features are outputs. Problems are the reason outputs matter. In my workflow, discovery begins with behavior, not opinions. I want to understand where users are repeatedly losing time, confidence, or money, and why current workarounds still exist. That usually requires looking at real workflows, not just running interviews and collecting quotes.</p>
+      <figure class="editorial-hero">
+        <img src="assets/framework-journey.svg" alt="12-phase product management framework journey" />
+        <figcaption>The framework is useful only when it helps teams make better decisions under pressure.</figcaption>
+      </figure>
 
-        <p class="case-copy">Once the pain is visible, I pressure-test it with context. Who experiences this most? How often does it happen? What does failure look like in business terms? If we cannot describe those details precisely, we are not ready to prioritize. A useful problem statement should be specific enough that design and engineering can both interpret it the same way without another meeting.</p>
+      <div class="editorial-body">
+        <p>Most framework content is too clean for real product work. On paper, it looks like a straight line from discovery to launch. In reality, teams are balancing ambiguity, pressure, deadlines, and incomplete data all at once. That gap between idealized process and lived execution is where most products drift. I did not need another perfect diagram. I needed a practical system that survives constraint.</p>
 
-        <h3>Turn Strategy Into a Clear Bet</h3>
-        <p class="case-copy">Strategy is where many projects become vague. Teams say yes to too much, then wonder why delivery feels chaotic. I approach strategy as the discipline of exclusion. For each initiative, I define one primary business outcome, one primary user outcome, and explicit non-goals. Non-goals are critical because they protect execution from scope drift disguised as opportunity.</p>
+        <p>The model I use today came from repeated misses and repeated recoveries. I have seen projects fail because the team moved fast without clear direction, and I have seen projects fail because the team created too much process and lost momentum. A useful framework has to do both: create clarity and preserve speed. If it cannot do both, it becomes overhead.</p>
 
-        <p class="case-copy">A good strategy can be explained quickly and defended with evidence. If it takes a long deck to explain why this bet matters now, alignment will decay once implementation starts. In practice, strategy must survive reality: competing priorities, leadership pressure, technical constraints, and evolving market signals. Clarity at this stage reduces rework later more than any productivity tool can.</p>
+        <p class="editorial-emphasis">The best product frameworks are not phase maps. They are decision systems.</p>
 
-        <h3>Write Requirements as Decisions, Not Documentation</h3>
-        <p class="case-copy">I think of product requirements as decision infrastructure. A PRD is useful only if it reduces back-and-forth and helps teams move independently with confidence. Long documents do not create clarity by default. Clear decisions create clarity. The strongest specs explain the problem, define success, state the constraints, and capture how edge cases should behave when things go wrong.</p>
+        <h2>Where Most Product Execution Breaks</h2>
+        <p>Execution usually breaks in one of three places. First, teams rush from ideas to features before validating pain. Second, strategy is broad enough to sound ambitious but vague enough to allow conflicting decisions. Third, post-launch learning is weak, so the same mistakes repeat under new names. These are not talent problems. They are operating system problems.</p>
 
-        <p class="case-copy">In AI and platform work especially, ambiguity compounds quickly. Small wording gaps in requirements can produce large quality differences in the shipped experience. That is why I include assumptions, unresolved questions, and explicit trade-offs in the same document. This helps engineering and design challenge the plan early, when changes are still cheap.</p>
+        <p>My framework starts by reducing uncertainty early, then compresses feedback loops during delivery, and finally forces explicit learning after release. The structure is simple on purpose. Everyone should be able to understand it quickly, run it consistently, and adapt it when context changes.</p>
 
-        <h3>Run Delivery as a Learning Loop</h3>
-        <p class="case-copy">Execution is not a handoff from PM to engineering. It is a continuous loop of intent, build, signal, and adjustment. During delivery, speed comes from response time, not from pretending uncertainty does not exist. I prioritize short feedback cycles and quick decision resolution. If a team waits a full sprint to resolve a blocker, momentum is already lost.</p>
+        <h2>Discovery Should Produce Evidence, Not Opinions</h2>
+        <p>Discovery is often treated as an interview sprint. I treat it as pattern detection. I want to know exactly where users lose time, confidence, or money inside their existing workflow. I care less about what users say they want and more about what they repeatedly struggle to complete. That difference changes everything downstream.</p>
 
-        <p class="case-copy">The key is to keep everyone anchored to the original user problem and success metric. When trade-offs appear, and they always do, the team can evaluate options using shared logic instead of personal preference. This reduces friction and prevents local optimizations that look efficient but move the product away from its core value.</p>
+        <p>A strong discovery output is a clear problem statement tied to observable behavior. It includes who is affected, how often the pain appears, why current workarounds fail, and what business cost that pain creates. When discovery reaches this level of clarity, prioritization becomes easier and cross-functional alignment becomes faster.</p>
 
-        <h3>Treat Launch as the Beginning of Evidence</h3>
-        <p class="case-copy">A launch is often celebrated as the endpoint. I treat it as the point where assumptions meet reality. Before releasing, I define what success means in the first week, first month, and first quarter. Without that timeline, teams overreact to noise or miss early warning signals. Post-launch discipline matters more than launch-day energy.</p>
+        <figure class="editorial-break-image">
+          <img src="assets/framework-journey.svg" alt="Framework loop from discovery through optimization" />
+          <figcaption>Each phase loops back into discovery through evidence, not assumptions.</figcaption>
+        </figure>
 
-        <p class="case-copy">Instrumentation is part of product design, not an afterthought. If key events are not tracked properly before launch, learning is delayed and decisions become opinion-driven. I also make sure customer-facing teams are part of the feedback loop immediately, because support and sales usually see friction patterns before dashboards do.</p>
+        <h2>Strategy Is About Focus, Not Aspiration</h2>
+        <p>Teams rarely fail because they lack ideas. They fail because they lack focus. In strategy, I define one primary business outcome, one primary user outcome, and explicit non-goals. Non-goals are essential because they prevent last-minute scope inflation that weakens quality and delays learning.</p>
 
-        <h3>Optimize the System, Not Just the Feature</h3>
-        <p class="case-copy">The biggest long-term difference between average and high-performing product teams is whether they improve the system that produces decisions. Many teams ship, measure, and move on. Better teams ship, measure, extract patterns, and update how they prioritize and define work. That is where compounding happens.</p>
+        <p>I also ask a brutal question: can this strategy be explained in one minute without slides? If not, the team will interpret it differently and execution will fragment. Clear strategy should make trade-offs obvious. It should help the team decide what to postpone, what to simplify, and what to protect when pressure rises.</p>
 
-        <p class="case-copy">When a feature underperforms, I avoid framing it as a one-off miss. Instead, I ask which part of the system failed: discovery quality, strategy clarity, requirement precision, delivery rhythm, or measurement design. This diagnosis turns a disappointing outcome into a process improvement that benefits every future initiative.</p>
+        <h2>Requirements Must Carry Decisions, Not Just Information</h2>
+        <p>Requirements fail when they read like documentation but behave like ambiguity. I write specs as decision artifacts. They should define intent, constraints, failure states, and success criteria in language that design, engineering, and QA can execute without re-translation. The objective is not longer docs. The objective is lower coordination cost.</p>
 
-        <h3>How This Framework Works in Practice</h3>
-        <p class="case-copy">On a weekly basis, this framework feels simple. Early in the week, we make the most important decisions about focus and trade-offs. Midweek, we resolve ambiguity and execution risks while changes are still cheap. By the end of the week, we publish what we learned, what changed, and what we are doing next. That rhythm keeps teams aligned without heavy process overhead.</p>
+        <p>In practice, this means being explicit about assumptions and edge cases. It means capturing unresolved questions where everyone can see them. It means ensuring acceptance criteria describe user-observable outcomes rather than internal implementation details. Good requirements reduce interpretation work, which directly improves delivery speed.</p>
 
-        <p class="case-copy">The main principle is consistency, not complexity. Teams do not need more frameworks. They need one framework they can actually run under real constraints. If your current system adds meetings but not clarity, remove steps until decisions improve. If it generates artifacts but not outcomes, redefine what good looks like. A framework is only useful when it helps teams decide better and learn faster.</p>
+        <h2>Delivery Is a Cadence, Not a Calendar</h2>
+        <p>Most delivery delays come from unresolved decisions, not engineering effort. That is why I run delivery as a short-loop system. Risk reviews happen weekly. Blockers are resolved quickly. Trade-offs are documented when they occur. The team should never wait for a milestone meeting to correct direction.</p>
 
-        <p class="case-copy">That is the model I return to: understand the problem deeply, commit to a clear bet, execute with tight loops, and convert outcomes into better decisions. Everything else is implementation detail.</p>
+        <p>This approach keeps momentum high while protecting quality. When everyone is anchored to the same problem statement and success metric, decisions become faster and less political. You do not remove tension from delivery, but you make tension productive instead of chaotic.</p>
 
-        <p><a href="blog.html" class="text-link">Back to all blogs <span aria-hidden="true">-></span></a></p>
-      </article>
-    </section>
+        <h2>Launch Is the Beginning of Truth</h2>
+        <p>Launch day is emotionally important and strategically overrated. Real product truth appears after users adopt, ignore, misuse, or abandon what you shipped. Before releasing, I define what success should look like in week one, month one, and quarter one. That timeline prevents overreaction to short-term noise and underreaction to structural issues.</p>
+
+        <p>Instrumentation is part of product design, not a reporting add-on. If key events are missing, the team defaults to opinion. If quality signals are unclear, teams optimize vanity metrics. If customer-facing teams are not looped in, you lose the richest source of qualitative evidence. Post-launch discipline determines whether a product improves or stalls.</p>
+
+        <h2>Optimization Should Improve the Team’s System</h2>
+        <p>Shipping features is not the same as building product capability. High-performing teams turn every launch into a better operating model. They do not just ask whether a feature worked. They ask what the outcome says about discovery quality, strategy clarity, requirement fidelity, and execution rhythm.</p>
+
+        <p>That is where compounding happens. One initiative teaches you how to run the next initiative better. Over time, this produces faster decisions, cleaner collaboration, and stronger product judgment. The framework stops being a document and becomes the way the team thinks.</p>
+
+        <div class="editorial-cta">
+          <h3>Want the full framework series and applied templates?</h3>
+          <p>Read the rest of the long-form PM, AI, and design framework articles, then map one directly to your current roadmap cycle.</p>
+          <a class="btn btn-primary" href="blog.html">Explore all framework blogs</a>
+        </div>
+      </div>
+
+      <section class="editorial-related" aria-label="Related posts">
+        <h3>Related posts</h3>
+        <div class="editorial-related-grid">
+          <a class="editorial-related-card" href="blogs/ai-evals-that-pm-teams-can-actually-run.html">
+            <p>AI Evals Framework</p>
+            <h4>AI Evals That PM Teams Can Actually Run</h4>
+          </a>
+          <a class="editorial-related-card" href="blogs/prompt-to-prd-operating-framework.html">
+            <p>Execution Framework</p>
+            <h4>Prompt-to-PRD Operating Framework</h4>
+          </a>
+          <a class="editorial-related-card" href="blogs/design-tokens-for-generative-interfaces.html">
+            <p>Design System Framework</p>
+            <h4>Design Tokens for Generative Interfaces</h4>
+          </a>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <footer class="footer shell">
+  <footer class="footer shell editorial-footer">
     <p>© 2026 Yash Gujre</p>
   </footer>
 

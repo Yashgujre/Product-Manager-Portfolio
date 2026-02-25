@@ -1,6 +1,8 @@
 const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
-document.documentElement.setAttribute('data-theme', 'dark');
+if (!document.documentElement.getAttribute('data-theme')) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}
 
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
