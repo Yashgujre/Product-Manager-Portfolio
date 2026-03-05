@@ -41,7 +41,7 @@ const currentPath = pathname.split('/').pop() || 'index.html';
 const isBlogDetailPage = pathname.includes('/blogs/');
 navLinks.forEach((link) => {
   const target = link.getAttribute('href');
-  const targetPath = target ? target.split('/').pop() : '';
+  const targetPath = target ? target.split('/').pop()?.split('#')[0]?.split('?')[0] : '';
   const isActive = targetPath === currentPath || (isBlogDetailPage && targetPath === 'blog.html');
   link.classList.toggle('active', isActive);
 });
