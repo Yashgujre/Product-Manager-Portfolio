@@ -30,7 +30,7 @@
     <article class="editorial-article reveal" data-delay="120">
       <p class="editorial-label">Side Build</p>
       <h1 class="editorial-title">Healthcare Policy Copilot</h1>
-      <p class="editorial-subtitle">A production-style AI system that transforms healthcare policy text into structured, execution-ready action plans.</p>
+      <p class="editorial-subtitle">How I built a production-style AI workflow that converts policy text into execution-ready plans with explicit reliability and risk controls.</p>
 
       <div class="editorial-author-row">
         <img src="../assets/profile-photo.jpeg" alt="Yash Gujre" class="editorial-author-photo" />
@@ -41,94 +41,238 @@
       </div>
 
       <div class="editorial-body">
-        <p class="case-copy">Healthcare policy documents are often long, ambiguous, and difficult to operationalize under time pressure. This build focuses on one job: convert messy policy and SOP text into a deterministic action plan with ownership, urgency, compliance visibility, and confidence signaling.</p>
+        <p class="case-copy">Healthcare policy documents are often long, ambiguous, and hard to execute under time pressure. This side build was designed around a single outcome: convert policy text into structured, execution-ready action plans with explicit uncertainty handling.</p>
 
         <div class="editorial-cta">
           <h3>Live App</h3>
-          <p>Open the deployed product and run scenarios end to end.</p>
+          <p>Run the product end to end.</p>
           <a class="btn btn-primary" href="https://yashgujre.github.io/AI-Demos/" target="_blank" rel="noopener noreferrer">Open Healthcare Policy Copilot</a>
         </div>
 
         <h2>Project Identity</h2>
         <ul class="case-card-list">
-          <li>Transforms policy text into a structured execution plan with ordered actions.</li>
-          <li>Surfaces compliance risk via flags, evidence, missing information, and confidence score.</li>
-          <li>Enforces output reliability using schema validation, retry logic, and deterministic guardrails.</li>
-          <li>Frontend on GitHub Pages and API backend on Vercel.</li>
+          <li>Transforms policy text into an ordered action plan.</li>
+          <li>Surfaces compliance risk through flags, evidence, and missing information.</li>
+          <li>Uses confidence scoring with deterministic caps.</li>
+          <li>Implements strict contracts, retry logic, and guardrails to keep output reliable.</li>
+        </ul>
+        <p class="case-copy">Public entrypoints:</p>
+        <ul class="case-card-list">
+          <li>Frontend: `https://yashgujre.github.io/AI-Demos/`</li>
+          <li>Backend API: `https://ai-demos-policy-copilot.vercel.app/api/generate`</li>
         </ul>
 
         <h2>Why This Exists</h2>
-        <p class="case-copy">Policy reviewers and operations teams need more than summaries. They need clear next steps, owner mapping, due windows, conflict detection, and auditable assumptions. The product closes the gap between policy reading and policy execution.</p>
+        <p class="case-copy">Policy review teams need more than summarization. They need operational clarity:</p>
+        <ul class="case-card-list">
+          <li>clear next steps</li>
+          <li>owner mapping</li>
+          <li>due windows</li>
+          <li>conflict detection</li>
+          <li>auditability</li>
+        </ul>
 
-        <h2>Product Behavior</h2>
-        <p class="case-copy">Input includes policy text, urgency, organization context, and requester role (healthcare domain in v1). Output includes summary, priority, ordered actions, compliance flags, missing information, stakeholder draft, confidence score, and audit log.</p>
+        <h2>API Contracts</h2>
+        <p class="case-copy">Endpoint:</p>
+        <ul class="case-card-list">
+          <li>`POST /api/generate`</li>
+        </ul>
+        <p class="case-copy">Request fields:</p>
+        <ul class="case-card-list">
+          <li>`policy_text`</li>
+          <li>`domain` (fixed to `healthcare` in v1)</li>
+          <li>`urgency`</li>
+          <li>`organization_context`</li>
+          <li>`requester_role`</li>
+        </ul>
+        <p class="case-copy">Response fields:</p>
+        <ul class="case-card-list">
+          <li>`summary`, `priority_level`, `actions[]`</li>
+          <li>`compliance_flags[]`, `missing_information[]`</li>
+          <li>`stakeholder_update_draft`, `confidence_score`, `audit_log`</li>
+        </ul>
+        <p class="case-copy">Error contract:</p>
+        <ul class="case-card-list">
+          <li>`RATE_LIMITED`</li>
+          <li>`VALIDATION_FAILED`</li>
+          <li>`MODEL_ERROR`</li>
+          <li>`BAD_REQUEST`</li>
+        </ul>
 
         <h2>System Flow</h2>
         <ol class="case-card-list">
-          <li>Frontend sends `POST /api/generate`.</li>
-          <li>Backend enforces method, content-type, payload size, CORS, and rate limits.</li>
-          <li>Input is validated with Zod, then sanitized for prompt-injection patterns.</li>
-          <li>Prompt is composed and sent to Gemini (or deterministic mock mode).</li>
-          <li>Response JSON is parsed and validated; one correction retry is attempted if invalid.</li>
-          <li>Guardrails enforce conflict detection and confidence caps.</li>
-          <li>Final structured response is returned to the UI.</li>
+          <li>Frontend submits `POST /api/generate`.</li>
+          <li>Backend enforces method, content type, payload size, CORS, and rate limits.</li>
+          <li>Zod validates input schema; sanitizer removes likely injection patterns.</li>
+          <li>Prompt composer builds model input.</li>
+          <li>Gemini (live) or deterministic mock generates output.</li>
+          <li>JSON parse + output schema validation run.</li>
+          <li>If invalid, one correction retry runs.</li>
+          <li>Guardrails apply conflict detection, confidence caps, and caution prefixes.</li>
+          <li>Structured response is returned to UI.</li>
         </ol>
 
-        <h2>Repository Structure</h2>
-        <p class="case-copy">The architecture cleanly separates frontend, backend orchestration, model adapter, guardrails, shared contracts, tests, and eval harnesses. Contracts live in `shared/schema.mjs`, orchestration in `backend/lib/service.mjs`, and end-user rendering in `frontend/src/App.tsx`.</p>
-
-        <h2>API Contract</h2>
-        <p class="case-copy">The endpoint is `POST /api/generate`. The request accepts `policy_text`, `domain`, `urgency`, `organization_context`, and `requester_role`. The response returns typed fields including `actions[]`, `compliance_flags[]`, `missing_information[]`, and `audit_log`.</p>
-        <p class="case-copy">Errors follow a stable contract: `RATE_LIMITED`, `VALIDATION_FAILED`, `MODEL_ERROR`, or `BAD_REQUEST` with consistent messaging.</p>
-
-        <h2>Backend Reliability Design</h2>
+        <h2>AI-Native Implementation Choices</h2>
         <ul class="case-card-list">
-          <li>Strict request gatekeeping and content checks.</li>
-          <li>Configurable CORS allowlist with explicit browser-block behavior for mismatches.</li>
-          <li>BYOK support via request header without persisting keys.</li>
-          <li>Timeout-aware model adapter using `AbortController`.</li>
-          <li>Single corrective retry when output parse/schema validation fails.</li>
-          <li>Deterministic guardrails for conflict detection and confidence capping.</li>
+          <li>Schema-first workflow: model output is accepted only if it satisfies typed contracts.</li>
+          <li>One corrective retry path if parse/schema validation fails.</li>
+          <li>Post-model guardrails are deterministic and separate from the model adapter.</li>
+          <li>Live + mock modes are both first-class to separate capability checks from provider variance.</li>
+          <li>Confidence is policy-driven (caps + caution prefix), not just model-reported.</li>
+          <li>Error behavior is contract-based so frontend handling stays stable across model changes.</li>
         </ul>
 
-        <h2>Guardrails and Risk Controls</h2>
-        <p class="case-copy">The guardrail layer extracts temporal constraints such as immediate actions, wait conditions, and deadline windows. If conflicting instructions are detected, severity is escalated and confidence is capped. When critical details are missing, confidence is reduced and caution is explicitly surfaced in summaries.</p>
-
-        <h2>Frontend UX</h2>
+        <h2>Core Capabilities</h2>
         <ul class="case-card-list">
-          <li>Scenario pills for quick demonstrations.</li>
-          <li>Inline validation for key fields.</li>
-          <li>Structured output panels for actions, flags, missing info, and stakeholder draft.</li>
-          <li>Audit log visibility and error diagnostics.</li>
-          <li>Session-cap behavior for public demos, with BYOK bypass for power users.</li>
-          <li>Accessibility-first form labeling, live regions, and alert semantics.</li>
+          <li>Policy-to-action transformation with ordered steps, owner role, and due window.</li>
+          <li>Compliance signaling with evidence and severity levels.</li>
+          <li>Missing-information surfacing for incomplete policy inputs.</li>
+          <li>Stakeholder update draft to accelerate cross-functional communication.</li>
+          <li>Audit log for constraints detected and assumptions made.</li>
+          <li>Public demo controls: session caps, IP caps, BYOK path, and explicit failure semantics.</li>
         </ul>
 
-        <h2>Quality and Evaluation</h2>
-        <p class="case-copy">The project includes deterministic eval scenarios (`npm run evals`) and focused unit tests for sanitization and guardrails. Live eval mode adds timing checks and richer failure diagnostics.</p>
+        <h2>Architecture</h2>
+        <p class="case-copy">The architecture is intentionally layered so each reliability concern is independently testable:</p>
+        <ul class="case-card-list">
+          <li>Frontend (`frontend/src/App.tsx`) for interaction model, validation UX, and result rendering.</li>
+          <li>API handler (`backend/api/generate.mjs`) for gatekeeping, CORS, rate-limits, BYOK extraction.</li>
+          <li>Service layer (`backend/lib/service.mjs`) for orchestration, sanitize, prompt, retry, guardrails.</li>
+          <li>Model adapter (`backend/lib/model.mjs`) for live/mock execution and timeout behavior.</li>
+          <li>Guardrails (`backend/lib/guardrails.mjs`) for conflicts, confidence capping, and caution signals.</li>
+          <li>Shared contracts (`shared/schema.mjs`) used across validation, API, and tests.</li>
+        </ul>
 
-        <h2>Local Runbook and Deployment</h2>
-        <p class="case-copy">Local development runs frontend and Vercel API separately. Deployment splits frontend (GitHub Pages) and backend (Vercel). Environment variables control mode, API base URL, rate limit caps, model timeouts, and CORS origin policy.</p>
+        <h2>Evaluation Harness (Why This Works on Non-Deterministic Models)</h2>
+        <p class="case-copy">The model is non-deterministic, but release confidence is made deterministic through contract-based checks and scenario expectations.</p>
+        <p class="case-copy">Run deterministic checks:</p>
+        <pre><code>npm run evals</code></pre>
+        <p class="case-copy">Checks include:</p>
+        <ul class="case-card-list">
+          <li>schema validity</li>
+          <li>required field presence</li>
+          <li>missing-information behavior</li>
+          <li>conflict-flag behavior</li>
+          <li>confidence-threshold behavior</li>
+        </ul>
+        <p class="case-copy">Additional checks:</p>
+        <ul class="case-card-list">
+          <li>`npm run test:sanitize` for input sanitization behavior.</li>
+          <li>`npm run test:guardrails` for conflict extraction and confidence caps.</li>
+          <li>`npm run evals -- --live` for provider-integrated timing and output diagnostics.</li>
+        </ul>
+
+        <h2>Security Notes</h2>
+        <ul class="case-card-list">
+          <li>No provider keys are embedded in frontend bundles.</li>
+          <li>BYOK keys are request-scoped and not persisted in server logs/state.</li>
+          <li>Payload-size and content-type checks reduce abuse and malformed traffic.</li>
+          <li>CORS allowlist blocks unauthorized browser origins by default policy.</li>
+          <li>Rate-limit controls (IP/day + session) govern public usage costs and abuse.</li>
+        </ul>
+
+        <h2>Deployment</h2>
+        <ul class="case-card-list">
+          <li>Frontend deployed to GitHub Pages via workflow.</li>
+          <li>Backend deployed as Vercel serverless endpoint (`/api/generate`).</li>
+          <li>Env controls model mode, timeout, API base URL, CORS origins, and rate limits.</li>
+          <li>Frontend and backend are independently deployable for faster iteration.</li>
+        </ul>
+
+        <h2>Product Operating Decisions</h2>
+        <h3>1) Discovery Duty</h3>
+        <p class="case-copy">Define the operating problem as execution quality, not answer fluency.</p>
+        <ul class="case-card-list">
+          <li>mapped policy-review pain into actionability gaps and risk visibility gaps</li>
+          <li>defined success around time-to-action and reviewability</li>
+          <li>set failure criteria: contradictions, missing fields, and false certainty</li>
+        </ul>
+
+        <h3>2) Definition Duty</h3>
+        <p class="case-copy">Lock interfaces and scope before optimization.</p>
+        <ul class="case-card-list">
+          <li>froze input/output/error contracts</li>
+          <li>fixed v1 domain to healthcare for higher precision</li>
+          <li>defined deterministic post-processing requirements</li>
+        </ul>
+
+        <h3>3) Design Duty</h3>
+        <p class="case-copy">Design outputs for reviewer decisions, not passive reading.</p>
+        <ul class="case-card-list">
+          <li>action cards include ownership and due windows</li>
+          <li>compliance flags include evidence and severity</li>
+          <li>audit log and confidence cues support human oversight</li>
+        </ul>
+
+        <h3>4) Build Duty</h3>
+        <p class="case-copy">Convert reliability assumptions into explicit gates.</p>
+        <ul class="case-card-list">
+          <li>gatekeeping: method/content-type/size/CORS/rate-limit</li>
+          <li>schema parse + single correction retry path</li>
+          <li>guardrails for conflicts and confidence constraints</li>
+        </ul>
+
+        <h3>5) Validation Duty</h3>
+        <p class="case-copy">Operationalize AI evals as a release prerequisite.</p>
+        <ul class="case-card-list">
+          <li>deterministic eval harness against scenario fixtures</li>
+          <li>unit-level tests for sanitize and guardrail logic</li>
+          <li>live eval mode to detect provider/runtime drift</li>
+        </ul>
+
+        <h3>6) Launch and Operate Duty</h3>
+        <p class="case-copy">Control trust, risk, and cost in production operation.</p>
+        <ul class="case-card-list">
+          <li>clear user-facing failure semantics and recovery paths</li>
+          <li>BYOK path for advanced usage without widening public cost exposure</li>
+          <li>independent deployment topology for faster safe iteration</li>
+        </ul>
+
+        <h2>Before vs After</h2>
+        <div class="case-data-table-wrap">
+          <table class="case-data-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Policy interpretation</td><td>Manual and inconsistent</td><td>Structured and standardized</td></tr>
+              <tr><td>Time to first action plan</td><td>Slow, reviewer-dependent</td><td>Near-instant</td></tr>
+              <tr><td>Conflict visibility</td><td>Late-stage discovery</td><td>Early and explicit</td></tr>
+              <tr><td>Uncertainty handling</td><td>Implicit</td><td>Confidence + caution + missing info</td></tr>
+              <tr><td>Audit readiness</td><td>Fragmented</td><td>Built-in structured audit log</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <h2>Known Constraints</h2>
         <ul class="case-card-list">
-          <li>v1 domain is fixed to healthcare.</li>
-          <li>No authentication in v1.</li>
-          <li>In-memory rate-limit fallback is non-persistent.</li>
-          <li>Conflict detection is rule-based, not full semantic reasoning.</li>
+          <li>v1 domain fixed to healthcare</li>
+          <li>no authentication in v1</li>
+          <li>in-memory limiter fallback is non-persistent</li>
+          <li>conflict detection is rule-based, not full semantic policy reasoning</li>
         </ul>
 
-        <h2>Failure Mode Diagnostics</h2>
-        <p class="case-copy">Most frontend fetch failures resolve to CORS allowlist mismatch, incorrect backend URL, or backend reachability. Additional known failure states include content-type mismatch (415), daily rate cap (429), invalid BYOK key (`BAD_REQUEST`), and provider timeout.</p>
+        <h2>Failure Diagnostics</h2>
+        <p class="case-copy">Most frontend `Failed to fetch` cases map to:</p>
+        <ul class="case-card-list">
+          <li>CORS allowlist mismatch</li>
+          <li>incorrect backend URL</li>
+          <li>backend reachability issues</li>
+        </ul>
+        <p class="case-copy">Other expected failures:</p>
+        <ul class="case-card-list">
+          <li>content-type mismatch (`415`)</li>
+          <li>daily rate cap (`429`)</li>
+          <li>invalid BYOK key (`BAD_REQUEST`)</li>
+          <li>provider timeout (`MODEL_ERROR`)</li>
+        </ul>
 
-        <h2>Positioning</h2>
-        <p class="case-copy">Healthcare Policy Copilot is designed as a real AI workflow system, not a generic chatbot. It demonstrates production discipline through strict contracts, guardrails, controlled failure behavior, deterministic eval coverage, and deployment-ready architecture.</p>
-
-        <div class="editorial-cta">
-          <h3>Build Assets</h3>
-          <p>Read architecture and system notes, then test the deployed app.</p>
-          <a class="btn btn-primary" href="https://yashgujre.github.io/AI-Demos/" target="_blank" rel="noopener noreferrer">Open Live App</a>
-        </div>
+        <h2>Closing</h2>
+        <p class="case-copy">Healthcare Policy Copilot was built as an AI workflow system, not a prompt demo. The impact comes from PM decisions across the full PDLC: bounded scope, explicit contracts, deterministic guardrails, eval-first validation, and production-ready operations design.</p>
       </div>
 
       <section class="editorial-related" aria-label="Related posts">
