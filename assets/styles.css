@@ -1955,6 +1955,20 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.side-builds-section {
+  padding-top: 56px;
+  padding-bottom: 88px;
+}
+
+.side-builds-section .case-showcase-header p {
+  margin-bottom: 32px;
+  max-width: 60ch;
+}
+
+.side-builds-section .case-showcase-card-wide .case-copy {
+  max-width: 78ch;
+}
+
 @media (max-width: 1024px) {
   .metrics-aggregate-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1974,6 +1988,11 @@ p {
 
   .compact-kpi-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .side-builds-section {
+    padding-top: 44px;
+    padding-bottom: 72px;
   }
 }
 
