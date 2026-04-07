@@ -222,7 +222,7 @@ p {
   margin-top: 40px;
   border: 1px solid var(--divider);
   border-radius: 8px;
-  background: #f8f9fa;
+  background: var(--bg);
   padding: 16px 20px;
   display: flex;
   gap: 16px;
@@ -231,7 +231,7 @@ p {
 
 [data-theme="dark"] .proof-bar,
 [data-theme="dark"] .case-metric-box {
-  background: #172238;
+  background: var(--surface);
 }
 
 .proof-bar span {
@@ -248,11 +248,17 @@ p {
 }
 
 .overview-build-grid,
-.architecture-grid,
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
 .philosophy-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  counter-reset: principle;
 }
 
 .overview-build-card,
@@ -268,14 +274,46 @@ p {
 .overview-build-card:hover,
 .architecture-card:hover,
 .philosophy-card:hover {
-  border-color: #cfd8e5;
+  border-color: var(--divider-strong);
   box-shadow: 0 6px 14px rgba(10, 22, 40, 0.06);
   transform: translateY(-2px);
+}
+
+/* Featured first card spans all 3 columns */
+.overview-build-card:first-child {
+  grid-column: span 3;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.04) 0%, var(--surface) 55%);
+  padding: 36px;
+}
+
+[data-theme="dark"] .overview-build-card:first-child {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, var(--surface) 55%);
+}
+
+.overview-build-card:first-child h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 .overview-build-card h3,
 .architecture-card h3 {
   margin-bottom: 8px;
+}
+
+.philosophy-card {
+  counter-increment: principle;
+}
+
+.philosophy-card::before {
+  content: counter(principle, decimal-leading-zero);
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 16px;
 }
 
 .logo-strip {
@@ -335,8 +373,8 @@ p {
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: #92400e;
+  border-color: #92400e;
 }
 
 .btn-secondary {
@@ -351,11 +389,11 @@ p {
 }
 
 .btn-secondary:hover {
-  background: #eff6ff;
+  background: #fef3c7;
 }
 
 [data-theme="dark"] .btn-secondary:hover {
-  background: #1c2a44;
+  background: #451a03;
 }
 
 .metric-card {
@@ -465,6 +503,12 @@ p {
 
 .case-showcase-card-wide {
   grid-column: span 2;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.04) 0%, var(--surface) 55%);
+}
+
+[data-theme="dark"] .case-showcase-card-wide {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.07) 0%, var(--surface) 55%);
 }
 
 .case-label {
@@ -508,7 +552,8 @@ p {
 }
 
 .case-metric-box {
-  background: #f8f9fa;
+  background: var(--bg);
+  border: 1px solid var(--divider);
   border-radius: 4px;
   padding: 16px;
 }
@@ -543,15 +588,16 @@ p {
 .case-tags {
   margin-top: 24px;
   font-size: 13px;
-  color: #334155;
-  background: #f1f5f9;
-  border-radius: 16px;
-  padding: 12px 16px;
+  color: var(--body);
+  background: var(--bg);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 10px 14px;
 }
 
 [data-theme="dark"] .case-tags {
-  color: #c2d0e6;
-  background: #1a2740;
+  color: var(--body);
+  background: var(--surface);
 }
 
 .case-note {
