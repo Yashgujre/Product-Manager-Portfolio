@@ -46,6 +46,15 @@ navLinks.forEach((link) => {
   link.classList.toggle('active', isActive);
 });
 
+// Hero headline word-by-word reveal
+const heroH1 = document.querySelector('.hero h1');
+if (heroH1) {
+  const words = heroH1.textContent.trim().split(/\s+/);
+  heroH1.innerHTML = words
+    .map((word, i) => `<span class="hero-word" style="animation-delay:${120 + i * 60}ms">${word}</span>`)
+    .join(' ');
+}
+
 const parseMetricValue = (value) => {
   const match = String(value).match(/-?\d+(\.\d+)?/);
   if (!match) return 0;
