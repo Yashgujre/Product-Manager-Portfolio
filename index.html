@@ -93,12 +93,12 @@
         </div>
         <div class="col-12 company-context-grid">
           <article class="company-context-card">
-            <p class="company-name">Healthcare</p>
+            <p class="company-name">Healthcare · Care Coordination</p>
             <p class="company-role">Centene Corporation · Product Manager</p>
             <p class="company-note">B2B care coordination platform serving 2.5M+ members across 50+ nonprofit partners. HIPAA-regulated.</p>
           </article>
           <article class="company-context-card">
-            <p class="company-name">Healthcare</p>
+            <p class="company-name">Healthcare · Compliance</p>
             <p class="company-role">Prism Health North Texas · Product Manager</p>
             <p class="company-note">Grant management and compliance platform for HIPAA-regulated healthcare operations.</p>
           </article>
@@ -131,11 +131,13 @@
             <p class="principle-number">01</p>
             <h3>Start with the economic model</h3>
             <p>Before writing specs, map how value is created and captured. Features without a clear ROI path get cut — or never get adopted.</p>
+            <p class="philosophy-example">At Capital One, we modeled conversion lift and default reduction before writing a single API spec. That constraint shaped every priority in the backlog.</p>
           </article>
           <article class="principle-card">
             <p class="principle-number">02</p>
             <h3>Compliance is architecture, not a gate</h3>
             <p>HIPAA, SOC 2, financial regulation — these belong in the data model on day one, not in a remediation sprint before launch.</p>
+            <p class="philosophy-example">The care coordination platform was built with HIPAA audit retention as a data model primitive from day one — not a reporting layer bolted on before go-live.</p>
           </article>
           <article class="principle-card">
             <p class="principle-number">03</p>
@@ -146,6 +148,7 @@
             <p class="principle-number">04</p>
             <h3>Instrument before you ship</h3>
             <p>If you can't measure a handoff, a decision, or a workflow step — you can't improve it. Observability is a product requirement, not a post-launch task.</p>
+            <p class="philosophy-example">Referral acknowledgment time dropped from 4.2 to 1.1 days because we instrumented each handoff event individually before the first release shipped.</p>
           </article>
           <article class="principle-card">
             <p class="principle-number">05</p>
@@ -161,6 +164,7 @@
             <p class="principle-number">07</p>
             <h3>Make the constraint explicit</h3>
             <p>Every backlog has an implicit constraint driving prioritization. Surface it. A team that knows the binding constraint makes better tradeoffs without asking for permission on each one.</p>
+            <p class="philosophy-example">At Galderma, the binding constraint was Oracle Fusion data latency — not feature scope. Making that explicit cut two sprint cycles of misdirected backlog work.</p>
           </article>
           <article class="principle-card">
             <p class="principle-number">08</p>
