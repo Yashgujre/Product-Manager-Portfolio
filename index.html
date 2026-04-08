@@ -93,28 +93,28 @@
         </div>
         <div class="col-12 company-context-grid">
           <article class="company-context-card">
-            <p class="company-name">Centene Corporation</p>
-            <p class="company-role">Product Manager · Apr 2025 – Present</p>
-            <p class="company-note">B2B care coordination platform serving 2.5M+ members across 50+ nonprofit partners. Healthcare · HIPAA.</p>
+            <p class="company-name">Healthcare</p>
+            <p class="company-role">Centene Corporation · Product Manager</p>
+            <p class="company-note">B2B care coordination platform serving 2.5M+ members across 50+ nonprofit partners. HIPAA-regulated.</p>
           </article>
           <article class="company-context-card">
-            <p class="company-name">Prism Health North Texas</p>
-            <p class="company-role">Product Manager · Jul 2024 – Apr 2025</p>
-            <p class="company-note">Grant management and compliance platform for HIPAA-regulated healthcare operations. Healthcare · Compliance.</p>
+            <p class="company-name">Healthcare</p>
+            <p class="company-role">Prism Health North Texas · Product Manager</p>
+            <p class="company-note">Grant management and compliance platform for HIPAA-regulated healthcare operations.</p>
           </article>
           <article class="company-context-card">
-            <p class="company-name">Galderma</p>
-            <p class="company-role">Product Manager · Oct 2023 – Jul 2024</p>
-            <p class="company-note">Supply chain analytics module post-Oracle Fusion migration. 292% ROI delivered. Pharma · Operations.</p>
+            <p class="company-name">Pharma · Operations</p>
+            <p class="company-role">Galderma · Product Manager</p>
+            <p class="company-note">Supply chain analytics module post-Oracle Fusion migration. 292% ROI delivered.</p>
           </article>
           <article class="company-context-card">
-            <p class="company-name">Capital One</p>
-            <p class="company-role">Product Manager · Feb 2023 – Oct 2023</p>
-            <p class="company-note">Real-time trade credit decisioning engine managing $2.5B+ in B2B credit exposure. Fintech · Risk.</p>
+            <p class="company-name">Fintech · Risk</p>
+            <p class="company-role">Capital One · Product Manager</p>
+            <p class="company-note">Real-time trade credit decisioning engine managing $2.5B+ in B2B credit exposure.</p>
           </article>
           <article class="company-context-card">
-            <p class="company-name">UT Dallas</p>
-            <p class="company-role">Product Owner · Jun 2021 – Dec 2022</p>
+            <p class="company-name">Education · Research</p>
+            <p class="company-role">UT Dallas · Product Owner</p>
             <p class="company-note">Applied PM frameworks across capstone product delivery. MS in Information Technology Management.</p>
           </article>
         </div>
@@ -126,22 +126,46 @@
         <div class="col-12">
           <h2>How I think about product</h2>
         </div>
-        <div class="col-12 philosophy-grid">
-          <article class="philosophy-card">
-            <p>Start with economic model, not features.</p>
-            <p class="philosophy-example">On the trade credit platform, we modeled conversion lift and default reduction before writing a single API spec. That constraint shaped every priority in the backlog.</p>
+        <div class="col-12 principles-grid">
+          <article class="principle-card">
+            <p class="principle-number">01</p>
+            <h3>Start with the economic model</h3>
+            <p>Before writing specs, map how value is created and captured. Features without a clear ROI path get cut — or never get adopted.</p>
           </article>
-          <article class="philosophy-card">
-            <p>Embed compliance into architecture, not as an afterthought.</p>
-            <p class="philosophy-example">The care coordination platform was built with HIPAA audit retention as a data model primitive from day one — not a reporting layer added before go-live.</p>
+          <article class="principle-card">
+            <p class="principle-number">02</p>
+            <h3>Compliance is architecture, not a gate</h3>
+            <p>HIPAA, SOC 2, financial regulation — these belong in the data model on day one, not in a remediation sprint before launch.</p>
           </article>
-          <article class="philosophy-card">
-            <p>Build once, then scale across markets and use cases.</p>
-            <p class="philosophy-example">The orchestration layer at Centene added new partner workflows without new engineering cycles. 50+ nonprofit partners run on the same integration layer.</p>
+          <article class="principle-card">
+            <p class="principle-number">03</p>
+            <h3>Build for interoperability by default</h3>
+            <p>Every platform decision should make the next integration cheaper. API-first design is how you avoid rebuilding the same thing five times.</p>
           </article>
-          <article class="philosophy-card">
-            <p>Instrument everything and iterate using evidence.</p>
-            <p class="philosophy-example">Referral acknowledgment time dropped from 4.2 to 1.1 days because we instrumented each handoff event individually before the first release shipped.</p>
+          <article class="principle-card">
+            <p class="principle-number">04</p>
+            <h3>Instrument before you ship</h3>
+            <p>If you can't measure a handoff, a decision, or a workflow step — you can't improve it. Observability is a product requirement, not a post-launch task.</p>
+          </article>
+          <article class="principle-card">
+            <p class="principle-number">05</p>
+            <h3>Prioritize adoption over capability</h3>
+            <p>A feature no one uses is not a shipped feature. Workflow fit, training, and change management are part of the product surface — not someone else's problem.</p>
+          </article>
+          <article class="principle-card">
+            <p class="principle-number">06</p>
+            <h3>Disaggregate the metric</h3>
+            <p>Aggregate KPIs hide the signal. Break cycle time, conversion, or cost into its components — the improvement always lives in one specific step, not the average.</p>
+          </article>
+          <article class="principle-card">
+            <p class="principle-number">07</p>
+            <h3>Make the constraint explicit</h3>
+            <p>Every backlog has an implicit constraint driving prioritization. Surface it. A team that knows the binding constraint makes better tradeoffs without asking for permission on each one.</p>
+          </article>
+          <article class="principle-card">
+            <p class="principle-number">08</p>
+            <h3>Explainability is a feature, not a footnote</h3>
+            <p>In regulated environments, a decision no one can audit is a liability. Explainability drives adoption, reduces risk review cycles, and earns operator trust over time.</p>
           </article>
         </div>
       </div>
@@ -151,12 +175,12 @@
   <footer class="footer shell">
     <p>© 2026 Yash Gujre</p>
     <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="/index.html">Overview</a>
-      <a href="/case-studies.html">Case Studies</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/experience.html">Experience</a>
-      <a href="/product-demos.html">Side Builds</a>
-      <a href="/contact.html">Contact</a>
+      <a href="index.html">Overview</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="blog.html">Blog</a>
+      <a href="experience.html">Experience</a>
+      <a href="product-demos.html">Side Builds</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </footer>
 
