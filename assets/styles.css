@@ -294,7 +294,7 @@ p {
 }
 
 .overview-build-card:first-child h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
 }
 
 .overview-build-card h3,
