@@ -46,20 +46,38 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Raw usage is a weak indicator for AI products. Copilots can be widely tried but rarely trusted. The right north star captures sustained value creation, not novelty clicks.</p>
-            <h2>Metric Stack</h2>
-            <ul class="case-card-list">
-              <li><strong>Primary:</strong> Weekly successful assisted tasks per active user.</li>
-              <li><strong>Quality:</strong> Acceptance rate, edit distance, and user correction burden.</li>
-              <li><strong>Trust:</strong> Repeat use in high-stakes workflows and escalation rate.</li>
-              <li><strong>Business:</strong> Time saved, throughput increase, or error reduction by workflow.</li>
-            </ul>
-            <h2>Instrumentation Tips</h2>
-            <ul class="case-card-list">
-              <li>Log both assistant suggestion and final user-submitted output.</li>
-              <li>Segment by task difficulty to avoid inflated performance from easy tasks.</li>
-              <li>Track quality decay over time to catch model drift early.</li>
-            </ul>
+        <p>Most copilot launches look successful in month one. Session volume climbs, feature flags get toggled on, and the launch metrics look clean in the exec dashboard. Then month three arrives and the numbers quietly plateau. Power users kept using it. Everyone else stopped after the first awkward output they couldn't trust.</p>
+
+        <p>The problem is almost always metric selection. Teams reach for DAU, MAU, and feature activation rates because those are the metrics that already exist in the data warehouse. But copilot products don't fail on reach — they fail on trust. A user who opens the copilot once and never returns shows up as "activated" under most instrumentation setups. That's a false positive that delays the product team from understanding what's actually happening.</p>
+
+        <p class="editorial-emphasis">A north star metric for a copilot product should be impossible to game by a user who doesn't actually trust it.</p>
+
+        <h2>Why Session Volume Misleads</h2>
+        <p>Session volume measures curiosity. It doesn't distinguish between the user who tried the feature three times in the first week and abandoned it, and the user who has integrated it into their daily workflow. Both show up identically in a sessions chart. This is especially dangerous for AI features because early adopters will inflate your initial metrics, masking the fact that mainstream users aren't converting to habitual use.</p>
+
+        <p>The same problem applies to acceptance rate if you measure it naively. A copilot suggestion that a user accepts without reading — because it's faster than deleting it and typing from scratch — looks like success in the metric and failure in the product.</p>
+
+        <h2>The Metric Stack That Actually Works</h2>
+        <p>Build your measurement in three layers, each answering a different question about where the product is working and where it's breaking down.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Primary north star:</strong> Weekly successful assisted tasks per active user. "Successful" means the task reached completion without the user overriding or restarting. This metric is hard to inflate passively.</li>
+          <li><strong>Quality proxy:</strong> Acceptance rate combined with edit distance on accepted outputs. High acceptance + low edit distance = the copilot is producing output close to what the user would have written. High acceptance + high edit distance = users are accepting suboptimal outputs out of convenience, not trust.</li>
+          <li><strong>Trust signal:</strong> Repeat use rate in high-stakes workflows — the tasks where the user has a real alternative and is actively choosing the copilot. This is the hardest metric to achieve and the most durable signal of product-market fit.</li>
+          <li><strong>Business outcome:</strong> Time-per-task reduction or throughput increase per workflow, not aggregate. Aggregate time saved is easy to construct and hard to act on. Task-level reduction is what drives roadmap decisions.</li>
+        </ul>
+
+        <h2>Instrumentation You Need Before Launch</h2>
+        <p>The most common gap is logging at the suggestion level, not the task level. Most analytics setups track whether a user opened a copilot panel. Few track whether the workflow the copilot was meant to assist actually completed, and in what state. You need both to compute your north star.</p>
+
+        <ul class="case-card-list">
+          <li>Log the assistant suggestion and the final user-submitted output as a pair — you need the delta to compute edit distance and correction burden.</li>
+          <li>Tag tasks by difficulty tier at log time. Easy tasks inflate performance across every metric. Segment separately or your quality numbers will mislead the roadmap.</li>
+          <li>Set a baseline week-over-week quality threshold so you catch model drift before it shows up as user churn. Quality decays silently; churn arrives loudly. You want the early signal.</li>
+        </ul>
+
+        <h2>The Anti-Pattern to Avoid</h2>
+        <p>The most common mistake is selecting a copilot north star that maps to a metric the team already has, rather than a metric that actually reflects behavioral change. If your north star would look the same whether users trust the product or not, it's the wrong metric. Redesign it before you build the instrumentation — instrumentation built around the wrong question is expensive to replace after launch.</p>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

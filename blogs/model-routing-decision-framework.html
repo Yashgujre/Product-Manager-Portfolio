@@ -46,20 +46,30 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">One model cannot optimize for every workload. Routing lets you match tasks to the right model profile and keep performance within cost and latency constraints.</p>
-            <h2>Routing Dimensions</h2>
-            <ul class="case-card-list">
-              <li><strong>Complexity:</strong> reasoning depth and context-window requirements.</li>
-              <li><strong>Latency:</strong> acceptable response time by user workflow.</li>
-              <li><strong>Cost:</strong> token budget limits by segment or account tier.</li>
-              <li><strong>Risk:</strong> safety-sensitive requests routed to stricter pipelines.</li>
-            </ul>
-            <h2>Architecture Pattern</h2>
-            <ul class="case-card-list">
-              <li>Start with a lightweight classifier to label intent and complexity.</li>
-              <li>Apply deterministic routing rules with fallback for timeout or safety block.</li>
-              <li>Track per-route quality and cost so routing policy can be tuned weekly.</li>
-            </ul>
+        <p>The most common AI infrastructure mistake is choosing one model for everything. It feels like the right call: simpler architecture, one integration to maintain, one API contract. The problem is that the model you need for complex multi-step reasoning is dramatically more expensive and slower than the model you need for simple classification or summarization — and most products have both types of tasks.</p>
+
+        <p>Routing solves this by treating model selection as a runtime decision rather than a deployment decision. Instead of asking "which model should we use?" at build time, you ask it at request time, based on what the request actually requires. Done well, routing delivers performance close to a frontier model at a fraction of the cost, because the majority of requests don't need frontier-model capabilities.</p>
+
+        <p class="editorial-emphasis">The right model for a task is almost never the most capable model available. It's the least capable model that meets the quality bar for that specific task.</p>
+
+        <h2>The Four Routing Dimensions</h2>
+        <p>Every routing decision involves a tradeoff across four variables. The goal is to find the minimum-cost model that satisfies the constraints on all four dimensions for a given request.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Complexity:</strong> How much reasoning depth does this request require? A summary of a short document needs less capability than a multi-document synthesis with cross-reference analysis. Map your request types to capability requirements before you map them to models.</li>
+          <li><strong>Latency:</strong> What is the acceptable response time for this workflow? Synchronous user-facing requests have different latency requirements than background batch jobs. A user waiting for a chat response can tolerate 2 seconds. A background report generation job can run for 60 seconds without affecting experience.</li>
+          <li><strong>Cost:</strong> What is the token budget for this request, given the account tier and expected volume? Enterprise accounts with unlimited plans and individual free-tier accounts have different cost profiles that should drive different routing decisions.</li>
+          <li><strong>Risk:</strong> Does this request touch sensitive data, regulated decisions, or safety-critical outputs? High-risk requests should route to models and pipelines with stricter guardrails, more logging, and human-review integration — even if that's slower and more expensive.</li>
+        </ul>
+
+        <h2>Architecture Pattern That Works in Practice</h2>
+        <p>The routing layer sits between the application and the model APIs. Its job is simple: take a request, classify it, apply routing rules, return the model selection. The simplest implementation uses a lightweight classifier — often a much smaller model — to label intent and complexity, then applies deterministic rules to select the target model and pipeline configuration.</p>
+
+        <ul class="case-card-list">
+          <li>Start with a lightweight classifier to label intent type and complexity tier. This classification step should be fast enough that it doesn't meaningfully add to perceived latency.</li>
+          <li>Apply deterministic routing rules with explicit fallback behavior for timeouts and safety blocks. Fallback should degrade gracefully — route to a slower but more reliable model, not to an error state.</li>
+          <li>Track per-route quality scores, latency, and cost weekly. Routing policy is not set-and-forget. Model improvements and cost changes will shift the optimal routing decisions over time, and you need the data to see when to rebalance.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

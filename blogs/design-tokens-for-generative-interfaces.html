@@ -46,20 +46,28 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Generative interfaces need token systems that account for dynamic states such as confidence, citations, moderation flags, and collaborative edits.</p>
-            <h2>Token Architecture</h2>
-            <ul class="case-card-list">
-              <li><strong>Response Tokens:</strong> typography, spacing, and hierarchy for long-form output.</li>
-              <li><strong>State Tokens:</strong> trusted, uncertain, flagged, and needs review states.</li>
-              <li><strong>Interaction Tokens:</strong> prompt input, refine action, and citation hover behavior.</li>
-              <li><strong>Safety Tokens:</strong> warning and escalation color systems with accessibility contrast.</li>
-            </ul>
-            <h2>Implementation Guidance</h2>
-            <ul class="case-card-list">
-              <li>Connect component states directly to eval outcomes where possible.</li>
-              <li>Test token behavior across long answers, short answers, and streamed output.</li>
-              <li>Standardize citation and disclaimer styles across all assistant surfaces.</li>
-            </ul>
+        <p>Traditional design token systems handle a mostly static problem: define the colors, typography, and spacing that make components look consistent. Generative interfaces break this model immediately. The same component — an assistant response — has fundamentally different states depending on model confidence, content type, safety flags, and review status. A design token system that doesn't account for those states forces designers to hardcode state-specific styles, which diverge over time and create inconsistent user experiences across product surfaces.</p>
+
+        <p>The deeper problem is that generative interface states aren't just visual — they carry semantic meaning. A "low confidence" indicator isn't just a different color; it's a signal that tells the user to verify before acting. A "flagged for review" state isn't just a warning badge; it's a decision boundary in the user's workflow. Token systems that conflate semantic state with visual style make both harder to maintain and easier to misuse.</p>
+
+        <p class="editorial-emphasis">Design tokens for generative interfaces need to encode trust states, not just visual properties. The token name should tell the engineer what the user needs to understand, not just what it looks like.</p>
+
+        <h2>The Four Token Categories</h2>
+        <p>Generative interface tokens fall into four categories, each solving a different consistency problem across the product surface.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Response tokens:</strong> Typography, spacing, line-height, and hierarchy rules for long-form generated output. These govern readability at scale — a response that is 200 words has different layout needs than one that is 20 words, and streaming output has different needs than static output. Define these tokens specifically for generated content, separate from editorial copy tokens.</li>
+          <li><strong>State tokens:</strong> Visual properties for the four trust states all AI outputs carry: trusted (high confidence, verified), uncertain (low confidence, not verified), flagged (safety or compliance trigger), needs review (human approval required). State tokens should be named semantically: <code>--state-uncertain</code>, not <code>--color-yellow</code>. The name should communicate intent, not appearance.</li>
+          <li><strong>Interaction tokens:</strong> Properties for the input, refinement, and citation affordances that AI interfaces uniquely require. Prompt input fields, "refine this" actions, citation hover panels, and correction flows all need consistent treatment across surfaces.</li>
+          <li><strong>Safety tokens:</strong> Warning, escalation, and disclaimer color systems with explicit accessibility contrast requirements. Safety tokens are non-negotiable for regulated products — they need to meet WCAG contrast standards and maintain meaning for color-blind users.</li>
+        </ul>
+
+        <h2>Implementation Guidance</h2>
+        <ul class="case-card-list">
+          <li>Connect component states to eval outcomes where possible. If the eval pipeline produces a confidence score, the UI state should be driven by that score programmatically — not set manually by a designer per component. Hardcoded states diverge from model reality over time.</li>
+          <li>Test token behavior across long-form answers, short answers, and streamed output. Streaming creates visual states that static design tools don't capture — make sure the in-progress rendering state is part of the token spec, not an afterthought.</li>
+          <li>Standardize citation and disclaimer styles across all assistant surfaces. Citation treatment is often one of the last things to get designed and the first thing to diverge across product areas. Define it once at the token level and enforce it systematically.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

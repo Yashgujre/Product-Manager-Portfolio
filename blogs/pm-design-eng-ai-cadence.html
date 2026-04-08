@@ -46,21 +46,32 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">AI products fail when discovery, UX, and implementation drift apart. A shared weekly cadence keeps assumptions aligned and speeds learning cycles.</p>
-            <h2>Weekly Rhythm</h2>
-            <ul class="case-card-list">
-              <li><strong>Monday:</strong> prioritize top user pain and define success criteria.</li>
-              <li><strong>Tuesday:</strong> co-design prompts, system behavior, and failure-handling UX.</li>
-              <li><strong>Wednesday:</strong> prototype and run internal dogfood eval set.</li>
-              <li><strong>Thursday:</strong> review metrics, failure clusters, and compliance notes.</li>
-              <li><strong>Friday:</strong> decide ship, hold, or iterate with explicit rationale.</li>
-            </ul>
-            <h2>Cadence Outputs</h2>
-            <ul class="case-card-list">
-              <li>Single shared decision log across PM, design, and engineering.</li>
-              <li>Updated prompt/system version history with owner accountability.</li>
-              <li>Top risk list and mitigation owner for next sprint planning.</li>
-            </ul>
+        <p>The most common failure mode in AI product delivery isn't bad engineering or bad design. It's drift. PM spends the week in discovery calls and updates the requirements doc. Design is prototyping based on the previous version of those requirements. Engineering is building against the version before that. Nobody's being careless — everyone is just moving at their own pace against their own understanding of what the product is supposed to do.</p>
+
+        <p>This drift is manageable in traditional software because the gap between intention and implementation is usually visible in a spec review or design critique. In AI products it's harder to see, because the critical decisions — which prompts produce which outputs, where the model fails, how uncertainty is surfaced to the user — are made across all three functions simultaneously and interdependently. A change in the system prompt changes what design needs to account for in the UX. A UX change changes what engineering needs to handle in the fallback logic. Without a shared cadence, these dependencies go unresolved until they surface as bugs in production.</p>
+
+        <p class="editorial-emphasis">The cadence isn't a meeting structure. It's a synchronization protocol for three functions that are making interdependent decisions every day.</p>
+
+        <h2>Why Weekly Is the Right Frequency</h2>
+        <p>Daily is too fast — it creates noise and doesn't give teams enough time to observe the effect of changes. Sprint cadence (two weeks) is too slow — AI product decisions compound quickly and a two-week gap between alignment points creates too much room for drift. Weekly is long enough to generate signal and short enough to correct course before decisions calcify.</p>
+
+        <p>The weekly structure also matches the natural rhythm of model evaluation: run an eval on Monday, review results on Thursday, make a ship decision on Friday. Everything in between — co-design, prototyping, metrics review — feeds that decision. The cadence creates a forcing function: by Friday, the team has to answer yes or no. That constraint prevents the indefinite iteration that kills AI features before they ever ship.</p>
+
+        <h2>Weekly Rhythm</h2>
+        <ul class="case-card-list">
+          <li><strong>Monday:</strong> Align on the top user pain to address this week and define the success criterion for the change. One sentence each. This anchors the rest of the week to a specific user outcome.</li>
+          <li><strong>Tuesday:</strong> PM, design, and engineering co-design the prompt behavior, system responses, and failure-handling UX together in the same room. Decisions made here go into the shared decision log, not separate docs.</li>
+          <li><strong>Wednesday:</strong> Prototype the change and run it against the internal eval set. Log failures. The eval results feed Thursday's review, so they need to be done by end of day.</li>
+          <li><strong>Thursday:</strong> Review product metrics, eval failure clusters, and any compliance or safety flags. Each function reads the same data before the Friday decision — no interpreting in isolation.</li>
+          <li><strong>Friday:</strong> Ship, hold, or iterate with an explicit written rationale. The decision log entry explains which criterion was met or not met. Future you will thank present you for this.</li>
+        </ul>
+
+        <h2>The Artifacts That Make It Work</h2>
+        <ul class="case-card-list">
+          <li>Single shared decision log across PM, design, and engineering — not three separate docs that get reconciled once a sprint. One source of truth for what was decided, by whom, and why.</li>
+          <li>Versioned prompt and system behavior history with owner accountability. When a model update changes behavior unexpectedly, you need to know which version introduced the change and who owned the decision.</li>
+          <li>Top risk list with a named mitigation owner going into each sprint. Risks without owners don't get mitigated.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

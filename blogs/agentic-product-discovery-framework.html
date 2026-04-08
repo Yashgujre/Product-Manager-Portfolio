@@ -46,22 +46,36 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Most teams jump from idea to prototype and only later realize the workflow should never have been automated. This framework prevents that waste by scoring each candidate workflow before engineering work starts.</p>
-            <h2>Discovery Scoring Model</h2>
-            <ul class="case-card-list">
-              <li><strong>Task Frequency:</strong> How often does the user perform this workflow per week?</li>
-              <li><strong>Failure Cost:</strong> What is the business impact when the task is done poorly or slowly?</li>
-              <li><strong>Automation Fit:</strong> Is the task mostly pattern-based, rules-heavy, or judgment-heavy?</li>
-              <li><strong>Data Readiness:</strong> Do you have reliable data sources and clear ground-truth labels?</li>
-              <li><strong>Risk Surface:</strong> What is the security, privacy, compliance, and brand exposure level?</li>
-            </ul>
-            <h2>Execution Steps</h2>
-            <ul class="case-card-list">
-              <li>Map top 20 user workflows and rank by pain, frequency, and monetization potential.</li>
-              <li>Select top 3 candidates and run two-week shadow pilots with humans still in control.</li>
-              <li>Track completion rate, correction rate, and time saved per attempt.</li>
-              <li>Promote only workflows that beat baseline quality and stay within risk thresholds.</li>
-            </ul>
+        <p>The fastest way to waste six months of engineering capacity is to automate the wrong workflow. It happens more often than teams admit: a promising AI feature gets prototyped, built, and shipped, and adoption flatlines — not because the model is bad, but because the workflow it targets was never the user's actual bottleneck. The pain was somewhere else. The automation solved a visible friction point while leaving the real constraint untouched.</p>
+
+        <p>Agentic product discovery is a structured method for answering one question before engineering starts: which workflows in this user's world are actually worth automating? The answer isn't always obvious. Users will tell you they want help with certain tasks. Observation usually reveals they spend most of their time struggling with something adjacent. The gap between what users ask for and where they actually lose time is where most AI roadmaps go wrong.</p>
+
+        <p class="editorial-emphasis">Build the right automation for the right workflow. The model is the easy part. Picking the workflow is the hard part.</p>
+
+        <h2>Why Most Teams Skip This Step</h2>
+        <p>Discovery for AI features gets skipped for the same reason discovery gets skipped generally: the team already has a hypothesis and the pressure to start building is high. The hypothesis feels validated because users said they wanted this in a survey or a research call. But "I want help with X" doesn't mean automating X is technically feasible, cost-effective, or the right place to intervene in the workflow. Those are separate questions that require a separate investigation.</p>
+
+        <p>The other common failure is assuming that a workflow is automatable because it looks repetitive. Repetitive is necessary but not sufficient. The workflow also needs to be pattern-based rather than judgment-heavy, data-ready rather than dependent on tribal knowledge, and low enough risk that an automated error doesn't create significant downstream harm. Scoring all five dimensions before prototyping is the difference between a feature that scales and one that gets quietly deprecated after six months.</p>
+
+        <h2>The Discovery Scoring Model</h2>
+        <p>Score each candidate workflow across five dimensions. The goal is not a precise number — it's forcing the team to surface the assumptions they're making about why this workflow is worth automating.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Task frequency:</strong> How often does the user perform this workflow? Daily tasks justify more investment than monthly ones. Frequency also affects how quickly you'll accumulate feedback data after launch.</li>
+          <li><strong>Failure cost:</strong> What happens when the task is done poorly or slowly? High failure cost means the feature needs a higher quality bar and likely a human-in-the-loop fallback.</li>
+          <li><strong>Automation fit:</strong> Is the task pattern-based, rules-heavy, or judgment-heavy? Pattern-based tasks (summarize this, classify this, extract this) are strong candidates. Judgment-heavy tasks (decide whether to approve this, assess whether this is appropriate) require more careful scoping and usually need explainability built in.</li>
+          <li><strong>Data readiness:</strong> Do you have reliable, labeled training or evaluation data? A workflow with no ground-truth data will produce a model you can't evaluate and a feature you can't improve.</li>
+          <li><strong>Risk surface:</strong> What is the security, privacy, compliance, and brand exposure if this automation produces incorrect output? Risk surface determines the minimum acceptable quality bar, not the aspirational one.</li>
+        </ul>
+
+        <h2>The Shadow Pilot Before You Build</h2>
+        <p>Before committing engineering resources to a full build, run a two-week shadow pilot on the top two or three candidates. Have a human perform the task using any available tool — including a manually-run model — while tracking completion rate, error rate, and time per task. This gives you a baseline the automation needs to beat, a sense of where edge cases live, and early signal on whether users actually want this assistance or prefer to do the task themselves.</p>
+
+        <ul class="case-card-list">
+          <li>Track completion rate, correction rate, and time saved per attempt — not aggregate — during the pilot.</li>
+          <li>Identify the specific failure modes that show up in the pilot before writing the model spec. Failure mode knowledge shapes architecture decisions more than capability ambitions do.</li>
+          <li>Promote only the workflows where the pilot shows the automation beats baseline quality and stays within the acceptable risk threshold. Cut the rest before the sprint plan, not after the build review.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

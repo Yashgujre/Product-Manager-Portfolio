@@ -46,20 +46,33 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Most AI launches fail at activation, not awareness. Users try the feature once, get mixed output quality, and never return. A structured activation program increases sustained use.</p>
-            <h2>Activation Playbook</h2>
-            <ul class="case-card-list">
-              <li>Use guided first-run experiences with user-specific examples.</li>
-              <li>Offer templated prompts tuned for high-success early workflows.</li>
-              <li>Trigger contextual coaching when confidence is low or edits are high.</li>
-              <li>Unlock advanced capabilities only after base usage competency is established.</li>
-            </ul>
-            <h2>KPI Stack</h2>
-            <ul class="case-card-list">
-              <li>Day-7 repeat use in target workflow.</li>
-              <li>First-week success ratio and correction burden.</li>
-              <li>Conversion from assisted trial to durable weekly usage.</li>
-            </ul>
+        <p>AI features have an activation problem that traditional software features don't. When a user tries a new standard feature and it doesn't work as expected, they usually know why — the UI was confusing, the feature didn't do what they thought it would. With AI features, the first-use experience is often a high-quality output followed by a medium-quality output followed by a confusing output, and the user has no model for why the quality varies. They conclude the feature is unpredictable, and unpredictable AI is worse than no AI.</p>
+
+        <p>Activation for AI features is the process of closing that gap: getting users from "I tried it once" to "I use this for real work." The path runs through a very specific sequence — a first use that succeeds, a second use that also succeeds, a recognition that the feature is reliably useful for a specific workflow, and then habitual use in that workflow. Breaking any link in that chain kills adoption. Most teams only invest in the first link.</p>
+
+        <p class="editorial-emphasis">Activation is not about getting the user to try the feature. It's about getting them to trust it for one specific task they care about.</p>
+
+        <h2>Why First-Run Experience Is Harder for AI</h2>
+        <p>For a traditional feature, first-run experience design is about discoverability and clarity: can the user find the feature and understand what it does? For an AI feature, it's about outcome predictability: can the user predict what good output looks like, and will their first attempt produce it?</p>
+
+        <p>The worst first-run experience for an AI feature is the blank canvas. "Ask me anything" is a failure state for activation. Users who don't know what good output looks like won't know how to prompt for it, won't recognize when they get it, and will produce inputs that the model handles poorly. The result is a mediocre first experience for the user most likely to become an advocate. Guided first-run experiences fix this by constraining the initial interaction to high-success workflows where the model is reliably good and the output is clearly valuable.</p>
+
+        <h2>The Activation Playbook</h2>
+        <ul class="case-card-list">
+          <li>Use guided first-run experiences with user-specific examples from their actual context. Abstract examples demonstrate the feature; concrete examples demonstrate the value. Users activate on value, not feature demonstration.</li>
+          <li>Offer templated prompts tuned for the highest-success early workflows. The goal is a successful first output, not feature comprehensiveness. Save the advanced use cases for week two.</li>
+          <li>Trigger contextual coaching when confidence cues are low or edit distance is high. A user who is heavily modifying outputs is struggling. Surface a tip or a better example before they give up.</li>
+          <li>Unlock advanced capabilities progressively, after the user has demonstrated competency with the base workflow. Overwhelming first-time users with full feature exposure reduces activation rates. Gate appropriately.</li>
+        </ul>
+
+        <h2>The KPI Stack for Activation</h2>
+        <p>Most teams measure activation as a binary — did the user use the feature at least once? This definition captures curiosity, not adoption. A better activation definition is: did the user complete a successful assisted task in a target workflow within the first seven days, and did they return at least once in the following week? That sequence is the minimum evidence of behavioral change.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Day-7 repeat use rate in the target workflow:</strong> The primary activation metric. If fewer than 30% of first-time users return within seven days, the first-run experience needs work before anything else.</li>
+          <li><strong>First-week success ratio:</strong> What percentage of first-week interactions produce an output the user accepts without heavy modification? Below 60% suggests the feature is being surfaced in contexts where it isn't ready.</li>
+          <li><strong>Trial-to-habit conversion rate:</strong> Percentage of activated users who are still using the feature as a regular part of their workflow at day 30. This is the lagging indicator that confirms activation actually produced habit, not just repeat curiosity.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

@@ -46,21 +46,32 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">AI can accelerate PRD writing, but only when it is constrained by decision history and product context. This framework turns prompt-driven drafts into reviewable product specs.</p>
-            <h2>Operating Loop</h2>
-            <ul class="case-card-list">
-              <li><strong>Step 1:</strong> Frame the problem and define non-goals before drafting requirements.</li>
-              <li><strong>Step 2:</strong> Generate candidate PRD sections with explicit assumptions.</li>
-              <li><strong>Step 3:</strong> Run a structured critique pass for ambiguity and missing edge cases.</li>
-              <li><strong>Step 4:</strong> Record all accepted and rejected decisions in a decision log.</li>
-              <li><strong>Step 5:</strong> Publish only after design, engineering, and compliance sign-off.</li>
-            </ul>
-            <h2>Success Metrics</h2>
-            <ul class="case-card-list">
-              <li>Cycle time from problem statement to approved PRD.</li>
-              <li>Number of requirement changes after engineering kickoff.</li>
-              <li>Defect leakage attributed to unclear requirements.</li>
-            </ul>
+        <p>AI-assisted PRD writing has a specific failure mode that nobody talks about: the spec looks complete but isn't. The AI fills in the sections that are easy to fill — background, goals, user stories for the common case — and leaves the hard sections vague. Acceptance criteria become aspirational. Edge cases are mentioned but not defined. Non-goals are absent. The PM reviews the draft, sees a well-structured document, and ships it to engineering. Engineering starts building against a spec full of unresolved ambiguity, and the rework cost shows up two sprints later.</p>
+
+        <p>The fix isn't to write PRDs without AI assistance. It's to use AI assistance at the right stages with the right constraints. AI is extremely good at generating structure, surfacing common failure modes in a given problem space, and drafting standard sections from a clear problem statement. It's not good at making product decisions, resolving tradeoffs, or knowing which edge cases matter for your specific context. The PM does the latter. The framework keeps them clearly separated.</p>
+
+        <p class="editorial-emphasis">The output of an AI-assisted PRD process is only as good as the product decisions the PM makes before, during, and after the draft.</p>
+
+        <h2>What Has to Happen Before the First Prompt</h2>
+        <p>The most important constraint in this framework is that AI doesn't touch a PRD until the PM has defined the problem, the non-goals, and the success criterion. This takes 20–30 minutes of focused work. It feels like extra overhead. It isn't — it's the overhead that would otherwise show up as requirement changes after engineering kickoff, which is five times more expensive.</p>
+
+        <p>Non-goals deserve special attention. Most PMs write goals. Few write non-goals. A PRD with no explicit non-goals is an open invitation for scope creep and for engineering to make assumptions about what's in scope. The AI draft will always add features unless the non-goals explicitly exclude them. Write the non-goals before you prompt.</p>
+
+        <h2>The Operating Loop</h2>
+        <ul class="case-card-list">
+          <li><strong>Step 1 — Frame before you prompt:</strong> Write the problem statement, non-goals, and success criterion by hand. One sentence each. This becomes the constraint set for the AI draft.</li>
+          <li><strong>Step 2 — Generate with explicit assumptions:</strong> Prompt for each PRD section individually, not the full document at once. Force the model to surface its assumptions in each section — you'll find the gaps faster this way.</li>
+          <li><strong>Step 3 — Structured critique pass:</strong> Run a second prompt asking the model to critique the draft for ambiguity, missing edge cases, and unstated dependencies. This catches gaps that read as complete but aren't.</li>
+          <li><strong>Step 4 — Decision log:</strong> Every change you make to the generated draft is a product decision. Record it with a one-line rationale. This log becomes the institutional memory for why the spec is the way it is — invaluable when requirements get challenged six months later.</li>
+          <li><strong>Step 5 — Cross-functional sign-off:</strong> Publish only after design, engineering, and compliance have reviewed and signed off. "Reviewed" means they read it and had no unresolved questions, not that they were CC'd on the email.</li>
+        </ul>
+
+        <h2>How to Measure Whether It's Working</h2>
+        <ul class="case-card-list">
+          <li>Cycle time from problem statement to approved PRD. Target: under five business days for a medium-complexity feature. Baseline this before adopting the framework so you can see the improvement.</li>
+          <li>Number of requirement changes after engineering kickoff. This is the best measure of spec clarity. A well-constrained PRD process should drive this number down meaningfully over two to three quarters.</li>
+          <li>Defect leakage attributed to unclear requirements in post-mortems. Track this by root cause, not just by defect count.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

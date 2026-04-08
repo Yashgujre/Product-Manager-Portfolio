@@ -46,20 +46,33 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Compliance reviews are often treated as end-stage blockers. Moving policy checks into roadmap planning reduces rework and shortens launch cycles in regulated industries.</p>
-            <h2>Roadmap Integration Model</h2>
-            <ul class="case-card-list">
-              <li>Tag each initiative by data sensitivity and regulatory exposure at intake.</li>
-              <li>Attach required controls and review gates directly to epics.</li>
-              <li>Plan compliance artifacts in sprint scope, not as post-build documentation.</li>
-              <li>Use go-live criteria that combine product KPIs and policy pass criteria.</li>
-            </ul>
-            <h2>Operational Benefits</h2>
-            <ul class="case-card-list">
-              <li>Fewer late-stage surprises and less launch churn.</li>
-              <li>Improved executive confidence in AI roadmap commitments.</li>
-              <li>Clear audit trails for decisions, controls, and model behavior changes.</li>
-            </ul>
+        <p>In most enterprise product teams, compliance works like this: the team builds the feature, the feature goes into QA, and then compliance reviews it three weeks before the target launch. Findings come back. The team spends two sprints remediating. The launch slips. Everyone is frustrated, and nobody changed their process for next time.</p>
+
+        <p>This pattern is expensive in any industry. In healthcare and financial services it's a recurring tax that compounds — the more AI you ship, the more surface area you create, and the later the reviews happen, the more the rework costs. The root cause isn't that compliance is slow. It's that compliance is being asked to evaluate finished work instead of being embedded into the design of that work from the start.</p>
+
+        <p class="editorial-emphasis">Compliance-by-design doesn't mean more process. It means earlier process — which actually reduces total time spent.</p>
+
+        <h2>The Intake Problem</h2>
+        <p>Most AI roadmap processes treat all initiatives the same at intake: write the opportunity, estimate the effort, prioritize it on the backlog. Regulatory exposure never gets tagged at this stage, so teams build features for months without knowing which ones will require a legal review, a data processing addendum, or a model risk management assessment. The work is done in good faith and then has to be undone or delayed when the review finds a gap.</p>
+
+        <p>The fix is mechanical: add a compliance exposure tag at intake, during the opportunity write-up, before any design work begins. Tag by data sensitivity (PII, PHI, financial), by model decision type (recommendation, classification, decision-support), and by distribution channel (internal tool, external API, consumer UI). This three-field tagging takes ten minutes per initiative and determines which review gates apply. That information should live in the epic, visible to engineering and design from day one.</p>
+
+        <h2>Sprint Scope vs. Post-Build Documentation</h2>
+        <p>Compliance artifacts — data flow diagrams, model cards, audit retention specs, consent surface documentation — are almost always written after the feature is built. This means they document what was built rather than constraining what gets built. The artifact and the product diverge from the moment engineering makes its first architectural decision.</p>
+
+        <p>When you move artifact creation into sprint scope, two things happen. Engineering makes design decisions with the constraints visible — not discovered retroactively. And the artifact accurately reflects what ships, which matters enormously when an auditor or regulator asks for documentation two years later.</p>
+
+        <ul class="case-card-list">
+          <li>Attach required controls and review gates directly to epics at kickoff, not in the pre-launch checklist.</li>
+          <li>Plan data flow documentation as a story in the sprint that builds the data pipeline — not as a task after the sprint closes.</li>
+          <li>Use go-live criteria that combine product KPIs and policy pass criteria. If the feature can't meet both, it doesn't ship.</li>
+          <li>Run a lightweight compliance review at the midpoint of each major feature, not just at the end. Early feedback is cheaper to act on.</li>
+        </ul>
+
+        <h2>What This Changes for AI Specifically</h2>
+        <p>AI products have a compliance surface area that traditional software doesn't: the model itself changes over time. A feature that passes compliance review in March may behave differently in September after a model update. This is the gap that compliance-by-design closes — not just review at launch, but a change-management process for model updates that treats version changes like code releases, with defined review triggers and rollback criteria.</p>
+
+        <p>In healthcare, where I've applied this most directly, the pattern that works is treating HIPAA audit requirements as data model constraints during schema design — not as reporting requirements added after the database is built. When retention schedules, access logs, and consent records are designed in, the audit trail is a natural product of the system. When they're added later, they're always incomplete.</p>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

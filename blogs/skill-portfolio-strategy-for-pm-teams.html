@@ -46,20 +46,30 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Teams often build many prompts but few reliable workflows. A skill portfolio gives PM, design, and engineering a shared operating layer that improves consistency and output quality.</p>
-            <h2>Portfolio Structure</h2>
-            <ul class="case-card-list">
-              <li><strong>Discovery Skills:</strong> Interview synthesis, competitor teardown, opportunity tree drafting.</li>
-              <li><strong>Definition Skills:</strong> PRD drafting, acceptance criteria drafting, risk logging.</li>
-              <li><strong>Delivery Skills:</strong> sprint planning support, release notes, go-to-market briefs.</li>
-              <li><strong>Learning Skills:</strong> experiment readouts, KPI diagnosis, postmortem generation.</li>
-            </ul>
-            <h2>Governance and Quality</h2>
-            <ul class="case-card-list">
-              <li>Version skills with owner, update date, and known failure modes.</li>
-              <li>Attach examples of good input format and bad input format for each skill.</li>
-              <li>Measure skill adoption, reuse, and downstream document quality over time.</li>
-            </ul>
+        <p>Most PM teams adopt AI tools the same way: individually. One PM figures out a good prompt for competitive analysis. Another builds a useful template for user story drafting. A third has a reliable workflow for synthesizing interview notes. None of these get shared. The team ends up with five or ten individual prompt collections that produce inconsistent outputs, can't be handed off to new team members, and disappear when the person who built them leaves.</p>
+
+        <p>A skill portfolio is the organizational alternative. Instead of each PM maintaining their own prompt collection, the team maintains a shared library of standardized, versioned, documented skills — reusable AI workflows that produce predictable outputs for common PM tasks. The difference in practice is significant: onboarding a new PM takes hours instead of weeks because the operating layer exists. Output quality is consistent across the team because everyone is working from the same tools. And when a skill stops working after a model update, one person fixes it and everyone benefits.</p>
+
+        <p class="editorial-emphasis">Individual prompts are tribal knowledge. A skill portfolio is institutional capability.</p>
+
+        <h2>The Four Categories Every PM Team Needs</h2>
+        <p>Structure the portfolio around the product lifecycle, not around tool type or PM function. This keeps the library navigable — a PM working on discovery can find all the discovery skills in one place, regardless of which tools they run on.</p>
+
+        <ul class="case-card-list">
+          <li><strong>Discovery skills:</strong> Interview synthesis, competitor teardown, opportunity tree drafting, jobs-to-be-done extraction from research notes. These are the most-used skills on most teams and the easiest to standardize.</li>
+          <li><strong>Definition skills:</strong> PRD section drafting, acceptance criteria generation, risk log creation, edge case identification. High leverage because the output feeds engineering directly — quality variation here has expensive downstream effects.</li>
+          <li><strong>Delivery skills:</strong> Sprint planning support, release notes drafting, go-to-market brief generation, stakeholder update formatting. Lower stakes than definition skills but high frequency.</li>
+          <li><strong>Learning skills:</strong> Experiment readout synthesis, KPI diagnosis, postmortem generation, retrospective facilitation. Often skipped because the team moves on to the next sprint — a skill that runs automatically at cycle close makes learning more likely to happen.</li>
+        </ul>
+
+        <h2>Governance That Keeps the Portfolio Useful</h2>
+        <p>A skill portfolio without governance degrades quickly. Model updates change behavior. Context that was implicit becomes invalid. A skill that worked six months ago silently produces worse outputs and nobody notices until someone tries to audit the team's PRD quality.</p>
+
+        <ul class="case-card-list">
+          <li>Version every skill with an owner, update date, and documented known failure modes. "Known failure modes" is the most important field — it tells the user when not to trust the output and prevents the skill from being used in contexts where it breaks down.</li>
+          <li>Attach annotated examples of good and bad input format for each skill. Skills fail most often on malformed input, not bad prompts. Good examples are the fastest way to prevent this.</li>
+          <li>Measure adoption, reuse rate, and downstream document quality at a quarterly review. Skills that aren't being used are either solving the wrong problems or aren't good enough to trust. Skills that are being used but producing low-quality output need to be fixed or retired before they erode trust in the portfolio.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

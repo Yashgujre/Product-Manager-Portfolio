@@ -46,20 +46,35 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Classic RICE misses core AI realities. A feature can have high reach and impact but still fail due to hallucination cost, low reliability, or governance drag. RICE+ adds those factors directly into prioritization.</p>
-            <h2>RICE+ Formula</h2>
-            <ul class="case-card-list">
-              <li><strong>Base:</strong> Reach x Impact x Confidence / Effort.</li>
-              <li><strong>Reliability Multiplier:</strong> Penalize low pass-rate outputs.</li>
-              <li><strong>Governance Multiplier:</strong> Penalize high regulatory review burden.</li>
-              <li><strong>Ops Cost Multiplier:</strong> Penalize high inference, monitoring, and support load.</li>
-            </ul>
-            <h2>How to Use It</h2>
-            <ul class="case-card-list">
-              <li>Force each proposal to include expected offline eval score and human override rate.</li>
-              <li>Adjust confidence based on observed drift risk and dataset stability.</li>
-              <li>Re-rank quarterly so model and cost improvements can unlock previously rejected bets.</li>
-            </ul>
+        <p>RICE works well for traditional software features. You estimate Reach — how many users are affected. Impact — how much it moves the needle per user. Confidence — how certain you are about those estimates. Effort — how long it takes to build. Divide, rank, ship in order. Clean, defensible, fast to run.</p>
+
+        <p>The problem is that RICE was designed for features that either work or don't. AI features have a third state: they work unreliably, and the unreliability has business consequences that don't show up anywhere in the original formula. A feature with high reach and strong impact scores can still destroy user trust if the output quality is inconsistent, trigger legal review if it touches regulated decisions, or blow up your infrastructure cost if inference runs on every page load. Classic RICE treats all of these as zero.</p>
+
+        <p class="editorial-emphasis">Prioritization frameworks that ignore failure modes will prioritize features that fail in exactly those modes.</p>
+
+        <h2>The Three Gaps RICE Misses</h2>
+        <p>The first gap is reliability. An AI feature that produces correct output 70% of the time isn't 70% as valuable as one that works every time — it's often negative value, because the 30% failure rate creates correction burden, erodes trust, and generates support load. RICE treats confidence as a proxy for this, but confidence in RICE means "how sure are we about the impact estimate" — not "how often will this feature produce acceptable output." Those are different questions.</p>
+
+        <p>The second gap is governance burden. In regulated industries, some features require a model risk management review, a legal sign-off, or a compliance audit before launch. That review cost belongs in the prioritization denominator, not as a line item on the project plan that gets discovered two weeks before the release date.</p>
+
+        <p>The third gap is operational cost. Inference cost, monitoring overhead, human review queues for low-confidence outputs — these are real ongoing costs that traditional software features don't carry. A feature that requires a human-in-the-loop review for every output that falls below a confidence threshold has a very different total cost profile than its initial estimate suggests.</p>
+
+        <h2>The RICE+ Formula</h2>
+        <ul class="case-card-list">
+          <li><strong>Base score:</strong> (Reach × Impact × Confidence) / Effort — same as classic RICE.</li>
+          <li><strong>Reliability multiplier:</strong> Scale from 0.5 to 1.0 based on expected offline eval pass rate. A feature with a projected 60% quality pass rate gets 0.6. Don't ship what you wouldn't defend in a post-mortem.</li>
+          <li><strong>Governance multiplier:</strong> Scale from 0.5 to 1.0 based on regulatory review burden. Initiatives requiring full model risk review get 0.5. Internal tooling with no regulated data gets 1.0.</li>
+          <li><strong>Ops cost multiplier:</strong> Scale from 0.5 to 1.0 based on ongoing inference, monitoring, and support load relative to expected value. High-cost, low-margin features get penalized even if their initial build effort is low.</li>
+        </ul>
+
+        <h2>How to Run It in Practice</h2>
+        <p>The most important change RICE+ forces is upstream: every AI feature proposal now has to include an expected reliability score and an estimated governance tier before it gets scored. This creates a useful forcing function — teams that haven't thought about where the model will fail, or whether legal review is required, have to answer those questions before the feature enters the prioritization queue, not after it's been built.</p>
+
+        <ul class="case-card-list">
+          <li>Require each proposal to include an expected offline eval score and a projected human override rate before scoring begins.</li>
+          <li>Adjust confidence down for features that depend on data with known drift risk or unstable labeling.</li>
+          <li>Re-rank the backlog quarterly — model improvements and cost reductions change the multipliers, so features that scored poorly six months ago may now deserve a higher position.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

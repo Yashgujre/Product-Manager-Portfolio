@@ -46,19 +46,32 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">Not every workflow should be fully automated. A strong escalation framework defines where human review is mandatory, optional, or bypassed based on risk.</p>
-            <h2>Escalation Tiers</h2>
-            <ul class="case-card-list">
-              <li><strong>Tier 1:</strong> Low-risk tasks with auto-approval and periodic audits.</li>
-              <li><strong>Tier 2:</strong> Medium-risk tasks requiring spot checks and exception handling.</li>
-              <li><strong>Tier 3:</strong> High-risk tasks requiring explicit human approval before action.</li>
-            </ul>
-            <h2>Policy Design</h2>
-            <ul class="case-card-list">
-              <li>Define thresholds using monetary impact, legal exposure, and customer harm.</li>
-              <li>Log every escalation event with reason code and final outcome.</li>
-              <li>Review threshold settings monthly to reduce unnecessary friction.</li>
-            </ul>
+        <p>The default position in most AI product discussions is that human review is overhead — something you need at the beginning, before you trust the model, and something you phase out as confidence increases. This framing is wrong in two ways. First, some decisions should always have a human in the loop, regardless of model confidence, because the consequences of a wrong automated decision exceed what any efficiency gain can justify. Second, removing human review wholesale doesn't reduce risk — it just removes the circuit breaker.</p>
+
+        <p>A well-designed escalation framework doesn't treat human review as a cost to minimize. It treats it as a precision instrument: deployed where it changes outcomes, removed where it doesn't. The goal is to calibrate human review to actual risk, not to have as little or as much of it as possible.</p>
+
+        <p class="editorial-emphasis">The question isn't whether to have humans in the loop. It's which decisions require them, and at what point in the workflow.</p>
+
+        <h2>The Risk Dimensions That Drive Tier Assignment</h2>
+        <p>Three dimensions determine where a workflow falls in the escalation tier model. Monetary impact: what is the financial consequence of a wrong automated decision? Legal exposure: does an error create liability, regulatory violation, or audit risk? Customer harm: can the wrong output cause physical, financial, or reputational harm to the user?</p>
+
+        <p>In healthcare, this framework produces clear results. A medication reminder workflow is Tier 1 — low stakes, easily corrected, no legal exposure. A care pathway recommendation that affects treatment decisions is Tier 3 — high stakes, regulatory exposure, patient harm risk. The model confidence doesn't change the tier; the consequence profile does. A highly confident model making a Tier 3 decision still requires human sign-off.</p>
+
+        <h2>Escalation Tiers</h2>
+        <ul class="case-card-list">
+          <li><strong>Tier 1 — auto with audit:</strong> Low-risk tasks where errors are low-consequence and easily corrected. Auto-approve with periodic sampling audits. Escalation happens only on explicit user flag or anomaly detection.</li>
+          <li><strong>Tier 2 — spot check:</strong> Medium-risk tasks where errors have moderate consequences. Approve automatically but route a random sample and all statistical outliers to human review. Review within a defined SLA.</li>
+          <li><strong>Tier 3 — explicit approval:</strong> High-risk decisions where errors have significant financial, legal, or patient harm implications. No action taken until a human approves. The model generates a recommendation; the human makes the decision.</li>
+        </ul>
+
+        <h2>Policy Design That Actually Gets Used</h2>
+        <p>Escalation frameworks fail in practice when the tier thresholds are set too conservatively and the review queue becomes a bottleneck. When everything escalates, nothing actually gets reviewed — reviewers develop queue fatigue and stop reading carefully. The framework becomes theater. The fix is aggressive threshold calibration: start strict, measure the escalation rate, and move tasks down tiers as you accumulate evidence of acceptable automated quality.</p>
+
+        <ul class="case-card-list">
+          <li>Define escalation thresholds using concrete measures: dollar amounts, error rates, specific regulatory requirements. Avoid subjective language like "high risk" with no anchor.</li>
+          <li>Log every escalation event with a reason code, the model output, the human decision, and whether the human agreed or overrode. This log is your training data for threshold calibration.</li>
+          <li>Review threshold settings monthly for the first six months, then quarterly. Escalation rates above 30% for any tier suggest the threshold is miscalibrated — either the task belongs in a higher tier or the model isn't ready for that workflow.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

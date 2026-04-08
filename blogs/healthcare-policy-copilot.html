@@ -41,7 +41,16 @@
       </div>
 
       <div class="editorial-body">
-        <p class="case-copy">Healthcare policy documents are often long, ambiguous, and hard to execute under time pressure. This side build was designed around a single outcome: convert policy text into structured, execution-ready action plans with explicit uncertainty handling.</p>
+        <p>The problem I was trying to solve is one I watched play out repeatedly in healthcare operations: a new policy arrives — a CMS update, a payer change, a state regulation — and the team responsible for implementing it has to manually read through 30 pages of dense regulatory language, decide what it means for their workflows, figure out who owns each change, and communicate that to the people who need to act. This takes days. The policy is usually time-sensitive. The people reading it are not attorneys. And the downstream cost of misinterpreting a compliance requirement in healthcare can be significant.</p>
+
+        <p>The AI tools available for this use case were mostly summarizers. Summarization helps with comprehension but doesn't solve the operational problem. A compliance team doesn't need a shorter version of the policy — they need an ordered list of actions, an owner for each action, a timeline, and explicit flags for anything that conflicts with current practice or requires information they don't have yet. That gap between "what AI can easily do" and "what the actual job requires" is what this build addresses.</p>
+
+        <p class="editorial-emphasis">The goal wasn't a smarter summarizer. It was a system that produces execution-ready output an operator can hand to their team the same day the policy arrives.</p>
+
+        <h2>The Hardest Product Decision</h2>
+        <p>The single most important decision in building this wasn't the prompt design or the architecture — it was how to handle model uncertainty. Healthcare is a domain where a wrong answer that looks confident is worse than an honest "I don't have enough information to answer this." The product had to surface uncertainty explicitly, not suppress it in the name of a cleaner output.</p>
+
+        <p>This shaped three specific design choices. First, confidence scoring is policy-driven, not model-reported. The model's own confidence estimate is unreliable — it will confidently hallucinate details it doesn't have. Instead, the guardrails layer applies deterministic caps based on detected risk signals: conflicting requirements, missing critical fields, low information density in the input. Second, missing-information surfacing is a first-class output field, not a footnote. If the policy references a control that requires contextual organizational data the input didn't include, the system flags it explicitly rather than filling in the gap with an assumption. Third, a caution prefix is prepended to any output where the confidence score is below threshold — so the user always knows when to apply additional scrutiny before acting.</p>
 
         <div class="editorial-cta">
           <h3>Live App</h3>

@@ -46,19 +46,30 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">A/B tests alone are too noisy for fast-moving LLM iterations. Start with offline evals to filter bad options, then run online experiments only on strong candidates.</p>
-            <h2>Two-Stage Validation</h2>
-            <ul class="case-card-list">
-              <li><strong>Offline Stage:</strong> Evaluate groundedness, instruction following, and policy compliance.</li>
-              <li><strong>Online Stage:</strong> Measure task completion, user trust, and measurable business impact.</li>
-              <li><strong>Guardrail Stage:</strong> Monitor toxicity, data leakage, and unsafe action suggestions continuously.</li>
-            </ul>
-            <h2>Practical Rules</h2>
-            <ul class="case-card-list">
-              <li>Do not launch variants that fail offline safety and quality thresholds.</li>
-              <li>Use fixed benchmark sets so weekly changes remain comparable.</li>
-              <li>Treat regressions in critical flows as launch blockers, not minor issues.</li>
-            </ul>
+        <p>Standard A/B testing was built for features with binary outcomes: the user either converts or doesn't, clicks or doesn't, completes the flow or drops off. LLM features don't work that way. The same prompt can produce vastly different outputs on consecutive runs. Model updates introduce variance that isn't captured in a clean treatment/control split. And the metric that matters — did the user trust the output enough to act on it — is hard to read from a click event.</p>
+
+        <p>The result is that A/B tests on LLM features produce noisy, slow-to-converge results that the team interprets charitably. The variant that wins was probably better on average, but average output quality for an LLM feature can mask catastrophic failures on a specific input class that happens to be rare in the experiment window and common in production. You ship the winner and three weeks later you're investigating an incident.</p>
+
+        <p class="editorial-emphasis">Don't run an online experiment on a variant you haven't cleared offline first. The experiment will tell you which bad option performed slightly better.</p>
+
+        <h2>Why Offline Evals Come First</h2>
+        <p>Offline evaluation answers a different question than an A/B test. The A/B test asks: which variant do users prefer? The offline eval asks: does this variant meet the minimum quality bar to be a legitimate candidate? These questions happen in sequence, not in parallel. A variant that fails offline quality checks doesn't get an online experiment. This single rule eliminates a large class of incidents where a model change that looked fine in aggregate had specific failure modes that only appeared at scale.</p>
+
+        <p>The offline stage should evaluate the things that are hard to measure from user behavior: groundedness (does the output contain fabricated facts?), instruction following (does it do what it was asked to do?), policy compliance (does it stay within the rules the product has committed to?). These are binary checks, not continuous scores. Pass or fail. If the variant fails any of them, it doesn't advance.</p>
+
+        <h2>Two-Stage Validation</h2>
+        <ul class="case-card-list">
+          <li><strong>Offline stage:</strong> Evaluate groundedness, instruction following, and policy compliance against a fixed benchmark set. Run this before any online exposure. A variant that fails here doesn't get an experiment.</li>
+          <li><strong>Online stage:</strong> Measure task completion rate, correction burden, and business impact for variants that passed offline screening. Your sample size requirements are smaller because you've already eliminated the bad options.</li>
+          <li><strong>Guardrail stage:</strong> Run continuous monitoring on toxicity, data leakage, and unsafe action suggestions in production. Not just at launch — on every model update, every prompt change, every week.</li>
+        </ul>
+
+        <h2>Practical Rules for Running This</h2>
+        <ul class="case-card-list">
+          <li>Never launch a variant that failed any offline safety or quality threshold. The pressure to ship will be high. The cost of an incident will be higher.</li>
+          <li>Use fixed benchmark sets so results are comparable week over week. A changing test set makes it impossible to tell whether the model improved or the evaluation got easier.</li>
+          <li>Treat regressions on critical flows as launch blockers regardless of aggregate performance. A variant that is 5% better overall but 40% worse on your highest-risk input class is not an acceptable variant.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>

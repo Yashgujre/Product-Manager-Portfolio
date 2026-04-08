@@ -46,8 +46,13 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">AI evals should not be an isolated research exercise. PM teams need a lightweight, repeatable operating system that turns quality measurement into product decisions. This article outlines a practical setup that works for small teams and scales to enterprise governance.</p>
-            <h2>Step 1: Define Product-Critical Behaviors</h2>
+        <p>Most teams find out their AI feature degraded the same way they find out about any quality problem: a user complaint, a Slack message from CS, a dip in retention that takes three weeks to diagnose. By then the damage is done. The model update that caused it shipped a month ago and the team has since shipped two more changes on top of it.</p>
+
+        <p>The root cause isn't the model update. It's that there was no signal between "model shipped" and "users noticed." Evals are how you create that signal. Not as a research exercise, but as a repeatable decision system that runs on a cadence and produces a clear output: this change ships, or it doesn't.</p>
+
+        <p class="editorial-emphasis">An eval that doesn't produce a decision isn't an eval. It's documentation.</p>
+
+        <h2>Step 1: Define Product-Critical Behaviors</h2>
             <ul class="case-card-list">
               <li>List the top 5 user jobs where AI quality directly impacts trust and business value.</li>
               <li>Translate each job into measurable behaviors such as grounded response, action correctness, or format adherence.</li>

@@ -46,20 +46,31 @@
       </figure>
 
       <div class="editorial-body">
-        <p class="case-copy">AI UX quality is less about visual polish and more about predictable recovery. Users forgive imperfect outputs if correction and verification are fast and explicit.</p>
-            <h2>Reliability Patterns</h2>
-            <ul class="case-card-list">
-              <li>Show source context and confidence cues where decisions matter.</li>
-              <li>Make outputs editable by default with clear provenance.</li>
-              <li>Provide one-click actions for retry, refine, and escalate to human support.</li>
-              <li>Design empty states and failure states as first-class product experiences.</li>
-            </ul>
-            <h2>Design Review Checklist</h2>
-            <ul class="case-card-list">
-              <li>Can users verify critical claims in under 10 seconds?</li>
-              <li>Can users recover from a wrong answer without restarting the workflow?</li>
-              <li>Are limitations explained before the user hits failure?</li>
-            </ul>
+        <p>Most AI UX reviews focus on the success state. The output looks polished, the layout is clean, the typography is right. What they miss is the failure state — and with AI products, the failure state is what determines whether users keep coming back.</p>
+
+        <p>Users of AI features operate with a trust budget. They start cautiously, they try the feature a few times, and they make a judgment call: is this reliable enough to use for work I actually care about? That judgment is made almost entirely based on how the product behaves when the output is wrong or uncertain — not on how good it looks when everything goes right. A product that recovers gracefully from a wrong answer gets a second chance. One that leaves the user stranded, confused about whether the output is correct and unsure how to fix it, loses the trust budget permanently.</p>
+
+        <p class="editorial-emphasis">Users forgive wrong answers. They don't forgive being stuck with them.</p>
+
+        <h2>The Three Reliability Patterns That Matter Most</h2>
+        <p>Reliability in AI UX isn't a single pattern — it's three distinct capabilities that work together. Verification lets users check claims before acting on them. Correction lets users fix wrong outputs without restarting the workflow. Escalation lets users hand off to a human when the AI isn't good enough for the task at hand. A product that handles all three has a high trust ceiling. One that handles none will plateau at trial users.</p>
+
+        <h2>Reliability Patterns</h2>
+        <ul class="case-card-list">
+          <li>Show source context and confidence cues at the point of decision — not buried in a tooltip or accessible only via "learn more." If the output cites a document, the citation should be inline and one click from the source.</li>
+          <li>Make outputs editable by default with clear provenance. When a user modifies an AI output, the system should treat the modification as a signal, not an anomaly. High correction rates on specific output types are your most valuable product data.</li>
+          <li>Provide one-click retry, refine, and escalation actions. The user who wants to get a better answer and the user who wants to hand off to a human have different needs — design both paths explicitly.</li>
+          <li>Design failure states and empty states as first-class product experiences. "Something went wrong" is not a failure state. The user needs to know what failed, whether to retry, and what to do if retry fails.</li>
+        </ul>
+
+        <h2>The Design Review Questions</h2>
+        <p>Before any AI feature ships, run through these three questions for every output state. They are deceptively simple and consistently expose gaps that detailed spec reviews miss.</p>
+
+        <ul class="case-card-list">
+          <li>Can a user verify a critical claim in under ten seconds? If verification requires navigating away from the current screen, most users won't do it. Inline verification is a product requirement, not a nice-to-have.</li>
+          <li>Can a user recover from a wrong answer without restarting the workflow? If the only recovery path is to start over, you've designed a product that punishes users for trusting it.</li>
+          <li>Are the limitations of the AI explained before the user hits them? A user who encounters a limitation they weren't told about feels deceived. A user who was told in advance feels informed. The experience is identical; the perception is completely different.</li>
+        </ul>
 
         <div class="editorial-cta">
           <h3>Continue the framework series</h3>
