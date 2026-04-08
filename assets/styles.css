@@ -306,6 +306,15 @@ p {
   counter-increment: principle;
 }
 
+.philosophy-example {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--body);
+  font-style: italic;
+  border-top: 1px solid var(--divider);
+  padding-top: 10px;
+}
+
 .philosophy-card::before {
   content: counter(principle, decimal-leading-zero);
   display: block;
@@ -1192,6 +1201,57 @@ p {
 }
 
 /* text-link: animated underline handled via Phase 4 block below */
+
+/* ── Company context cards ── */
+.company-context-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  padding: 24px 0;
+}
+
+.company-context-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.company-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 0;
+}
+
+.company-role {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.company-note {
+  font-size: 13px;
+  color: var(--body);
+  margin: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .company-context-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .company-context-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 .process-row {
   display: grid;

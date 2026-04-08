@@ -193,6 +193,11 @@
                 <p>API-first orchestration + data modeling + KPI instrumentation with HIPAA-aligned audit retention controls.</p>
               </section>
 
+              <section class="xp-tech">
+                <h3>The decision that drove this</h3>
+                <p>The initial proposal was a dashboard layer on top of the existing email workflow. I challenged that framing: dashboards showing a broken process still leave the process broken. I pushed for replacing the coordination model entirely with an API-first event queue — where every referral action emits a structured event that the platform routes, tracks, and escalates. That architectural shift is what enabled the 74% acknowledgment improvement and the ability to add new partner workflows without rebuilding the integration each time.</p>
+              </section>
+
               <section class="xp-related">
                 <p>Related products:</p>
                 <a href="#xp-grants">Grant Management Platform</a>
@@ -279,6 +284,11 @@
               <section class="xp-tech">
                 <h3>Technical Achievement</h3>
                 <p>Control-evidence architecture with compliance dashboards, renewal forecasting, and policy-linked workflow automation.</p>
+              </section>
+
+              <section class="xp-tech">
+                <h3>The decision that drove this</h3>
+                <p>The compliance team's initial ask was periodic review cycles — a quarterly audit sweep that would catch exceptions after the fact. I argued that retrospective reviews don't reduce risk; they just report it. I pushed for a continuous control-evidence model where every grant action generates a compliance artifact in real time. That design decision is why the platform can demonstrate 100% HIPAA control mapping on demand rather than assembling audit evidence in the week before a review.</p>
               </section>
 
               <section class="xp-related">
@@ -369,6 +379,11 @@
                 <p>Low-latency decision APIs, risk model governance, and performance instrumentation across high-volume B2B credit traffic.</p>
               </section>
 
+              <section class="xp-tech">
+                <h3>The decision that drove this</h3>
+                <p>The original scope was a rule-based approval engine with a 24-hour SLA. I made the case that checkout abandonment was the real cost driver — every hour of approval lag was a lost transaction. I reframed the scope around sub-second decisioning as a competitive requirement, not a nice-to-have, and pushed for model-scored approvals over static rules. That redirection changed the architecture, the GTM story, and ultimately produced a platform that could manage $2.5B+ in credit exposure with 99.98% uptime. The $1.6M Year 1 revenue impact came from conversion lift, not cost savings.</p>
+              </section>
+
               <section class="xp-related">
                 <p>Related products:</p>
                 <a href="#xp-supply">Supply Chain Module</a>
@@ -455,6 +470,11 @@
               <section class="xp-tech">
                 <h3>Technical Achievement</h3>
                 <p>Event-driven reconciliation architecture aligned with ERP systems and finance controls for reliable operational analytics.</p>
+              </section>
+
+              <section class="xp-tech">
+                <h3>The decision that drove this</h3>
+                <p>Post-ERP migration, the default plan was to rebuild reconciliation reports manually in the new system — an IT maintenance task, not a product investment. I identified that 40 hours per week of manual effort was a fixed tax on every finance cycle that would never self-correct through incremental improvement. I reframed it as a product problem: build a dedicated reconciliation layer with an event-driven architecture that processes supplier data automatically and generates exception reports without human assembly. That reframe turned a $500K+ annual compliance risk into a $3.5M annual benefit and a 292% ROI outcome.</p>
               </section>
 
               <section class="xp-related">
