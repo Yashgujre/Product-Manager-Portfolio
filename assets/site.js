@@ -1,6 +1,7 @@
 const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
 document.documentElement.setAttribute('data-theme', 'dark');
+document.documentElement.classList.add('js-ready');
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -29,6 +30,12 @@ if (navToggle && nav) {
 }
 
 const reveals = document.querySelectorAll('.reveal');
+const showReveal = (node) => {
+  const delay = Number(node.getAttribute('data-delay') || 0);
+  node.style.transitionDelay = `${delay}ms`;
+  node.classList.add('visible');
+};
+
 if (prefersReducedMotion) {
   reveals.forEach((node) => node.classList.add('visible'));
 } else if ('IntersectionObserver' in window) {
@@ -36,19 +43,32 @@ if (prefersReducedMotion) {
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const delay = Number(entry.target.getAttribute('data-delay') || 0);
-        entry.target.style.transitionDelay = `${delay}ms`;
-        entry.target.classList.add('visible');
+        showReveal(entry.target);
         revealObserver.unobserve(entry.target);
       });
     },
     {
-      threshold: 0.01,
-      rootMargin: '0px 0px -8% 0px',
+      threshold: 0,
+      rootMargin: '0px 0px -40px 0px',
     }
   );
 
-  reveals.forEach((node) => revealObserver.observe(node));
+  reveals.forEach((node) => {
+    const rect = node.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (inView) {
+      showReveal(node);
+      return;
+    }
+    revealObserver.observe(node);
+  });
+
+  // Safety net: never leave content invisible if the observer stalls
+  window.setTimeout(() => {
+    reveals.forEach((node) => {
+      if (!node.classList.contains('visible')) showReveal(node);
+    });
+  }, 1200);
 } else {
   reveals.forEach((node) => node.classList.add('visible'));
 }
@@ -56,14 +76,15 @@ if (prefersReducedMotion) {
 const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));
 const pathname = window.location.pathname.replace(/\/+$/, '');
 const segments = pathname.split('/').filter(Boolean);
-const currentFile = segments[segments.length - 1] || 'index.html';
+let currentFile = segments[segments.length - 1] || 'index.html';
+if (!currentFile.includes('.')) currentFile = 'index.html';
 
 navLinks.forEach((link) => {
   const target = link.getAttribute('href') || '';
   const targetPath = target.split('/').pop()?.split('#')[0]?.split('?')[0] || '';
   const isActive =
     targetPath === currentFile ||
-    (currentFile === '' && targetPath === 'index.html');
+    (currentFile === 'index.html' && (targetPath === 'index.html' || targetPath === ''));
   link.classList.toggle('active', Boolean(isActive));
 });
 

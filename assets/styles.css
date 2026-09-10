@@ -1465,9 +1465,14 @@ a.company-context-card:hover .company-name {
 }
 
 .reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js-ready .reveal:not(.visible) {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
@@ -1563,6 +1568,11 @@ a.company-context-card:hover .company-name {
 /* ── Hero word reveal ── */
 .hero-word {
   display: inline-block;
+  opacity: 1;
+  transform: none;
+}
+
+html.js-ready .hero-word {
   opacity: 0;
   transform: translateY(6px);
   animation: word-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -3079,6 +3089,7 @@ a.company-context-card:hover .company-name {
     scroll-behavior: auto;
   }
 
+  html.js-ready .reveal:not(.visible),
   .reveal {
     opacity: 1;
     transform: none;
@@ -3092,6 +3103,7 @@ a.company-context-card:hover .company-name {
     animation: none !important;
   }
 
+  html.js-ready .hero-word,
   .hero-word {
     opacity: 1 !important;
     transform: none !important;
