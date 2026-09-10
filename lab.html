@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css?v=20260910b" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260910c" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,9 +29,45 @@
     <section class="section shell reveal lab-section" data-delay="0">
       <header class="case-showcase-header">
         <h1>Lab</h1>
-        <p>Independent builds and experiments will live here.</p>
+        <p>Working PM tools, not mockups. Use them in a minute, export the artifact, steal the pattern.</p>
       </header>
-      <p class="lead">Nothing published yet.</p>
+
+      <div class="lab-grid">
+        <article class="lab-card lab-card-featured">
+          <p class="lab-kicker">Demo 01</p>
+          <h2>Decision Log</h2>
+          <p>Teams lose the “why” behind a product call. This log forces a complete record: options, tradeoffs, the choice, and a metric to check later.</p>
+          <p class="case-section-label">PM skills shown</p>
+          <ul class="lab-skills">
+            <li>Decision quality</li>
+            <li>Tradeoff articulation</li>
+            <li>Metric-backed validation</li>
+          </ul>
+          <div class="lab-card-actions">
+            <a class="btn btn-primary" href="lab/decision-log/">Open demo</a>
+          </div>
+        </article>
+
+        <article class="lab-card lab-card-soon" aria-label="Upcoming lab demo">
+          <p class="lab-kicker">Next up</p>
+          <h2>Prioritization Arena</h2>
+          <p>A scoring workspace for ranking bets under constraint — reach, impact, confidence, and effort on the same page.</p>
+          <p class="case-section-label">PM skills shown</p>
+          <ul class="lab-skills">
+            <li>Forced ranking</li>
+            <li>Constraint framing</li>
+            <li>Stakeholder alignment</li>
+          </ul>
+          <div class="lab-card-actions">
+            <span class="lab-soon-note">Not published yet</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="lab-blurb">
+        <h2>The decision that drove this Lab</h2>
+        <p>I shipped a Decision Log first because hiring managers do not need another animated prototype. They need to see judgment: how a tradeoff was framed, what was rejected, and how we would know if the call was right. Flash comes later. The artifact that actually travels across a team is the written decision.</p>
+      </aside>
     </section>
   </main>
 
@@ -45,6 +81,6 @@
     </nav>
   </footer>
 
-  <script src="assets/site.js?v=20260910b"></script>
+  <script src="assets/site.js?v=20260910c"></script>
 </body>
 </html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo-prism.svg" />
+  <title>Decision Log | Yash Gujre Lab</title>
+  <meta name="description" content="Record a product decision: options, tradeoffs, the choice, and a metric to validate later. Data stays in your browser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20260910c" />
+  <link rel="stylesheet" href="decision-log.css?v=20260910c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../../index.html">Overview</a>
+        <a href="../../experience.html">Experience</a>
+        <a href="../../lab.html">Lab</a>
+        <a href="../../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="dl-page">
+    <section class="section shell dl-hero">
+      <p class="eyebrow">Lab · Demo 01</p>
+      <div class="dl-hero-row">
+        <div>
+          <h1>Decision Log</h1>
+          <p class="lead">Write the call, not the slide. Capture the question, the options you rejected, why you picked one, and the metric that will prove it.</p>
+        </div>
+        <p class="dl-privacy">Saved in this browser only. Nothing is sent to a server.</p>
+      </div>
+    </section>
+
+    <section class="section shell dl-app" data-dl-app>
+      <div class="dl-toolbar" role="toolbar" aria-label="Decision Log actions">
+        <div class="dl-toolbar-group">
+          <button type="button" class="btn btn-primary btn-compact" data-dl-new>New decision</button>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-sample>Load sample</button>
+        </div>
+        <div class="dl-toolbar-group" data-dl-when-open hidden>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-copy-md>Copy Markdown</button>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-download>Download .md</button>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-share>Copy share link</button>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-print>Print</button>
+          <button type="button" class="btn btn-secondary btn-compact" data-dl-toggle-reading aria-pressed="false">Reading view</button>
+          <button type="button" class="btn btn-compact dl-btn-danger" data-dl-delete>Delete</button>
+        </div>
+        <p class="dl-status-msg" data-dl-status role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="dl-layout">
+        <aside class="dl-sidebar">
+          <div class="dl-sidebar-head">
+            <h2>Saved decisions</h2>
+            <p data-dl-count>0</p>
+          </div>
+          <label class="dl-mobile-switch" for="dl-switcher">Jump to a decision</label>
+          <select id="dl-switcher" class="dl-switcher" data-dl-switcher aria-label="Jump to a saved decision"></select>
+          <ul class="dl-list" data-dl-list></ul>
+        </aside>
+
+        <div class="dl-main">
+          <div class="dl-empty" data-dl-empty>
+            <p class="lab-kicker">Empty log</p>
+            <h2>No decisions yet</h2>
+            <p>Record a product decision in about a minute: the question, at least two options, the choice, and a success metric to review later.</p>
+            <div class="dl-empty-actions">
+              <button type="button" class="btn btn-primary" data-dl-empty-new>Start a decision</button>
+              <button type="button" class="btn btn-secondary" data-dl-empty-sample>Load sample</button>
+            </div>
+          </div>
+
+          <form class="dl-editor" data-dl-editor hidden novalidate>
+            <div class="dl-editor-head">
+              <div class="dl-field dl-field-grow">
+                <label for="dl-title">Decision title / question</label>
+                <input id="dl-title" name="title" type="text" maxlength="180" autocomplete="off" required placeholder="Should we replace X, or keep Y and add a dashboard?" />
+              </div>
+              <fieldset class="dl-status-set">
+                <legend>Status</legend>
+                <label><input type="radio" name="status" value="proposed" /> Proposed</label>
+                <label><input type="radio" name="status" value="decided" /> Decided</label>
+                <label><input type="radio" name="status" value="validated" /> Validated</label>
+                <label><input type="radio" name="status" value="reversed" /> Reversed</label>
+              </fieldset>
+            </div>
+
+            <div class="dl-field">
+              <label for="dl-context">Context</label>
+              <p class="dl-hint" id="dl-context-hint">Why this matters now — the constraint, the clock, and who feels the pain.</p>
+              <textarea id="dl-context" name="context" rows="5" aria-describedby="dl-context-hint" placeholder="What broke, who is waiting, and why a call is due this cycle."></textarea>
+            </div>
+
+            <fieldset class="dl-options" data-dl-options>
+              <legend>Options considered</legend>
+              <p class="dl-hint">At least two. Name the real alternatives, including “do nothing” or “throw people at it” when those were on the table.</p>
+              <div data-dl-option-list></div>
+              <button type="button" class="btn btn-secondary btn-compact" data-dl-add-option>Add option</button>
+            </fieldset>
+
+            <div class="dl-choice-grid">
+              <div class="dl-field">
+                <label for="dl-chosen">Chosen option</label>
+                <select id="dl-chosen" name="chosenOptionId">
+                  <option value="">Select the chosen option</option>
+                </select>
+              </div>
+              <div class="dl-field">
+                <label for="dl-tags">Tags <span class="dl-optional">(optional)</span></label>
+                <input id="dl-tags" name="tags" type="text" autocomplete="off" placeholder="architecture, process, GTM" />
+                <p class="dl-hint">Comma-separated. Examples: scope, architecture, GTM.</p>
+              </div>
+            </div>
+
+            <div class="dl-field">
+              <label for="dl-rationale">Rationale</label>
+              <p class="dl-hint" id="dl-rationale-hint">The “why this one” — including what you are explicitly not optimizing for.</p>
+              <textarea id="dl-rationale" name="rationale" rows="5" aria-describedby="dl-rationale-hint" placeholder="We picked this because… We rejected the cheaper option because…"></textarea>
+            </div>
+
+            <fieldset class="dl-metric">
+              <legend>Success metric</legend>
+              <p class="dl-hint">How you will know later if the call was right.</p>
+              <div class="dl-metric-grid">
+                <div class="dl-field">
+                  <label for="dl-metric-name">Metric name</label>
+                  <input id="dl-metric-name" name="metricName" type="text" autocomplete="off" placeholder="Median referral acknowledgment time" />
+                </div>
+                <div class="dl-field">
+                  <label for="dl-metric-target">Target</label>
+                  <input id="dl-metric-target" name="metricTarget" type="text" autocomplete="off" placeholder="≤ 1.5 days, from 4.2" />
+                </div>
+                <div class="dl-field">
+                  <label for="dl-review-date">Review date</label>
+                  <input id="dl-review-date" name="reviewDate" type="date" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+          <article class="dl-reading" data-dl-reading hidden aria-label="Reading view"></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="dl-print" data-dl-print hidden></div>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="../../index.html">Overview</a>
+      <a href="../../experience.html">Experience</a>
+      <a href="../../lab.html">Lab</a>
+      <a href="../../contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="../../assets/site.js?v=20260910c"></script>
+  <script src="decision-log.js?v=20260910c"></script>
+</body>
+</html>
