@@ -1,7 +1,6 @@
 const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
 document.documentElement.setAttribute('data-theme', 'dark');
-document.documentElement.classList.add('js-ready');
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -31,14 +30,24 @@ if (navToggle && nav) {
 
 const reveals = document.querySelectorAll('.reveal');
 const showReveal = (node) => {
-  const delay = Number(node.getAttribute('data-delay') || 0);
-  node.style.transitionDelay = `${delay}ms`;
+  node.classList.remove('is-pending');
   node.classList.add('visible');
 };
 
-if (prefersReducedMotion) {
-  reveals.forEach((node) => node.classList.add('visible'));
-} else if ('IntersectionObserver' in window) {
+reveals.forEach((node) => {
+  const rect = node.getBoundingClientRect();
+  const viewportH = window.innerHeight || document.documentElement.clientHeight || 800;
+  const inView = rect.top < viewportH + 80 && rect.bottom > -80;
+  if (prefersReducedMotion || inView || !('IntersectionObserver' in window)) {
+    showReveal(node);
+  } else {
+    node.classList.add('is-pending');
+  }
+});
+
+document.documentElement.classList.add('js-ready');
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -49,28 +58,17 @@ if (prefersReducedMotion) {
     },
     {
       threshold: 0,
-      rootMargin: '0px 0px -40px 0px',
+      rootMargin: '80px 0px 80px 0px',
     }
   );
 
   reveals.forEach((node) => {
-    const rect = node.getBoundingClientRect();
-    const inView = rect.top < window.innerHeight && rect.bottom > 0;
-    if (inView) {
-      showReveal(node);
-      return;
-    }
-    revealObserver.observe(node);
+    if (node.classList.contains('is-pending')) revealObserver.observe(node);
   });
 
-  // Safety net: never leave content invisible if the observer stalls
   window.setTimeout(() => {
-    reveals.forEach((node) => {
-      if (!node.classList.contains('visible')) showReveal(node);
-    });
-  }, 1200);
-} else {
-  reveals.forEach((node) => node.classList.add('visible'));
+    reveals.forEach((node) => showReveal(node));
+  }, 800);
 }
 
 const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));

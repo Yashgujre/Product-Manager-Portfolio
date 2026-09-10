@@ -1470,7 +1470,7 @@ a.company-context-card:hover .company-name {
   transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html.js-ready .reveal:not(.visible) {
+html.js-ready .reveal.is-pending {
   opacity: 0;
   transform: translateY(10px);
 }
@@ -3089,7 +3089,7 @@ html.js-ready .hero-word {
     scroll-behavior: auto;
   }
 
-  html.js-ready .reveal:not(.visible),
+  html.js-ready .reveal.is-pending,
   .reveal {
     opacity: 1;
     transform: none;
