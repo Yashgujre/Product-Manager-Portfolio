@@ -7,36 +7,34 @@
   <title>Yash Gujre | Overview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="index.html">Yash Gujre</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
       <nav class="nav-pills" data-nav>
         <a href="index.html">Overview</a>
-        <a href="product-demos.html">Side Builds</a>
         <a href="experience.html">Experience</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="blog.html">Blogs</a>
+        <a href="lab.html">Lab</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section id="overview" class="section hero shell reveal" data-delay="0">
       <div class="grid-12">
         <div class="col-8">
           <p class="eyebrow">Product Manager — Healthcare · Fintech · Pharma</p>
-          <h1>Complexity is the job. Clarity is the output.</h1>
-          <p class="lead">5+ years shipping regulated enterprise products across healthcare, fintech, and pharma. I close the gap between ambiguous problems and systems that actually get adopted.</p>
+          <h1>Ambiguity in. Adopted systems out.</h1>
+          <p class="lead">5+ years shipping enterprise products across healthcare, fintech, and pharma. I close the gap between unclear problems and systems that actually get used.</p>
           <div class="overview-cta-row">
-            <a class="btn btn-primary" href="case-studies.html">Explore Case Studies</a>
-            <a class="btn btn-secondary" href="experience.html#metrics-hub">View Impact Metrics</a>
-            <a class="text-link" href="framework.html">Explore Framework</a>
+            <a class="btn btn-primary" href="experience.html">See the work</a>
+            <a class="btn btn-secondary" href="contact.html">Contact</a>
           </div>
         </div>
         <div class="col-4 hero-photo-col">
@@ -44,45 +42,14 @@
             <img class="profile-photo" src="assets/profile-photo.jpeg" alt="Portrait of Yash Gujre" />
           </figure>
         </div>
-        <div class="col-12">
-          <div class="proof-bar" aria-label="Proof metrics">
-            <span>3 industries</span>
-            <span>5 companies</span>
-            <span>4 products shipped to production</span>
-            <span>5 market analyses written</span>
-            <span>1 live AI build deployed</span>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section class="section section-divider shell reveal" data-delay="80">
-      <div class="grid-12">
-        <div class="col-12">
-          <h2>The work I'm suited for</h2>
-        </div>
-        <div class="col-12 overview-build-grid">
-          <article class="overview-build-card">
-            <h3>AI-powered decision systems</h3>
-            <p>Build and scale ML-powered systems that drive real-world decisions. From credit risk engines to healthcare intervention models — focused on explainability, production readiness, and measurable business impact.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>API-first enterprise platforms</h3>
-            <p>Design scalable platforms that orchestrate complex ecosystems. API-first systems built for interoperability across finance, healthcare, and supply chain with high reliability and extensibility.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Regulated and high-trust systems</h3>
-            <p>Ship products where trust, compliance, and auditability are core features — not gates. Experience across HIPAA, financial regulations, and audit frameworks with explainability embedded into the product.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Embedded B2B workflows</h3>
-            <p>Create partner-facing systems that drive operational efficiency. Workflows that reduce friction, automate decisions, and integrate seamlessly into enterprise processes.</p>
-          </article>
-          <article class="overview-build-card">
-            <h3>Analytics and experimentation systems</h3>
-            <p>Build feedback loops that continuously improve product performance through instrumentation, experimentation, and outcome-driven analytics.</p>
-          </article>
-        </div>
+    <section class="section shell reveal proof-section" data-delay="40" aria-label="Proof metrics">
+      <div class="proof-bar">
+        <span>3 industries</span>
+        <span>5 companies</span>
+        <span>4 products shipped to production</span>
       </div>
     </section>
 
@@ -92,85 +59,31 @@
           <h2>Where I've shipped</h2>
         </div>
         <div class="col-12 company-context-grid">
-          <article class="company-context-card">
+          <a class="company-context-card" href="experience.html#xp-care">
             <p class="company-name">Healthcare · Care Coordination</p>
             <p class="company-role">Centene Corporation · Product Manager</p>
             <p class="company-note">B2B care coordination platform serving 2.5M+ members across 50+ nonprofit partners. HIPAA-regulated.</p>
-          </article>
-          <article class="company-context-card">
+          </a>
+          <a class="company-context-card" href="experience.html#xp-grants">
             <p class="company-name">Healthcare · Compliance</p>
             <p class="company-role">Prism Health North Texas · Product Manager</p>
             <p class="company-note">Grant management and compliance platform for HIPAA-regulated healthcare operations.</p>
-          </article>
-          <article class="company-context-card">
+          </a>
+          <a class="company-context-card" href="experience.html#xp-supply">
             <p class="company-name">Pharma · Operations</p>
             <p class="company-role">Galderma · Product Manager</p>
             <p class="company-note">Supply chain analytics module post-Oracle Fusion migration. 292% ROI delivered.</p>
-          </article>
-          <article class="company-context-card">
+          </a>
+          <a class="company-context-card" href="experience.html#xp-credit">
             <p class="company-name">Fintech · Risk</p>
             <p class="company-role">Capital One · Product Manager</p>
             <p class="company-note">Real-time trade credit decisioning engine managing $2.5B+ in B2B credit exposure.</p>
-          </article>
-          <article class="company-context-card">
+          </a>
+          <a class="company-context-card" href="experience.html">
             <p class="company-name">Education · Research</p>
             <p class="company-role">UT Dallas · Product Owner</p>
             <p class="company-note">Applied PM frameworks across capstone product delivery. MS in Information Technology Management.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-divider shell reveal" data-delay="200">
-      <div class="grid-12">
-        <div class="col-12">
-          <h2>How I think about product</h2>
-        </div>
-        <div class="col-12 principles-grid">
-          <article class="principle-card">
-            <p class="principle-number">01</p>
-            <h3>Start with the economic model</h3>
-            <p>Before writing specs, map how value is created and captured. Features without a clear ROI path get cut — or never get adopted.</p>
-            <p class="philosophy-example">At Capital One, we modeled conversion lift and default reduction before writing a single API spec. That constraint shaped every priority in the backlog.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">02</p>
-            <h3>Compliance is architecture, not a gate</h3>
-            <p>HIPAA, SOC 2, financial regulation — these belong in the data model on day one, not in a remediation sprint before launch.</p>
-            <p class="philosophy-example">The care coordination platform was built with HIPAA audit retention as a data model primitive from day one — not a reporting layer bolted on before go-live.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">03</p>
-            <h3>Build for interoperability by default</h3>
-            <p>Every platform decision should make the next integration cheaper. API-first design is how you avoid rebuilding the same thing five times.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">04</p>
-            <h3>Instrument before you ship</h3>
-            <p>If you can't measure a handoff, a decision, or a workflow step — you can't improve it. Observability is a product requirement, not a post-launch task.</p>
-            <p class="philosophy-example">Referral acknowledgment time dropped from 4.2 to 1.1 days because we instrumented each handoff event individually before the first release shipped.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">05</p>
-            <h3>Prioritize adoption over capability</h3>
-            <p>A feature no one uses is not a shipped feature. Workflow fit, training, and change management are part of the product surface — not someone else's problem.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">06</p>
-            <h3>Disaggregate the metric</h3>
-            <p>Aggregate KPIs hide the signal. Break cycle time, conversion, or cost into its components — the improvement always lives in one specific step, not the average.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">07</p>
-            <h3>Make the constraint explicit</h3>
-            <p>Every backlog has an implicit constraint driving prioritization. Surface it. A team that knows the binding constraint makes better tradeoffs without asking for permission on each one.</p>
-            <p class="philosophy-example">At Galderma, the binding constraint was Oracle Fusion data latency — not feature scope. Making that explicit cut two sprint cycles of misdirected backlog work.</p>
-          </article>
-          <article class="principle-card">
-            <p class="principle-number">08</p>
-            <h3>Explainability is a feature, not a footnote</h3>
-            <p>In regulated environments, a decision no one can audit is a liability. Explainability drives adoption, reduces risk review cycles, and earns operator trust over time.</p>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -180,10 +93,8 @@
     <p>© 2026 Yash Gujre</p>
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="index.html">Overview</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="blog.html">Blog</a>
       <a href="experience.html">Experience</a>
-      <a href="product-demos.html">Side Builds</a>
+      <a href="lab.html">Lab</a>
       <a href="contact.html">Contact</a>
     </nav>
   </footer>

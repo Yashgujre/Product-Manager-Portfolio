@@ -1,25 +1,48 @@
 :root {
-  --heading: #18181b;
-  --body: #52525b;
-  --accent: #b45309;
-  --success: #065f46;
-  --bg: #fafaf9;
-  --surface: #fafaf9;
-  --divider: #e7e5e4;
-  --divider-strong: #d6d3d1;
-  --radius: 6px;
-  --transition: 240ms ease-in-out;
+  --heading: #0b1220;
+  --body: #5a6478;
+  --accent: #c9361a;
+  --accent-soft: rgba(201, 54, 26, 0.09);
+  --accent-hover: #a82c14;
+  --success: #047857;
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --surface-muted: #e8ecf1;
+  --divider: #d5dce6;
+  --divider-strong: #b8c2d0;
+  --focus: #c9361a;
+  --header-bg: rgba(243, 245, 248, 0.92);
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius: 4px;
+  --transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  --btn-primary-bg: #0b1220;
+  --btn-primary-text: #f7f9fc;
+  --btn-primary-hover: #1a2336;
+  --btn-secondary-border: #0b1220;
+  --btn-secondary-hover-bg: rgba(11, 18, 32, 0.06);
 }
 
 [data-theme="dark"] {
-  --heading: #fafaf9;
-  --body: #a8a29e;
-  --accent: #d97706;
+  --heading: #f7f9fc;
+  --body: #a8b0bf;
+  --accent: #ff6b45;
+  --accent-soft: rgba(255, 107, 69, 0.14);
+  --accent-hover: #ff8a68;
   --success: #34d399;
-  --bg: #141413;
-  --surface: #1c1b1a;
-  --divider: #292524;
-  --divider-strong: #3d3837;
+  --bg: #0a0e14;
+  --surface: #121821;
+  --surface-muted: #1a222e;
+  --divider: #1e2733;
+  --divider-strong: #2a3544;
+  --focus: #ff6b45;
+  --header-bg: rgba(10, 14, 20, 0.92);
+  --btn-primary-bg: #f7f9fc;
+  --btn-primary-text: #0a0e14;
+  --btn-primary-hover: #dfe5ef;
+  --btn-secondary-border: #8b95a8;
+  --btn-secondary-hover-bg: rgba(247, 249, 252, 0.08);
 }
 
 * {
@@ -32,11 +55,14 @@ html {
 
 body {
   margin: 0;
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 88% -10%, var(--accent-soft), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--body);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 1.0625rem;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color var(--transition), color var(--transition);
@@ -48,24 +74,53 @@ h3,
 h4 {
   margin: 0;
   color: var(--heading);
-  font-family: "Fraunces", Georgia, serif;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
   font-weight: 600;
 }
 
 h1 {
-  font-size: clamp(3rem, 5vw, 3.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.75rem, 4.6vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: clamp(2.25rem, 3.6vw, 2.5rem);
-  line-height: 1.2;
+  font-size: clamp(1.85rem, 3vw, 2.25rem);
+  line-height: 1.15;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
-  line-height: 1.3;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  line-height: 1.25;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 p {
@@ -82,13 +137,9 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--divider);
-  backdrop-filter: blur(8px);
-}
-
-[data-theme="dark"] .site-header {
-  background: rgba(11, 18, 32, 0.94);
+  backdrop-filter: blur(10px);
 }
 
 .nav-row {
@@ -101,10 +152,11 @@ p {
 
 .brand {
   text-decoration: none;
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--heading);
-  letter-spacing: -0.01em;
-  font-size: 18px;
+  letter-spacing: -0.03em;
+  font-size: 1.125rem;
 }
 
 .nav-toggle {
@@ -144,7 +196,7 @@ p {
 
 .theme-toggle {
   border: 1px solid var(--divider);
-  border-radius: 999px;
+  border-radius: var(--radius);
   background: var(--surface);
   color: var(--heading);
   font-weight: 600;
@@ -156,11 +208,7 @@ p {
 }
 
 .theme-toggle:hover {
-  background: #f8f9fa;
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-  background: #1a2740;
+  background: var(--surface-muted);
 }
 
 .section {
@@ -172,22 +220,28 @@ p {
 }
 
 .hero {
-  padding-top: 136px;
+  padding-top: 96px;
+  padding-bottom: 48px;
 }
 
 .eyebrow {
   color: var(--body);
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-.lead {
-  margin-top: 20px;
-  margin-bottom: 36px;
-  font-size: 18px;
+.proof-section {
+  padding-top: 0;
+  padding-bottom: 64px;
+}
+
+.case-showcase-header h1 {
+  margin: 0 0 16px;
+  max-width: 20ch;
 }
 
 .overview-cta-row {
@@ -205,12 +259,11 @@ p {
 
 .profile-photo-frame {
   margin: 0;
-  width: min(100%, 360px);
+  width: min(100%, 320px);
   border: 1px solid var(--divider);
-  border-radius: 14px;
+  border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface);
-  box-shadow: 0 14px 34px rgba(10, 22, 40, 0.12);
 }
 
 .profile-photo {
@@ -221,10 +274,10 @@ p {
 }
 
 .proof-bar {
-  margin-top: 40px;
+  margin-top: 0;
   border: 1px solid var(--divider);
-  border-radius: 8px;
-  background: var(--bg);
+  border-radius: var(--radius);
+  background: var(--surface-muted);
   padding: 16px 20px;
   display: flex;
   gap: 16px;
@@ -238,7 +291,9 @@ p {
 
 .proof-bar span {
   color: var(--heading);
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
 }
@@ -246,7 +301,7 @@ p {
 .proof-bar span:not(:last-child)::after {
   content: "|";
   margin-left: 16px;
-  color: #94a3b8;
+  color: var(--divider-strong);
 }
 
 .overview-build-grid,
@@ -266,31 +321,34 @@ p {
 .overview-build-card,
 .architecture-card,
 .philosophy-card {
-  border: 1px solid var(--divider);
-  border-radius: 8px;
-  background: var(--surface);
-  padding: 28px;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  border: none;
+  border-top: 1px solid var(--divider);
+  border-radius: 0;
+  background: transparent;
+  padding: 28px 0;
+  transition: border-color var(--transition), background var(--transition);
 }
 
 .overview-build-card:hover,
 .architecture-card:hover,
 .philosophy-card:hover {
   border-color: var(--divider-strong);
-  box-shadow: 0 6px 14px rgba(10, 22, 40, 0.06);
-  transform: translateY(-2px);
+  box-shadow: none;
+  transform: none;
 }
 
 /* Featured first card spans all 3 columns */
 .overview-build-card:first-child {
   grid-column: span 3;
   border-left: 3px solid var(--accent);
-  background: linear-gradient(135deg, rgba(180, 83, 9, 0.04) 0%, var(--surface) 55%);
-  padding: 36px;
+  border-top: 1px solid var(--divider);
+  background: var(--accent-soft);
+  padding: 28px 28px 28px 32px;
+  border-radius: var(--radius);
 }
 
 [data-theme="dark"] .overview-build-card:first-child {
-  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, var(--surface) 55%);
+  background: var(--accent-soft);
 }
 
 .overview-build-card:first-child h3 {
@@ -318,11 +376,11 @@ p {
 .philosophy-card::before {
   content: counter(principle, decimal-leading-zero);
   display: block;
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 2.5rem;
-  font-weight: 300;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.85;
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -335,25 +393,26 @@ p {
 }
 
 .principle-card {
-  border: 1px solid var(--divider);
-  border-radius: 8px;
-  padding: 24px 20px;
-  background: var(--surface);
-  transition: background var(--transition), border-color var(--transition);
+  border: none;
+  border-top: 1px solid var(--divider);
+  border-radius: 0;
+  padding: 24px 4px 24px 0;
+  background: transparent;
+  transition: border-color var(--transition), background var(--transition);
 }
 
 .principle-card:hover {
-  border-color: var(--divider-strong);
-  background: linear-gradient(135deg, rgba(180,83,9,0.05) 0%, var(--surface) 60%);
-  box-shadow: 0 6px 14px rgba(10, 22, 40, 0.06);
+  border-color: var(--accent);
+  background: transparent;
+  box-shadow: none;
 }
 
 .principle-number {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 2rem;
-  font-weight: 300;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.9;
   line-height: 1;
   margin-bottom: 14px;
 }
@@ -414,27 +473,29 @@ p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  font-family: var(--font-body);
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 12px 24px;
   transition: background-color var(--transition), border-color var(--transition), color var(--transition);
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
-  border: 1px solid var(--accent);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-bg);
 }
 
 .btn-primary:hover {
-  background: #92400e;
-  border-color: #92400e;
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+  color: var(--btn-primary-text);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--heading);
-  border: 2px solid var(--accent);
+  border: 1px solid var(--btn-secondary-border);
 }
 
 .btn-compact {
@@ -443,11 +504,9 @@ p {
 }
 
 .btn-secondary:hover {
-  background: #fef3c7;
-}
-
-[data-theme="dark"] .btn-secondary:hover {
-  background: #451a03;
+  background: var(--btn-secondary-hover-bg);
+  border-color: var(--heading);
+  color: var(--heading);
 }
 
 .metric-card {
@@ -459,9 +518,9 @@ p {
 }
 
 .metric-card:hover {
-  border-color: #cfd8e5;
+  border-color: var(--divider-strong);
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(10, 22, 40, 0.05);
+  box-shadow: none;
 }
 
 .metric-value {
@@ -494,8 +553,8 @@ p {
 }
 
 .timeline-item:hover {
-  border-color: #cfd8e5;
-  box-shadow: 0 4px 10px rgba(10, 22, 40, 0.05);
+  border-color: var(--divider-strong);
+  box-shadow: none;
 }
 
 .timeline-year {
@@ -512,7 +571,7 @@ p {
 
 .process {
   margin-top: 8px;
-  color: #475569;
+  color: var(--body);
 }
 
 .exp-label {
@@ -522,15 +581,18 @@ p {
   letter-spacing: -0.01em;
 }
 
+.case-showcase-header h1,
 .case-showcase-header h2 {
-  font-size: 48px;
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
   margin-bottom: 16px;
+  max-width: 20ch;
 }
 
 .case-showcase-header p {
   font-size: 18px;
   color: var(--body);
-  margin-bottom: 64px;
+  margin-bottom: 40px;
+  max-width: 65ch;
 }
 
 .case-showcase-grid {
@@ -558,11 +620,11 @@ p {
 .case-showcase-card-wide {
   grid-column: span 2;
   border-left: 3px solid var(--accent);
-  background: linear-gradient(135deg, rgba(180, 83, 9, 0.04) 0%, var(--surface) 55%);
+  background: var(--accent-soft);
 }
 
 [data-theme="dark"] .case-showcase-card-wide {
-  background: linear-gradient(135deg, rgba(217, 119, 6, 0.07) 0%, var(--surface) 55%);
+  background: var(--accent-soft);
 }
 
 .case-label {
@@ -854,8 +916,8 @@ p {
 .case-bar-track {
   position: relative;
   height: 10px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.24);
+  border-radius: var(--radius);
+  background: var(--surface-muted);
   overflow: hidden;
 }
 
@@ -864,11 +926,11 @@ p {
   inset: 0 auto 0 0;
   display: block;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), #e9a96e);
+  background: var(--accent);
 }
 
 .case-bar-fill-alt {
-  background: linear-gradient(90deg, var(--success), #7ee2a6);
+  background: var(--success);
 }
 
 .case-bar-value {
@@ -1263,11 +1325,27 @@ p {
 }
 
 .company-name {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
   color: var(--heading);
   margin: 0;
+}
+
+a.company-context-card {
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 4px;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+a.company-context-card:hover {
+  background: var(--accent-soft);
+}
+
+a.company-context-card:hover .company-name {
+  color: var(--accent);
 }
 
 .company-role {
@@ -1329,7 +1407,7 @@ p {
 }
 
 .process-step:hover {
-  border-color: #cfd8e5;
+  border-color: var(--divider-strong);
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(10, 22, 40, 0.05);
 }
@@ -1388,8 +1466,8 @@ p {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 560ms cubic-bezier(0.22, 1, 0.36, 1), transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(10px);
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
@@ -1434,35 +1512,35 @@ p {
 
 /* ── Differentiated hover states ── */
 
-/* Build cards: accent left-bar slides in */
+/* Build cards: accent left-bar on hover */
 .overview-build-card {
   border-left: 3px solid transparent;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
 .overview-build-card:hover {
   border-left-color: var(--accent);
   transform: none;
-  box-shadow: 4px 0 0 0 var(--accent), 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: none;
 }
 
-/* Philosophy cards: background warms on hover */
+/* Philosophy cards: soft wash on hover */
 .philosophy-card {
   transition: background var(--transition), border-color var(--transition);
 }
 .philosophy-card:hover {
   transform: none;
-  background: linear-gradient(135deg, rgba(180,83,9,0.05) 0%, var(--surface) 60%);
+  background: var(--accent-soft);
   border-color: var(--divider-strong);
   box-shadow: none;
 }
 
-/* Case cards: content shifts up to reveal a pseudo-footer */
+/* Case cards: slight lift */
 .case-showcase-card {
   overflow: hidden;
 }
 .case-showcase-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: none;
   border-color: var(--divider-strong);
 }
 
@@ -1486,7 +1564,7 @@ p {
 .hero-word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(6px);
   animation: word-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -1608,6 +1686,7 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .case-showcase-header h1,
   .case-showcase-header h2 {
     font-size: 36px;
   }
@@ -2177,17 +2256,17 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.side-builds-section {
+.lab-section {
   padding-top: 56px;
   padding-bottom: 88px;
 }
 
-.side-builds-section .case-showcase-header p {
+.lab-section .case-showcase-header p {
   margin-bottom: 32px;
   max-width: 60ch;
 }
 
-.side-builds-section .case-showcase-card-wide .case-copy {
+.lab-section .case-showcase-card-wide .case-copy {
   max-width: 78ch;
 }
 
@@ -2212,7 +2291,7 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .side-builds-section {
+  .lab-section {
     padding-top: 44px;
     padding-bottom: 72px;
   }
@@ -2996,6 +3075,29 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal.visible .overview-build-card,
+  .reveal.visible .philosophy-card,
+  .reveal.visible .principle-card,
+  .reveal.visible .case-showcase-card {
+    animation: none !important;
+  }
+
+  .hero-word {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
   .xp-card,
   .xp-highlight,
   .xp-open-btn,
@@ -3019,7 +3121,7 @@ body.editorial-page {
 .editorial-author-meta,
 .editorial-hero figcaption,
 .editorial-break-image figcaption {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 .editorial-main {
@@ -3043,12 +3145,12 @@ body.editorial-page {
 
 .editorial-title {
   margin: 0;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-  font-size: clamp(2.3rem, 6vw, 4rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
   line-height: 1.08;
   color: var(--heading);
-  letter-spacing: -0.015em;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 .editorial-subtitle {
@@ -3076,7 +3178,7 @@ body.editorial-page {
 }
 
 .editorial-author-name {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   color: var(--heading);
   font-size: 14px;
   font-weight: 600;
@@ -3115,7 +3217,7 @@ body.editorial-page {
 .editorial-body h4,
 .editorial-body p,
 .editorial-body li {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-family: var(--font-display);
 }
 
 .editorial-body h2 {
@@ -3202,7 +3304,7 @@ body.editorial-page {
 
 .editorial-related h3 {
   margin: 0 0 22px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   font-size: 18px;
   color: var(--heading);
   letter-spacing: 0;
@@ -3231,7 +3333,7 @@ body.editorial-page {
 
 .editorial-related-card p {
   margin: 0 0 8px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -3241,7 +3343,7 @@ body.editorial-page {
 
 .editorial-related-card h4 {
   margin: 0;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-family: var(--font-display);
   font-size: 22px;
   line-height: 1.25;
   color: var(--heading);
@@ -3253,7 +3355,7 @@ body.editorial-page {
 }
 
 .editorial-footer p {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   color: var(--body);
   opacity: 0.86;

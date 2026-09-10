@@ -2,18 +2,36 @@ const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
 document.documentElement.setAttribute('data-theme', 'dark');
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 if (navToggle && nav) {
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-controls', 'site-nav');
+  if (!nav.id) nav.id = 'site-nav';
+
+  const setNavOpen = (open) => {
+    nav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.textContent = open ? 'Close' : 'Menu';
+  };
+
   navToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+    setNavOpen(!nav.classList.contains('open'));
   });
 
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => nav.classList.remove('open'));
+    link.addEventListener('click', () => setNavOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setNavOpen(false);
   });
 }
 
 const reveals = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
+if (prefersReducedMotion) {
+  reveals.forEach((node) => node.classList.add('visible'));
+} else if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -36,19 +54,22 @@ if ('IntersectionObserver' in window) {
 }
 
 const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));
-const pathname = window.location.pathname;
-const currentPath = pathname.split('/').pop() || 'index.html';
-const isBlogDetailPage = pathname.includes('/blogs/');
+const pathname = window.location.pathname.replace(/\/+$/, '');
+const segments = pathname.split('/').filter(Boolean);
+const currentFile = segments[segments.length - 1] || 'index.html';
+
 navLinks.forEach((link) => {
-  const target = link.getAttribute('href');
-  const targetPath = target ? target.split('/').pop()?.split('#')[0]?.split('?')[0] : '';
-  const isActive = targetPath === currentPath || (isBlogDetailPage && targetPath === 'blog.html');
-  link.classList.toggle('active', isActive);
+  const target = link.getAttribute('href') || '';
+  const targetPath = target.split('/').pop()?.split('#')[0]?.split('?')[0] || '';
+  const isActive =
+    targetPath === currentFile ||
+    (currentFile === '' && targetPath === 'index.html');
+  link.classList.toggle('active', Boolean(isActive));
 });
 
 // Hero headline word-by-word reveal
 const heroH1 = document.querySelector('.hero h1');
-if (heroH1) {
+if (heroH1 && !prefersReducedMotion) {
   const words = heroH1.textContent.trim().split(/\s+/);
   heroH1.innerHTML = words
     .map((word, i) => `<span class="hero-word" style="animation-delay:${120 + i * 60}ms">${word}</span>`)
@@ -89,7 +110,7 @@ const animateCounter = (el) => {
 };
 
 const counterEls = document.querySelectorAll('[data-counter]');
-if (counterEls.length) {
+if (counterEls.length && !prefersReducedMotion) {
   const seen = new WeakSet();
   const counterObserver = new IntersectionObserver(
     (entries) => {
@@ -142,7 +163,7 @@ const updateRoi = () => {
 updateRoi();
 
 const rotator = document.querySelector('[data-rotator]');
-if (rotator) {
+if (rotator && !prefersReducedMotion) {
   const messages = [
     'Operational speed gains of 30-40% in critical workflows',
     'Up to 292% ROI delivered in enterprise operating environments',
@@ -526,7 +547,9 @@ if (xpRoot) {
     highlightIndex = 0;
     highlight.textContent = messages[highlightIndex];
     if (highlightTimer) clearInterval(highlightTimer);
-    highlightTimer = setInterval(runHighlightTicker, 3200);
+    if (!prefersReducedMotion) {
+      highlightTimer = setInterval(runHighlightTicker, 3200);
+    }
   };
 
   exploreButtons.forEach((btn) => {
