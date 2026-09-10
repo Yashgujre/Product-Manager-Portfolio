@@ -1,6 +1,0 @@
-experiment_id,experiment_name,hypothesis,segment,primary_metric,baseline,variant_result,statistical_confidence,decision,owner,next_step
-EXP-001,Onboarding sequence redesign,Reordering setup tasks improves 7-day activation,New self-serve teams,7-day activation,41.2%,48.6%,0.95,Rollout,Growth PM,Scale globally with region checks
-EXP-002,Notification default tuning,Balanced defaults improve retention without mute spike,All active workspaces,30-day retention,88.4%,90.1%,0.91,Rollout with guardrails,Core PM,Monitor mute-rate weekly
-EXP-003,Search ranking improvement,Better relevance increases repeat usage,Active teams with high search volume,Search satisfaction index,72.0,79.5,0.93,Iterate,Search PM,Ship v2 weighting model
-EXP-004,Magic link authentication,Passwordless login increases signup completion,Net-new signups,Signup completion,63.1%,77.0%,0.97,Adopt default,Growth Eng,Deprecate low-performing auth path
-EXP-005,Integration setup checklist,Guided setup increases connected integrations,Teams in first 14 days,Integrations per workspace,2.1,3.4,0.89,Iterate with UX revisions,Platform PM,Run follow-up test with enterprise admins

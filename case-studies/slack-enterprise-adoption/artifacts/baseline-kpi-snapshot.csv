@@ -1,7 +1,0 @@
-metric,baseline_value,target_value,window,notes
-new_workspaces_per_week,100,105,weekly,5 percent month-over-month growth objective
-teams_activated_in_14_days,52%,60%,cohort,Activation threshold at 2000 messages
-dau_mau_ratio,66%,70%,monthly,Habit quality metric
-free_to_paid_conversion,3.2%,4.0%,monthly,Conversion efficiency target
-net_revenue_retention,124%,130%,quarterly,Expansion health signal
-support_tickets_per_1000_users,18,14,monthly,Operational friction reduction

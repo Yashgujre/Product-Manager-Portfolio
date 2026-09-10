@@ -1,6 +1,0 @@
-cohort_month,new_workspaces,activated_within_14d,d30_retention,d60_retention,d90_retention,notes
-2025-09,1200,58%,91%,86%,82%,Baseline before onboarding redesign
-2025-10,1325,60%,92%,87%,83%,Post onboarding sequencing test
-2025-11,1410,61%,92%,88%,84%,Notification tuning introduced
-2025-12,1490,62%,93%,88%,85%,Search relevance update active
-2026-01,1560,63%,93%,89%,85%,Magic link as default

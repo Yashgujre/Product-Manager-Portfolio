@@ -1,8 +1,0 @@
-metric_layer,metric_name,definition,owner,target,review_cadence,data_source
-north_star,Messages per organization per week,Total message volume per workspace normalized weekly,PM,"Increase QoQ",Weekly,Warehouse aggregation
-activation,Teams reaching 2000 messages in 14 days,Percent of new workspaces crossing activation threshold,PM + Growth,60%,Weekly,Cohort model
-engagement,DAU/MAU,Daily active users divided by monthly active users,Product Analytics,>65%,Weekly,Event warehouse
-retention,30 day retention for activated teams,Share of activated teams active after 30 days,PM + Data Science,>90%,Monthly,Cohort model
-revenue,Free to paid conversion,Share of active free workspaces upgrading to paid,Monetization PM,>3%,Monthly,Billing + product events
-expansion,Net revenue retention,Existing customer revenue including expansion/churn,Finance + PM,>120%,Monthly,Finance system
-business,3 year ROI per large deployment,Net business value over cost horizon,BizOps,>$10M,Quarterly,Finance model

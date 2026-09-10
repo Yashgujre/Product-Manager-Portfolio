@@ -1386,36 +1386,6 @@ p {
   color: var(--heading);
 }
 
-.case-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 22, 40, 0.4);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.case-modal[aria-hidden="false"] {
-  display: flex;
-}
-
-.case-modal-panel {
-  width: min(100%, 520px);
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: 8px;
-  padding: 32px;
-}
-
-.case-modal-panel h3 {
-  margin-bottom: 12px;
-}
-
-.case-modal-panel p {
-  margin-bottom: 20px;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(28px);
