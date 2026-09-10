@@ -497,11 +497,28 @@ ${decision.rationale || "No rationale captured."}
     announce("Decision deleted");
   };
 
-  const copyText = async (text, successMessage) => {
+  const flashButton = (button, label) => {
+    if (!button) return;
+    const original = button.getAttribute("data-dl-label") || button.textContent;
+    button.setAttribute("data-dl-label", original);
+    button.textContent = label;
+    window.setTimeout(() => {
+      button.textContent = button.getAttribute("data-dl-label") || original;
+    }, 1800);
+  };
+
+  const copyText = async (text, successMessage, button) => {
+    let copied = false;
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
-      } else {
+        copied = true;
+      }
+    } catch {
+      copied = false;
+    }
+    if (!copied) {
+      try {
         const area = document.createElement("textarea");
         area.value = text;
         area.setAttribute("readonly", "");
@@ -509,11 +526,16 @@ ${decision.rationale || "No rationale captured."}
         area.style.left = "-9999px";
         document.body.appendChild(area);
         area.select();
-        document.execCommand("copy");
+        copied = document.execCommand("copy");
         area.remove();
+      } catch {
+        copied = false;
       }
+    }
+    if (copied) {
       announce(successMessage);
-    } catch {
+      flashButton(button, "Copied");
+    } else {
       announce("Copy failed. You can download the Markdown file instead.");
     }
   };
@@ -540,7 +562,9 @@ ${decision.rationale || "No rationale captured."}
     const hash = location.hash.replace(/^#/, "");
     if (!hash) return false;
     if (hash === "sample") {
-      loadSample({ silent: true });
+      const existing = state.decisions.find((item) => item.id === SAMPLE_ID);
+      if (existing) openDecision(SAMPLE_ID, { silent: true });
+      else loadSample({ silent: true });
       return true;
     }
     if (hash.startsWith("id=")) {
@@ -579,10 +603,10 @@ ${decision.rationale || "No rationale captured."}
   root.querySelector("[data-dl-sample]")?.addEventListener("click", () => loadSample());
   root.querySelector("[data-dl-empty-sample]")?.addEventListener("click", () => loadSample());
   root.querySelector("[data-dl-delete]")?.addEventListener("click", deleteActive);
-  root.querySelector("[data-dl-copy-md]")?.addEventListener("click", () => {
+  root.querySelector("[data-dl-copy-md]")?.addEventListener("click", (event) => {
     const decision = els.editor.hidden ? activeDecision() : readForm();
     if (!decision) return;
-    copyText(toMarkdown(decision), "Markdown copied");
+    copyText(toMarkdown(decision), "Markdown copied", event.currentTarget);
   });
   root.querySelector("[data-dl-download]")?.addEventListener("click", () => {
     const decision = els.editor.hidden ? activeDecision() : readForm();
@@ -590,11 +614,11 @@ ${decision.rationale || "No rationale captured."}
     saveFromForm(true);
     downloadMarkdown(decision);
   });
-  root.querySelector("[data-dl-share]")?.addEventListener("click", () => {
+  root.querySelector("[data-dl-share]")?.addEventListener("click", (event) => {
     const decision = els.editor.hidden ? activeDecision() : readForm();
     if (!decision) return;
     saveFromForm(true);
-    copyText(shareUrlFor(decision), "Share link copied");
+    copyText(shareUrlFor(decision), "Share link copied", event.currentTarget);
   });
   root.querySelector("[data-dl-print]")?.addEventListener("click", () => {
     saveFromForm(true);
