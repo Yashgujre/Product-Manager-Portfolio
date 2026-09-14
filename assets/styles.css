@@ -20,8 +20,12 @@
   --btn-primary-bg: #0b1220;
   --btn-primary-text: #f7f9fc;
   --btn-primary-hover: #1a2336;
+  --btn-primary-border: #0b1220;
   --btn-secondary-border: #0b1220;
+  --btn-secondary-text: #0b1220;
   --btn-secondary-hover-bg: rgba(11, 18, 32, 0.06);
+  --btn-secondary-hover-border: #0b1220;
+  --btn-secondary-hover-text: #0b1220;
 }
 
 [data-theme="dark"] {
@@ -38,11 +42,15 @@
   --divider-strong: #2a3544;
   --focus: #ff6b45;
   --header-bg: rgba(10, 14, 20, 0.92);
-  --btn-primary-bg: #f7f9fc;
-  --btn-primary-text: #0a0e14;
-  --btn-primary-hover: #dfe5ef;
-  --btn-secondary-border: #8b95a8;
-  --btn-secondary-hover-bg: rgba(247, 249, 252, 0.08);
+  --btn-primary-bg: #1a222e;
+  --btn-primary-text: #edf1f7;
+  --btn-primary-hover: #232d3c;
+  --btn-primary-border: #2f3b4d;
+  --btn-secondary-border: #2a3544;
+  --btn-secondary-text: #a8b0bf;
+  --btn-secondary-hover-bg: rgba(247, 249, 252, 0.04);
+  --btn-secondary-hover-border: #3d4b60;
+  --btn-secondary-hover-text: #edf1f7;
 }
 
 * {
@@ -512,27 +520,29 @@ p {
   justify-content: center;
   text-decoration: none;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
   border-radius: var(--radius);
-  padding: 12px 24px;
+  padding: 11px 20px;
   transition: background-color var(--transition), border-color var(--transition), color var(--transition);
 }
 
 .btn-primary {
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
-  border: 1px solid var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-border);
 }
 
 .btn-primary:hover {
   background: var(--btn-primary-hover);
-  border-color: var(--btn-primary-hover);
+  border-color: var(--btn-primary-border);
   color: var(--btn-primary-text);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--heading);
+  color: var(--btn-secondary-text);
   border: 1px solid var(--btn-secondary-border);
 }
 
@@ -543,8 +553,8 @@ p {
 
 .btn-secondary:hover {
   background: var(--btn-secondary-hover-bg);
-  border-color: var(--heading);
-  color: var(--heading);
+  border-color: var(--btn-secondary-hover-border);
+  color: var(--btn-secondary-hover-text);
 }
 
 .metric-card {
