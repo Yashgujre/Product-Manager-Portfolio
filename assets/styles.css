@@ -1767,24 +1767,32 @@ html.js-ready .hero-word {
   }
 
   .hero-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 14px 16px;
   }
 
-  .hero-photo-col,
   .hero-copy {
+    grid-column: 1;
+    grid-row: 1;
     order: initial;
-    width: 100%;
+    width: auto;
+    min-width: 0;
   }
 
   .hero-photo-col {
-    justify-content: flex-start;
+    grid-column: 2;
+    grid-row: 1;
+    order: initial;
+    width: auto;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 2px;
   }
 
   .profile-photo-frame {
-    width: 104px;
+    width: 88px;
     margin: 0;
     border-radius: 8px;
   }
@@ -1794,7 +1802,11 @@ html.js-ready .hero-word {
     letter-spacing: 0.11em;
     line-height: 1.45;
     margin-bottom: 10px;
-    max-width: 28ch;
+    max-width: none;
+  }
+
+  .hero-copy h1 {
+    max-width: 11ch;
   }
 
   .hero-copy .lead {
