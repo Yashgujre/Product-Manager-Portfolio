@@ -184,10 +184,10 @@ updateRoi();
 const rotator = document.querySelector('[data-rotator]');
 if (rotator && !prefersReducedMotion) {
   const messages = [
-    'Operational speed gains of 30-40% in critical workflows',
-    'Up to 292% ROI delivered in enterprise operating environments',
-    'Risk reduction and compliance controls sustained at scale',
-    'Reliability performance maintained at 99.7% to 99.98% uptime',
+    'Centene: referral acknowledgment 4.2 → 1.1 days (−74%)',
+    'Galderma: 292% ROI / $3.5M Year-1 net benefit',
+    'Capital One: defaults −22% with <2 sec approvals',
+    'Prism: renewal 62% → 74%; funder reports 40 hrs → <1 hr',
   ];
   let i = 0;
   setInterval(() => {
@@ -237,13 +237,7 @@ if (xpRoot) {
   };
 
   const collapseCard = (card) => {
-    const panel = card.querySelector('.xp-expanded');
-    const button = card.querySelector('[data-xp-toggle]');
-    if (panel) panel.hidden = true;
-    if (button) {
-      button.setAttribute('aria-expanded', 'false');
-      button.textContent = 'Explore Full Story ->';
-    }
+    // Stories stay fully expanded; only used by legacy view modes for card visibility.
     card.classList.remove('expanded');
   };
 
@@ -254,13 +248,8 @@ if (xpRoot) {
       });
     }
     const panel = card.querySelector('.xp-expanded');
-    const button = card.querySelector('[data-xp-toggle]');
     if (!panel) return;
     panel.hidden = false;
-    if (button) {
-      button.setAttribute('aria-expanded', 'true');
-      button.textContent = 'Collapse Story';
-    }
     card.classList.add('expanded');
 
     panel.querySelectorAll('[data-counter]').forEach((counterEl) => {
@@ -277,40 +266,12 @@ if (xpRoot) {
     });
   };
 
-  const ensureToggleButton = (card) => {
-    let toggle = card.querySelector('[data-xp-toggle]');
-    if (toggle) return toggle;
-
-    const expanded = card.querySelector('.xp-expanded');
-    if (!expanded) return null;
-
-    toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'xp-open-btn';
-    toggle.setAttribute('data-xp-toggle', '');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.textContent = 'Collapse Story';
-
-    const pills = card.querySelector('.xp-metric-pills');
-    if (pills) {
-      pills.after(toggle);
-    } else {
-      expanded.before(toggle);
-    }
-    return toggle;
-  };
-
   xpCards.forEach((card) => {
-    const toggle = ensureToggleButton(card);
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const isOpen = !card.querySelector('.xp-expanded')?.hidden;
-        if (isOpen) {
-          collapseCard(card);
-        } else {
-          expandCard(card);
-        }
-      });
+    // Always show full story content (no Explore/Collapse toggle).
+    const panel = card.querySelector('.xp-expanded');
+    if (panel) {
+      panel.hidden = false;
+      card.classList.add('expanded');
     }
 
     const stepButtons = Array.from(card.querySelectorAll('[data-xp-phase]'));
@@ -357,18 +318,6 @@ if (xpRoot) {
     });
   });
 
-  const collapseStoriesForMobile = () => {
-    if (!window.matchMedia('(max-width: 900px)').matches) return;
-    const hashId = window.location.hash.replace('#', '');
-    xpCards.forEach((card) => {
-      if (hashId && card.id === hashId) {
-        expandCard(card);
-      } else {
-        collapseCard(card);
-      }
-    });
-  };
-
   const getVisibleCards = () =>
     xpCards.filter((card) => !card.classList.contains('filtered-out'));
 
@@ -382,7 +331,6 @@ if (xpRoot) {
 
       xpCards.forEach((card) => {
         card.classList.toggle('story-hidden', card !== activeCard);
-        if (card !== activeCard) collapseCard(card);
       });
       expandCard(activeCard);
       return;
@@ -392,31 +340,15 @@ if (xpRoot) {
       xpCards.forEach((card) => card.classList.remove('story-hidden'));
       visibleCards.forEach((card, index) => {
         card.classList.toggle('compare-hidden', index > 1);
-        if (index <= 1) {
-          expandCard(card);
-        } else {
-          collapseCard(card);
-        }
+        if (index <= 1) expandCard(card);
       });
       return;
     }
 
-    const isMobile = window.matchMedia('(max-width: 900px)').matches;
     xpCards.forEach((card) => {
       card.classList.remove('story-hidden', 'compare-hidden');
       if (card.classList.contains('filtered-out')) return;
-      if (!isMobile) {
-        const panel = card.querySelector('.xp-expanded');
-        const button = card.querySelector('[data-xp-toggle]');
-        if (panel) {
-          panel.hidden = false;
-          card.classList.add('expanded');
-        }
-        if (button) {
-          button.setAttribute('aria-expanded', 'true');
-          button.textContent = 'Collapse Story';
-        }
-      }
+      expandCard(card);
     });
   };
 
@@ -450,7 +382,6 @@ if (xpRoot) {
 
       const visible = matchIndustry && matchChallenge && matchOutcome && matchTime && matchSearch;
       card.classList.toggle('filtered-out', !visible);
-      if (!visible) collapseCard(card);
     });
 
     renderActiveFilters();
@@ -579,9 +510,10 @@ if (xpRoot) {
 
   const highlightMap = {
     industry: [
-      'Healthcare: intervention turnaround improved by 30-40% with measurable quality impact.',
-      'Financial technology: credit decisions shifted from days to sub-500ms.',
-      'Pharmaceutical operations: reconciliation effort reduced from 40 hours to 4 hours per week.',
+      'Centene: referral acknowledgment 4.2 → 1.1 days (−74%).',
+      'Capital One: defaults −22% with <2 sec approvals.',
+      'Galderma: automation 10% → 68%; 292% ROI / $3.5M Year-1.',
+      'Prism: renewal 62% → 74%; funder reports 40 hrs → <1 hr.',
     ],
     challenge: [
       'Data integration: fragmented systems unified into governable product workflows.',
@@ -589,9 +521,10 @@ if (xpRoot) {
       'Compliance and risk: controls embedded into architecture, not added as afterthoughts.',
     ],
     outcome: [
-      'Revenue impact: up to $1.6M in year-one revenue gains from decisioning optimization.',
-      'Cost reduction: $400K annual savings and major manual effort reductions across operations.',
-      'Efficiency and mitigation: 95% automation and 78% audit risk reduction in regulated environments.',
+      'Centene: referral ack −74%; tablet completion 64% → 82%.',
+      'Galderma: Year-1 net $3.5M (292% ROI); accuracy 80% → 97%.',
+      'Capital One: defaults −22%; conversion +8–12%; approval <2 sec.',
+      'Prism: renewal 62% → 74%; backlog −50%.',
     ],
   };
 
@@ -632,8 +565,6 @@ if (xpRoot) {
 
   updateViewMode();
   applyFilters();
-  collapseStoriesForMobile();
-  window.addEventListener('hashchange', collapseStoriesForMobile);
   updateViewed();
   resetHighlightTicker();
 }
