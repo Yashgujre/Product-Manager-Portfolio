@@ -255,10 +255,12 @@ if (xpRoot) {
     }
     const panel = card.querySelector('.xp-expanded');
     const button = card.querySelector('[data-xp-toggle]');
-    if (!panel || !button) return;
+    if (!panel) return;
     panel.hidden = false;
-    button.setAttribute('aria-expanded', 'true');
-    button.textContent = 'Collapse Story';
+    if (button) {
+      button.setAttribute('aria-expanded', 'true');
+      button.textContent = 'Collapse Story';
+    }
     card.classList.add('expanded');
 
     panel.querySelectorAll('[data-counter]').forEach((counterEl) => {
@@ -275,8 +277,31 @@ if (xpRoot) {
     });
   };
 
+  const ensureToggleButton = (card) => {
+    let toggle = card.querySelector('[data-xp-toggle]');
+    if (toggle) return toggle;
+
+    const expanded = card.querySelector('.xp-expanded');
+    if (!expanded) return null;
+
+    toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'xp-open-btn';
+    toggle.setAttribute('data-xp-toggle', '');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.textContent = 'Collapse Story';
+
+    const pills = card.querySelector('.xp-metric-pills');
+    if (pills) {
+      pills.after(toggle);
+    } else {
+      expanded.before(toggle);
+    }
+    return toggle;
+  };
+
   xpCards.forEach((card) => {
-    const toggle = card.querySelector('[data-xp-toggle]');
+    const toggle = ensureToggleButton(card);
     if (toggle) {
       toggle.addEventListener('click', () => {
         const isOpen = !card.querySelector('.xp-expanded')?.hidden;
@@ -332,6 +357,18 @@ if (xpRoot) {
     });
   });
 
+  const collapseStoriesForMobile = () => {
+    if (!window.matchMedia('(max-width: 900px)').matches) return;
+    const hashId = window.location.hash.replace('#', '');
+    xpCards.forEach((card) => {
+      if (hashId && card.id === hashId) {
+        expandCard(card);
+      } else {
+        collapseCard(card);
+      }
+    });
+  };
+
   const getVisibleCards = () =>
     xpCards.filter((card) => !card.classList.contains('filtered-out'));
 
@@ -364,8 +401,22 @@ if (xpRoot) {
       return;
     }
 
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
     xpCards.forEach((card) => {
       card.classList.remove('story-hidden', 'compare-hidden');
+      if (card.classList.contains('filtered-out')) return;
+      if (!isMobile) {
+        const panel = card.querySelector('.xp-expanded');
+        const button = card.querySelector('[data-xp-toggle]');
+        if (panel) {
+          panel.hidden = false;
+          card.classList.add('expanded');
+        }
+        if (button) {
+          button.setAttribute('aria-expanded', 'true');
+          button.textContent = 'Collapse Story';
+        }
+      }
     });
   };
 
@@ -581,6 +632,8 @@ if (xpRoot) {
 
   updateViewMode();
   applyFilters();
+  collapseStoriesForMobile();
+  window.addEventListener('hashchange', collapseStoriesForMobile);
   updateViewed();
   resetHighlightTicker();
 }

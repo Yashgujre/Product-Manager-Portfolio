@@ -66,6 +66,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color var(--transition), color var(--transition);
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -129,8 +135,9 @@ p {
 }
 
 .shell {
-  width: min(100% - 160px, 1200px);
+  width: min(100%, 1360px);
   margin-inline: auto;
+  padding-inline: 80px;
 }
 
 .site-header {
@@ -1374,7 +1381,20 @@ a.company-context-card:hover .company-name {
 
 @media (max-width: 760px) {
   .company-context-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  .company-context-card,
+  a.company-context-card {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .company-context-card:last-child,
+  a.company-context-card:last-child {
+    border-bottom: none;
   }
 }
 
@@ -1584,7 +1604,11 @@ html.js-ready .hero-word {
 
 @media (max-width: 1024px) {
   .shell {
-    width: min(100% - 64px, 1200px);
+    padding-inline: 32px;
+  }
+
+  body {
+    background-attachment: scroll;
   }
 
   .col-3,
@@ -1601,7 +1625,7 @@ html.js-ready .hero-word {
   }
 
   .profile-photo-frame {
-    width: min(100%, 320px);
+    width: min(100%, 280px);
     margin-top: 8px;
   }
 
@@ -1642,33 +1666,14 @@ html.js-ready .hero-word {
   }
 }
 
-@media (max-width: 760px) {
-  h1 {
-    font-size: 36px;
-  }
-
-  h2 {
-    font-size: 31px;
-  }
-
-  h3 {
-    font-size: 24px;
-  }
-
-  .shell {
-    width: min(100% - 32px, 1200px);
-  }
-
-  .section {
-    padding: 60px 0;
-  }
-
-  .hero {
-    padding-top: 72px;
-  }
-
+@media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
   }
 
   .nav-pills {
@@ -1678,6 +1683,12 @@ html.js-ready .hero-word {
     border-top: 1px solid var(--divider);
     padding-top: 12px;
     margin-top: 6px;
+    gap: 4px;
+  }
+
+  .nav-pills a {
+    padding: 12px 4px;
+    font-size: 16px;
   }
 
   .theme-toggle {
@@ -1690,15 +1701,59 @@ html.js-ready .hero-word {
 
   .nav-row {
     flex-wrap: wrap;
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 760px) {
+  h1 {
+    font-size: clamp(1.85rem, 8vw, 2.25rem);
+    line-height: 1.12;
   }
 
-  .timeline-item {
-    grid-template-columns: 1fr;
+  h2 {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  h3 {
+    font-size: clamp(1.1rem, 4.5vw, 1.25rem);
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
+  .shell {
+    padding-inline: 20px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .hero {
+    padding-top: 56px;
+    padding-bottom: 32px;
+  }
+
+  .hero-photo-col {
+    justify-content: center;
+  }
+
+  .profile-photo-frame {
+    width: min(100%, 220px);
+    margin-inline: auto;
+  }
+
+  .eyebrow {
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
   }
 
   .case-showcase-header h1,
   .case-showcase-header h2 {
-    font-size: 36px;
+    font-size: clamp(1.85rem, 8vw, 2.25rem);
   }
 
   .case-showcase-header p {
@@ -1738,6 +1793,10 @@ html.js-ready .hero-word {
     height: 8px;
   }
 
+  .case-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
   .artifacts-hero {
     padding: 24px;
   }
@@ -1752,28 +1811,37 @@ html.js-ready .hero-word {
 
   .overview-cta-row {
     width: 100%;
+    flex-direction: column;
   }
 
   .overview-cta-row .btn {
     width: 100%;
   }
 
+  .proof-section {
+    padding-bottom: 40px;
+  }
+
   .proof-bar {
-    gap: 8px;
-    padding: 14px;
+    gap: 0;
+    padding: 4px 16px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .proof-bar span {
     width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .proof-bar span:last-child {
+    border-bottom: none;
   }
 
   .proof-bar span:not(:last-child)::after {
     content: "";
     margin-left: 0;
-  }
-
-  .profile-photo-frame {
-    width: min(100%, 260px);
   }
 
   .overview-build-grid,
@@ -1803,6 +1871,29 @@ html.js-ready .hero-word {
 
   .process-row {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-block: 28px;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 12px 16px;
   }
 
   .full-mobile {
@@ -2309,7 +2400,7 @@ html.js-ready .hero-word {
 
 @media (max-width: 760px) {
   .metrics-hero-panel {
-    padding: 24px;
+    padding: 20px;
   }
 
   .story-flow,
@@ -2345,6 +2436,15 @@ html.js-ready .hero-word {
 
   .pd-report-grid {
     grid-template-columns: 1fr;
+  }
+
+  .trend-bars div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .roi-output strong {
+    font-size: 26px;
   }
 }
 
@@ -2760,6 +2860,13 @@ html.js-ready .hero-word {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .xp-open-btn {
+    display: block;
+  }
 }
 
 .xp-expanded {
@@ -3046,17 +3153,22 @@ html.js-ready .hero-word {
   .xp-storyline {
     grid-template-columns: 1fr;
   }
+
+  .xp-filter-panel {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 760px) {
   .xp-hero {
-    padding-top: 72px;
+    padding-top: 56px;
+    padding-bottom: 28px;
   }
 
   .xp-hero-card,
   .xp-card,
   .xp-patterns {
-    padding: 20px;
+    padding: 18px;
   }
 
   .xp-filter-panel,
@@ -3076,11 +3188,45 @@ html.js-ready .hero-word {
 
   .xp-key-metric {
     text-align: left;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .xp-key-metric strong,
+  .xp-stats-ticker span {
+    font-size: 28px;
+  }
+
+  .xp-block h3,
+  .xp-impact h3,
+  .xp-compare h3,
+  .xp-tech h3 {
+    font-size: 18px;
+  }
+
+  .xp-impact-grid article span,
+  .xp-compare-grid article strong {
+    font-size: 24px;
   }
 
   .xp-open-btn,
   .xp-cta-row .btn {
     width: 100%;
+  }
+
+  .xp-explore-switch button,
+  .xp-phase-tabs button,
+  .xp-toggle-pair button {
+    min-height: 40px;
+  }
+
+  .xp-jump-links {
+    gap: 8px;
+  }
+
+  .xp-jump-links a {
+    font-size: 13px;
+    padding: 8px 12px;
   }
 }
 
