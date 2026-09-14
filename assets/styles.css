@@ -61,6 +61,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 761px) {
+  html {
+    zoom: 0.9;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
