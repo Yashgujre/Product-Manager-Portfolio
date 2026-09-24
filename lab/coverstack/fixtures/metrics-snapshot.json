@@ -1,0 +1,23 @@
+{
+  "seedVersion": "coverstack-demo-seed-v1",
+  "disclaimer": "Synthetic Lab history only. Obviously fake names. Not PHI. Not a coverage determination.",
+  "caseCount": 6,
+  "decisionCount": 6,
+  "timeToDecisionMsMedian": 142000,
+  "timeToDecisionMsMean": 126666,
+  "trustScoreMean": 4.17,
+  "overrideRate": 0.33,
+  "gateBlockRate": 0.17,
+  "railHitRate": {
+    "plan": 1.0,
+    "pap": 1.0,
+    "foundation": 1.0
+  },
+  "aiErrorKillRate": 0.33,
+  "aiErrorEventCount": 2,
+  "highlights": {
+    "overrideExample": "dec-mira-001",
+    "gateBlockExample": "dec-luna-001",
+    "aiFallbackExample": "dec-mira-002"
+  }
+}
