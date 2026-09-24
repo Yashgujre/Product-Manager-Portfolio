@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="I kept two trust tests apart instead of merging them, because a combined fail wouldn&#x27;t tell me which assumption was wrong." />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-prism.svg" />
+  <title>Keep your tests separate so you know what broke | Field Notes | Yash Gujre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20260924b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../index.html">Overview</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../lab.html">Lab</a>
+        <a href="../field-notes.html">Field Notes</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section shell reveal note-page" data-delay="0">
+      <article class="note-article">
+        <a class="note-back" href="../field-notes.html">← Field Notes</a>
+        <header class="note-header">
+          <p class="lab-kicker">Field Note 02</p>
+          <h1>Keep your tests separate so you know what broke</h1>
+          <p class="note-dek">I kept two trust tests apart instead of merging them, because a combined fail wouldn’t tell me which assumption was wrong.</p>
+          <p class="note-meta"><time datetime="2026-09-24">Sep 24, 2026</time> · 3 min read</p>
+        </header>
+        <div class="note-body">
+          <p>I had two trust tests for CoverStack and a strong pull to merge them into one. I kept them separate, and I set an order: the control test runs first, the speed test runs second.</p>
+          <h2>The two tests</h2>
+          <p>CoverStack is a Lab demo that helps a care coordinator stack three funding rails for a patient: the health plan, a manufacturer assistance program, and a charitable foundation. It runs on synthetic members. Two questions decide whether the core idea holds.</p>
+          <p>The first is about control. When the rules for each rail are visible and editable, and a hard gate blocks illegal stacks, will a coordinator refuse a bad AI draft, repair it, and trust the result enough to send it? The test uses a synthetic Medicaid member, Luna, whose AI draft includes assistance-program money her plan type doesn’t allow.</p>
+          <p>The second is about the stack itself. Given the same case, does a coordinator reach a defendable decision faster, and trust it more, with CoverStack’s stacked recommendation than by searching the three rails on their own?</p>
+          <h2>Why not one test</h2>
+          <p>Merging them looked efficient. Same participants, same session, one pass or fail. I rejected it because the two tests measure different assumptions, and a combined result hides which one broke.</p>
+          <p>Say the merged test fails. Was it because people didn’t trust the constraint surface? Or because the stack was slower than their own search? Or both? You can’t tell. You end up with a muddy kill, and the natural move after a muddy kill is to argue about it instead of fixing something specific.</p>
+          <p>It cuts the other way too. A merged pass can hide a real problem. If the speed side looks great, it can carry a weak trust result over the line. For a product that touches someone’s care, that’s the failure I most want to catch, not average out.</p>
+          <p>Separate tests give me a clean read. If control fails, I know the trust surface is wrong and I redesign that before touching anything else. If control passes and speed fails, the product is trusted but heavy, and the fix is cutting steps, not rethinking the wedge.</p>
+          <h2>Why order matters</h2>
+          <p>I run the control test first because it’s the bigger risk. If coordinators won’t trust a recommendation they can see and override, speed doesn’t matter. A fast answer nobody will send is worth nothing.</p>
+          <p>Running speed first would also bias the whole effort. A good speed number early makes it tempting to lean into speed and soften the parts that slow people down, like the gate. I’d rather know the foundation holds before I start optimizing the pace.</p>
+          <h2>How it’s set up</h2>
+          <p>Neither test has been run with real coordinators. What I have is the setup, written down before more building. The control test uses five coordinator proxies on the Luna case, a black-box version against a version with visible constraints and a hard gate, and a pass line of at least 80% blocking the illegal draft. The speed test also uses five people on two other synthetic members, comparing CoverStack against their own search, with its own thresholds for time and trust. Each test has its own pass line, and neither result is allowed to rewrite the other.</p>
+          <h2>What would change my mind</h2>
+          <p>If I saw in practice that the two tests were confounding each other, say the same people behaving differently because they’d just done the other test, I’d revisit the split or the order. And if either test’s kill criteria fire, that’s a trigger to reopen this decision, not to quietly re-merge them into something that passes.</p>
+          <p>The constraint surface and gate are live in the <a href="../lab/coverstack/">CoverStack demo</a>. More of the Lab is <a href="../lab.html">here</a>.</p>
+        </div>
+        <footer class="note-footer">
+          <a class="btn btn-primary" href="../lab/coverstack/">Open CoverStack demo</a>
+          <a class="btn btn-secondary" href="../field-notes.html">All Field Notes</a>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="../index.html">Overview</a>
+      <a href="../experience.html">Experience</a>
+      <a href="../lab.html">Lab</a>
+      <a href="../field-notes.html">Field Notes</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="../assets/site.js?v=20260924b"></script>
+</body>
+</html>

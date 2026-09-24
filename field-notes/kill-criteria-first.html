@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Writing the stop line first is how a demo avoids grading its own homework." />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-prism.svg" />
+  <title>Kill criteria before you build | Field Notes | Yash Gujre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20260924b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../index.html">Overview</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../lab.html">Lab</a>
+        <a href="../field-notes.html">Field Notes</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section shell reveal note-page" data-delay="0">
+      <article class="note-article">
+        <a class="note-back" href="../field-notes.html">← Field Notes</a>
+        <header class="note-header">
+          <p class="lab-kicker">Field Note 03</p>
+          <h1>Kill criteria before you build</h1>
+          <p class="note-dek">Writing the stop line first is how a demo avoids grading its own homework.</p>
+          <p class="note-meta"><time datetime="2026-09-24">Sep 24, 2026</time> · 3 min read</p>
+        </header>
+        <div class="note-body">
+          <p>Before I build much of anything, I write down what would make me stop. For CoverStack, the kill criteria went into the decision log alongside the bet, before a single result could be judged.</p>
+          <h2>Why it matters</h2>
+          <p>A demo is the easiest thing in the world to fool yourself with. You built it, you know where to click, and every walkthrough feels like a win. If the pass line gets decided after the results come in, it’ll land wherever the results are. That’s not a test. That’s a demo rewriting its own results.</p>
+          <p>Writing the kill line first is how I keep that from happening. It turns “that felt good” into a yes or no that I committed to while I was still neutral.</p>
+          <h2>What I wrote down</h2>
+          <p>CoverStack is a Lab demo on synthetic data. It helps a care coordinator stack three funding rails for a patient: the health plan, a manufacturer assistance program, and a charitable foundation. An AI drafts the split, the coordinator edits and approves, and a hard gate blocks stacks that break a rail’s rules.</p>
+          <p>Here’s what I pre-registered for the main trust test:</p>
+          <ul>
+            <li><strong>Pass line.</strong> At least 80% of evaluators block an illegal AI draft in the version with visible, editable constraints, and there’s a clear lift over a black-box version.</li>
+            <li><strong>Abandonment kill.</strong> If two of five people quit the controlled version out of confusion or distrust, it fails.</li>
+            <li><strong>Ignore kill.</strong> If three of five say they’d ignore the recommendation and search on their own, it fails.</li>
+            <li><strong>Fallback.</strong> If control fails after one pass at fixing copy and layout, I stop building “recommend and ship” and fall back to a research-assist tool: rail checklist, links, and a blank split. No ranked answer.</li>
+            <li><strong>No averaging.</strong> A speed win never cancels out a trust fail. They’re scored separately, and trust decides.</li>
+          </ul>
+          <p>None of these tests have been run with real coordinators yet. These are the rules I set up, and they’re written into the decision log so I can’t quietly move them later.</p>
+          <h2>The fallback is the point</h2>
+          <p>The line I care most about is the fallback. It’s easy to write a threshold. It’s harder to say in advance what you’ll ship instead if you miss it. Naming the smaller, less exciting product up front makes it a real option instead of a failure I’d avoid admitting.</p>
+          <p>It also keeps me from the most common bad response to a weak result, which is adding more AI. If people don’t trust the draft, a smarter model doesn’t fix that. The decision rule says: redesign the trust surface before any model work.</p>
+          <h2>Killing things early</h2>
+          <p>Kill criteria aren’t only for tests. They’re for ideas. Before CoverStack, the Lab hero was going to be FraudFence, a fraud-detection demo. I killed it as the hero. It read like a classifier exercise: here’s a model, here’s its accuracy. What I want the Lab to show is judgment under constraints, where the right answer depends on rules, tradeoffs, and a human who has to own the call. CoverStack does that in one screen. FraudFence didn’t.</p>
+          <p>I wrote down what would bring it back, too: side-by-side evidence that it shows those themes more clearly. Not nostalgia, and not because I’d already spent time on it.</p>
+          <h2>What would change my mind</h2>
+          <p>If pre-registered thresholds kept killing ideas that later turned out to be good, I’d look hard at how I’m setting them. Too strict is its own failure. And at Lab scale, five people is a kill-or-keep signal, not proof. If the stakes were real, I’d want more evidence before a big bet in either direction.</p>
+          <p>You can see what the kill criteria are protecting in the <a href="../lab/coverstack/">CoverStack demo</a>, and the rest of the Lab is <a href="../lab.html">here</a>.</p>
+        </div>
+        <footer class="note-footer">
+          <a class="btn btn-primary" href="../lab/coverstack/">Open CoverStack demo</a>
+          <a class="btn btn-secondary" href="../field-notes.html">All Field Notes</a>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="../index.html">Overview</a>
+      <a href="../experience.html">Experience</a>
+      <a href="../lab.html">Lab</a>
+      <a href="../field-notes.html">Field Notes</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="../assets/site.js?v=20260924b"></script>
+</body>
+</html>
