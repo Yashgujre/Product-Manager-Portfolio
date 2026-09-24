@@ -1,0 +1,7 @@
+[
+  {"memberId":"mira-sampleton","displayName":"Mira Sampleton","age":54,"condition":"Metastatic breast cancer","drugClass":"Ibrance-class oral oncolytic","planType":"employer_ppo","incomeBracketFpl":400,"usTreatment":true},
+  {"memberId":"theo-demohope","displayName":"Theo Demohope","age":41,"condition":"Type 2 diabetes with complications","drugClass":"Ozempic-class GLP-1","planType":"marketplace","incomeBracketFpl":300,"usTreatment":true},
+  {"memberId":"luna-ficticia","displayName":"Luna Ficticia","age":29,"condition":"Cystic fibrosis","drugClass":"Trikafta-class CFTR modulator","planType":"medicaid","incomeBracketFpl":275,"usTreatment":true},
+  {"memberId":"axel-placeholder","displayName":"Axel Placeholder","age":67,"condition":"Multiple myeloma","drugClass":"Revlimid-class","planType":"medicare_advantage","incomeBracketFpl":500,"usTreatment":true},
+  {"memberId":"nora-prototyke","displayName":"Nora Prototyke","age":36,"condition":"Pulmonary arterial hypertension","drugClass":"Uptravi-class","planType":"employer_hmo","incomeBracketFpl":350,"usTreatment":true}
+]

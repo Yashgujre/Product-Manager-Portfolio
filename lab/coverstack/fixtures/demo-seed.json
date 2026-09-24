@@ -1,0 +1,869 @@
+{
+  "seedVersion": "coverstack-demo-seed-v1",
+  "disclaimer": "Synthetic Lab history only. Obviously fake names. Not PHI. Not a coverage determination.",
+  "storageKey": "coverstack.demo.seed.v1",
+  "members": [
+    {
+      "memberId": "mira-sampleton",
+      "displayName": "Mira Sampleton",
+      "age": 54,
+      "condition": "Metastatic breast cancer",
+      "drugClass": "Ibrance-class oral oncolytic",
+      "planType": "employer_ppo",
+      "incomeBracketFpl": 400,
+      "usTreatment": true
+    },
+    {
+      "memberId": "theo-demohope",
+      "displayName": "Theo Demohope",
+      "age": 41,
+      "condition": "Type 2 diabetes with complications",
+      "drugClass": "Ozempic-class GLP-1",
+      "planType": "marketplace",
+      "incomeBracketFpl": 300,
+      "usTreatment": true
+    },
+    {
+      "memberId": "luna-ficticia",
+      "displayName": "Luna Ficticia",
+      "age": 29,
+      "condition": "Cystic fibrosis",
+      "drugClass": "Trikafta-class CFTR modulator",
+      "planType": "medicaid",
+      "incomeBracketFpl": 275,
+      "usTreatment": true
+    },
+    {
+      "memberId": "axel-placeholder",
+      "displayName": "Axel Placeholder",
+      "age": 67,
+      "condition": "Multiple myeloma",
+      "drugClass": "Revlimid-class",
+      "planType": "medicare_advantage",
+      "incomeBracketFpl": 500,
+      "usTreatment": true
+    },
+    {
+      "memberId": "nora-prototyke",
+      "displayName": "Nora Prototyke",
+      "age": 36,
+      "condition": "Pulmonary arterial hypertension",
+      "drugClass": "Uptravi-class",
+      "planType": "employer_hmo",
+      "incomeBracketFpl": 350,
+      "usTreatment": true
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "case-mira-001",
+      "memberId": "mira-sampleton",
+      "oopGapUsd": 1800,
+      "slaHours": 48,
+      "createdAt": "2026-09-18T15:02:00-07:00",
+      "status": "decided",
+      "policyVariant": "A"
+    },
+    {
+      "caseId": "case-theo-001",
+      "memberId": "theo-demohope",
+      "oopGapUsd": 950,
+      "slaHours": 72,
+      "createdAt": "2026-09-19T10:11:00-07:00",
+      "status": "decided",
+      "policyVariant": "B"
+    },
+    {
+      "caseId": "case-luna-001",
+      "memberId": "luna-ficticia",
+      "oopGapUsd": 2200,
+      "slaHours": 24,
+      "createdAt": "2026-09-20T09:00:00-07:00",
+      "status": "blocked",
+      "policyVariant": "A"
+    },
+    {
+      "caseId": "case-axel-001",
+      "memberId": "axel-placeholder",
+      "oopGapUsd": 3100,
+      "slaHours": 48,
+      "createdAt": "2026-09-21T14:20:00-07:00",
+      "status": "decided",
+      "policyVariant": "A"
+    },
+    {
+      "caseId": "case-nora-001",
+      "memberId": "nora-prototyke",
+      "oopGapUsd": 1600,
+      "slaHours": 36,
+      "createdAt": "2026-09-22T11:30:00-07:00",
+      "status": "decided",
+      "policyVariant": "B"
+    },
+    {
+      "caseId": "case-mira-002",
+      "memberId": "mira-sampleton",
+      "oopGapUsd": 1200,
+      "slaHours": 48,
+      "createdAt": "2026-09-23T16:00:00-07:00",
+      "status": "decided",
+      "policyVariant": "A"
+    }
+  ],
+  "rails": [
+    {
+      "railId": "plan",
+      "caseId": "case-mira-001",
+      "status": "green",
+      "eligibilitySummary": "Employer PPO SBC: specialty coinsurance leaves residual OOP (demo summary from public SBC pattern).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.uhc.com/understanding-health-insurance/how-does-health-insurance-work/summary-of-benefits-and-coverage"
+      ],
+      "estimatedContributionUsd": 720,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-mira-001",
+      "status": "green",
+      "eligibilitySummary": "Manufacturer oncology PAP likely open at ~400% FPL via RxAssist/NeedyMeds directory pattern.",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.rxassist.org/",
+        "https://www.needymeds.org/"
+      ],
+      "estimatedContributionUsd": 600,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-mira-001",
+      "status": "yellow",
+      "eligibilitySummary": "Breast-cancer fund may assist residual if open (HealthWell/TotalAssist pattern); fund status demo=yellow.",
+      "blockers": [
+        "fund_capacity_limited"
+      ],
+      "sourceRefs": [
+        "https://www.healthwellfoundation.org/patients/",
+        "https://totalassist.org/how-totalassist-helps-you/"
+      ],
+      "estimatedContributionUsd": 480,
+      "editable": true
+    },
+    {
+      "railId": "plan",
+      "caseId": "case-theo-001",
+      "status": "yellow",
+      "eligibilitySummary": "Marketplace silver: deductible/specialty tier creates OOP (SBC pattern).",
+      "blockers": [
+        "high_deductible"
+      ],
+      "sourceRefs": [
+        "https://www.uhc.com/member-resources"
+      ],
+      "estimatedContributionUsd": 400,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-theo-001",
+      "status": "yellow",
+      "eligibilitySummary": "GLP-1 PAP via NeedyMeds may exist; insured commercial rules stricter (demo).",
+      "blockers": [
+        "insured_pap_strict"
+      ],
+      "sourceRefs": [
+        "https://www.needymeds.org/search-programs?initialSearchTab=drugs"
+      ],
+      "estimatedContributionUsd": 350,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-theo-001",
+      "status": "red",
+      "eligibilitySummary": "Disease fund closed / waitlist (demo).",
+      "blockers": [
+        "fund_closed"
+      ],
+      "sourceRefs": [
+        "https://www.healthwellfoundation.org/patients/"
+      ],
+      "estimatedContributionUsd": 0,
+      "editable": true
+    },
+    {
+      "railId": "plan",
+      "caseId": "case-luna-001",
+      "status": "yellow",
+      "eligibilitySummary": "Medicaid covers drug with prior-auth / specialty delay (demo).",
+      "blockers": [
+        "prior_auth_delay"
+      ],
+      "sourceRefs": [
+        "https://www.uhc.com/member-resources"
+      ],
+      "estimatedContributionUsd": 1800,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-luna-001",
+      "status": "red",
+      "eligibilitySummary": "Manufacturer PAP often ineligible while Medicaid active (demo trap).",
+      "blockers": [
+        "gov_insurance_blocks_copay_card"
+      ],
+      "sourceRefs": [
+        "https://www.rxassist.org/"
+      ],
+      "estimatedContributionUsd": 0,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-luna-001",
+      "status": "green",
+      "eligibilitySummary": "TotalAssist/PAN-style funds may accept Medicaid when fund open (demo).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://totalassist.org/help/help-articles/eligibility-requirements/",
+        "https://www.panfoundation.org/apply-and-manage-grants/our-grants/"
+      ],
+      "estimatedContributionUsd": 400,
+      "editable": true
+    },
+    {
+      "railId": "plan",
+      "caseId": "case-axel-001",
+      "status": "yellow",
+      "eligibilitySummary": "MA + Part D coinsurance / coverage stages leave high OOP (EOB pattern).",
+      "blockers": [
+        "part_d_stage_oop"
+      ],
+      "sourceRefs": [
+        "https://uhc.com/medicare/resources/ma-pdp-information-forms/explanation-benefits.html"
+      ],
+      "estimatedContributionUsd": 900,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-axel-001",
+      "status": "red",
+      "eligibilitySummary": "Many oncology PAPs exclude Medicare or push to foundation (demo).",
+      "blockers": [
+        "gov_insurance_blocks_copay_card"
+      ],
+      "sourceRefs": [
+        "https://www.rxassist.org/"
+      ],
+      "estimatedContributionUsd": 0,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-axel-001",
+      "status": "green",
+      "eligibilitySummary": "Myeloma fund pattern \u2014 HealthWell/PAN residual path for insured Medicare under income cap.",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.healthwellfoundation.org/patients/",
+        "https://www.panfoundation.org/apply-and-manage-grants/our-grants/"
+      ],
+      "estimatedContributionUsd": 2200,
+      "editable": true
+    },
+    {
+      "railId": "plan",
+      "caseId": "case-nora-001",
+      "status": "green",
+      "eligibilitySummary": "Employer HMO specialty tier with prior auth (SBC pattern).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.uhc.com/understanding-health-insurance/how-does-health-insurance-work/summary-of-benefits-and-coverage"
+      ],
+      "estimatedContributionUsd": 500,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-nora-001",
+      "status": "green",
+      "eligibilitySummary": "Rare-disease manufacturer PAP often open ~350% FPL (RxAssist pattern).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.rxassist.org/",
+        "https://www.needymeds.org/"
+      ],
+      "estimatedContributionUsd": 700,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-nora-001",
+      "status": "green",
+      "eligibilitySummary": "Rare-disease TotalAssist/HealthWell fund open (demo).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://totalassist.org/how-totalassist-helps-you/",
+        "https://www.healthwellfoundation.org/patients/"
+      ],
+      "estimatedContributionUsd": 400,
+      "editable": true
+    },
+    {
+      "railId": "plan",
+      "caseId": "case-mira-002",
+      "status": "green",
+      "eligibilitySummary": "Same PPO pattern as case-mira-001 (demo).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.uhc.com/understanding-health-insurance/how-does-health-insurance-work/summary-of-benefits-and-coverage"
+      ],
+      "estimatedContributionUsd": 500,
+      "editable": true
+    },
+    {
+      "railId": "pap",
+      "caseId": "case-mira-002",
+      "status": "green",
+      "eligibilitySummary": "PAP directory pattern (demo).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.needymeds.org/"
+      ],
+      "estimatedContributionUsd": 400,
+      "editable": true
+    },
+    {
+      "railId": "foundation",
+      "caseId": "case-mira-002",
+      "status": "green",
+      "eligibilitySummary": "Foundation residual (demo).",
+      "blockers": [],
+      "sourceRefs": [
+        "https://www.healthwellfoundation.org/patients/"
+      ],
+      "estimatedContributionUsd": 300,
+      "editable": true
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "rec-mira-001",
+      "caseId": "case-mira-001",
+      "policyVariant": "A",
+      "proposedSplit": {
+        "planUsd": 720,
+        "papUsd": 600,
+        "foundationUsd": 480,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "rationaleDraft": "AI DRAFT (demo): Plan-first per Policy A covers coinsurance share; PAP fills mid gap; foundation residual. Edit required.",
+      "confidence": 0.78,
+      "failureModes": [],
+      "modelId": "demo-cheap-tier-v0",
+      "promptHash": "43829853d01bc3c0",
+      "createdAt": "2026-09-18T15:04:12-07:00",
+      "state": "approved"
+    },
+    {
+      "recommendationId": "rec-theo-001",
+      "caseId": "case-theo-001",
+      "policyVariant": "B",
+      "proposedSplit": {
+        "planUsd": 400,
+        "papUsd": 550,
+        "foundationUsd": 0,
+        "order": [
+          "pap",
+          "plan",
+          "foundation"
+        ]
+      },
+      "rationaleDraft": "AI DRAFT (demo): Policy B PAP-first; foundation red \u2014 do not allocate. Edit required.",
+      "confidence": 0.71,
+      "failureModes": [],
+      "modelId": "demo-cheap-tier-v0",
+      "promptHash": "432c67270ff3e046",
+      "createdAt": "2026-09-19T10:13:05-07:00",
+      "state": "approved"
+    },
+    {
+      "recommendationId": "rec-luna-001",
+      "caseId": "case-luna-001",
+      "policyVariant": "A",
+      "proposedSplit": {
+        "planUsd": 1400,
+        "papUsd": 400,
+        "foundationUsd": 400,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "rationaleDraft": "AI DRAFT (demo): Attempted PAP contribution \u2014 FAILURE MODE illegal_stack expected.",
+      "confidence": 0.41,
+      "failureModes": [
+        "illegal_stack",
+        "wrong_rail"
+      ],
+      "modelId": "demo-cheap-tier-v0",
+      "promptHash": "935529021679f3ef",
+      "createdAt": "2026-09-20T09:02:10-07:00",
+      "state": "rejected"
+    },
+    {
+      "recommendationId": "rec-axel-001",
+      "caseId": "case-axel-001",
+      "policyVariant": "A",
+      "proposedSplit": {
+        "planUsd": 900,
+        "papUsd": 0,
+        "foundationUsd": 2200,
+        "order": [
+          "plan",
+          "foundation",
+          "pap"
+        ]
+      },
+      "rationaleDraft": "AI DRAFT (demo): PAP red under Medicare; foundation carries residual. Edit required.",
+      "confidence": 0.82,
+      "failureModes": [],
+      "modelId": "demo-cheap-tier-v0",
+      "promptHash": "f8f506680e788bdf",
+      "createdAt": "2026-09-21T14:22:40-07:00",
+      "state": "approved"
+    },
+    {
+      "recommendationId": "rec-nora-001",
+      "caseId": "case-nora-001",
+      "policyVariant": "B",
+      "proposedSplit": {
+        "planUsd": 400,
+        "papUsd": 800,
+        "foundationUsd": 400,
+        "order": [
+          "pap",
+          "plan",
+          "foundation"
+        ]
+      },
+      "rationaleDraft": "AI DRAFT (demo): Policy B PAP-first; all rails green. Edit required.",
+      "confidence": 0.88,
+      "failureModes": [],
+      "modelId": "demo-cheap-tier-v0",
+      "promptHash": "3fc992fe92583487",
+      "createdAt": "2026-09-22T11:32:00-07:00",
+      "state": "approved"
+    },
+    {
+      "recommendationId": "rec-mira-002",
+      "caseId": "case-mira-002",
+      "policyVariant": "A",
+      "proposedSplit": {
+        "planUsd": 500,
+        "papUsd": 400,
+        "foundationUsd": 300,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "rationaleDraft": "TEMPLATE FALLBACK (demo): Plan then PAP then foundation. AI path killed after schema-invalid response.",
+      "confidence": 0.55,
+      "failureModes": [
+        "stale_eligibility"
+      ],
+      "modelId": "template-resolver-v0",
+      "promptHash": "68333441d4e0a096",
+      "createdAt": "2026-09-23T16:03:20-07:00",
+      "state": "approved"
+    }
+  ],
+  "decisions": [
+    {
+      "decisionId": "dec-mira-001",
+      "caseId": "case-mira-001",
+      "recommendationId": "rec-mira-001",
+      "finalSplit": {
+        "planUsd": 720,
+        "papUsd": 500,
+        "foundationUsd": 580,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "pass",
+      "gateReasons": [],
+      "timeToDecisionMs": 142000,
+      "trustScore": 4,
+      "override": true,
+      "overrideFields": [
+        "papUsd",
+        "foundationUsd"
+      ],
+      "auditEvents": [
+        {
+          "at": "2026-09-18T15:02:00-07:00",
+          "event": "case_open",
+          "detail": "Loaded Mira Sampleton synthetic fixture"
+        },
+        {
+          "at": "2026-09-18T15:02:40-07:00",
+          "event": "rails_resolved",
+          "detail": "plan=green pap=green foundation=yellow"
+        },
+        {
+          "at": "2026-09-18T15:04:12-07:00",
+          "event": "ai_draft",
+          "detail": "confidence=0.78"
+        },
+        {
+          "at": "2026-09-18T15:05:50-07:00",
+          "event": "human_edit",
+          "detail": "Moved $100 from PAP to foundation"
+        },
+        {
+          "at": "2026-09-18T15:06:22-07:00",
+          "event": "human_approve",
+          "detail": "Override kept"
+        },
+        {
+          "at": "2026-09-18T15:06:22-07:00",
+          "event": "gate_pass",
+          "detail": "OOP covered; no illegal stack"
+        },
+        {
+          "at": "2026-09-18T15:06:22-07:00",
+          "event": "decision_logged",
+          "detail": "dec-mira-001"
+        }
+      ]
+    },
+    {
+      "decisionId": "dec-theo-001",
+      "caseId": "case-theo-001",
+      "recommendationId": "rec-theo-001",
+      "finalSplit": {
+        "planUsd": 400,
+        "papUsd": 550,
+        "foundationUsd": 0,
+        "order": [
+          "pap",
+          "plan",
+          "foundation"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "pass",
+      "gateReasons": [],
+      "timeToDecisionMs": 98000,
+      "trustScore": 4,
+      "override": false,
+      "overrideFields": [],
+      "auditEvents": [
+        {
+          "at": "2026-09-19T10:11:00-07:00",
+          "event": "case_open",
+          "detail": "Theo Demohope"
+        },
+        {
+          "at": "2026-09-19T10:11:35-07:00",
+          "event": "rails_resolved",
+          "detail": "plan=yellow pap=yellow foundation=red"
+        },
+        {
+          "at": "2026-09-19T10:13:05-07:00",
+          "event": "ai_draft",
+          "detail": "confidence=0.71"
+        },
+        {
+          "at": "2026-09-19T10:14:38-07:00",
+          "event": "human_approve",
+          "detail": "Accepted draft split"
+        },
+        {
+          "at": "2026-09-19T10:14:38-07:00",
+          "event": "gate_pass",
+          "detail": "Foundation correctly zeroed"
+        },
+        {
+          "at": "2026-09-19T10:14:38-07:00",
+          "event": "decision_logged",
+          "detail": "dec-theo-001"
+        }
+      ]
+    },
+    {
+      "decisionId": "dec-luna-001",
+      "caseId": "case-luna-001",
+      "recommendationId": "rec-luna-001",
+      "finalSplit": {
+        "planUsd": 1400,
+        "papUsd": 400,
+        "foundationUsd": 400,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "block",
+      "gateReasons": [
+        "illegal_stack:pap_under_medicaid",
+        "wrong_rail:pap_red"
+      ],
+      "timeToDecisionMs": 67000,
+      "trustScore": 5,
+      "override": false,
+      "overrideFields": [],
+      "auditEvents": [
+        {
+          "at": "2026-09-20T09:00:00-07:00",
+          "event": "case_open",
+          "detail": "Luna Ficticia"
+        },
+        {
+          "at": "2026-09-20T09:00:45-07:00",
+          "event": "rails_resolved",
+          "detail": "plan=yellow pap=red foundation=green"
+        },
+        {
+          "at": "2026-09-20T09:02:10-07:00",
+          "event": "ai_draft",
+          "detail": "confidence=0.41 failureModes=illegal_stack,wrong_rail"
+        },
+        {
+          "at": "2026-09-20T09:03:07-07:00",
+          "event": "human_approve_attempt",
+          "detail": "Proxy tried to send despite chips"
+        },
+        {
+          "at": "2026-09-20T09:03:07-07:00",
+          "event": "gate_block",
+          "detail": "illegal_stack:pap_under_medicaid"
+        },
+        {
+          "at": "2026-09-20T09:03:07-07:00",
+          "event": "decision_logged",
+          "detail": "dec-luna-001 blocked"
+        }
+      ]
+    },
+    {
+      "decisionId": "dec-axel-001",
+      "caseId": "case-axel-001",
+      "recommendationId": "rec-axel-001",
+      "finalSplit": {
+        "planUsd": 900,
+        "papUsd": 0,
+        "foundationUsd": 2200,
+        "order": [
+          "foundation",
+          "plan",
+          "pap"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "pass",
+      "gateReasons": [],
+      "timeToDecisionMs": 155000,
+      "trustScore": 5,
+      "override": true,
+      "overrideFields": [
+        "order"
+      ],
+      "auditEvents": [
+        {
+          "at": "2026-09-21T14:20:00-07:00",
+          "event": "case_open",
+          "detail": "Axel Placeholder"
+        },
+        {
+          "at": "2026-09-21T14:20:50-07:00",
+          "event": "rails_resolved",
+          "detail": "plan=yellow pap=red foundation=green"
+        },
+        {
+          "at": "2026-09-21T14:22:40-07:00",
+          "event": "ai_draft",
+          "detail": "confidence=0.82"
+        },
+        {
+          "at": "2026-09-21T14:24:15-07:00",
+          "event": "human_edit",
+          "detail": "Reordered foundation before plan for packet narrative"
+        },
+        {
+          "at": "2026-09-21T14:25:35-07:00",
+          "event": "human_approve",
+          "detail": "Order override"
+        },
+        {
+          "at": "2026-09-21T14:25:35-07:00",
+          "event": "gate_pass",
+          "detail": "PAP zero; legal stack"
+        },
+        {
+          "at": "2026-09-21T14:25:35-07:00",
+          "event": "decision_logged",
+          "detail": "dec-axel-001"
+        }
+      ]
+    },
+    {
+      "decisionId": "dec-nora-001",
+      "caseId": "case-nora-001",
+      "recommendationId": "rec-nora-001",
+      "finalSplit": {
+        "planUsd": 400,
+        "papUsd": 800,
+        "foundationUsd": 400,
+        "order": [
+          "pap",
+          "plan",
+          "foundation"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "pass",
+      "gateReasons": [],
+      "timeToDecisionMs": 110000,
+      "trustScore": 4,
+      "override": false,
+      "overrideFields": [],
+      "auditEvents": [
+        {
+          "at": "2026-09-22T11:30:00-07:00",
+          "event": "case_open",
+          "detail": "Nora Prototyke"
+        },
+        {
+          "at": "2026-09-22T11:30:40-07:00",
+          "event": "rails_resolved",
+          "detail": "all green"
+        },
+        {
+          "at": "2026-09-22T11:32:00-07:00",
+          "event": "ai_draft",
+          "detail": "confidence=0.88"
+        },
+        {
+          "at": "2026-09-22T11:33:50-07:00",
+          "event": "human_approve",
+          "detail": "No edits"
+        },
+        {
+          "at": "2026-09-22T11:33:50-07:00",
+          "event": "gate_pass",
+          "detail": "OOP covered"
+        },
+        {
+          "at": "2026-09-22T11:33:50-07:00",
+          "event": "decision_logged",
+          "detail": "dec-nora-001"
+        }
+      ]
+    },
+    {
+      "decisionId": "dec-mira-002",
+      "caseId": "case-mira-002",
+      "recommendationId": "rec-mira-002",
+      "finalSplit": {
+        "planUsd": 500,
+        "papUsd": 400,
+        "foundationUsd": 300,
+        "order": [
+          "plan",
+          "pap",
+          "foundation"
+        ]
+      },
+      "approverRole": "coordinator_proxy",
+      "gateResult": "pass",
+      "gateReasons": [],
+      "timeToDecisionMs": 188000,
+      "trustScore": 3,
+      "override": false,
+      "overrideFields": [],
+      "auditEvents": [
+        {
+          "at": "2026-09-23T16:00:00-07:00",
+          "event": "case_open",
+          "detail": "Mira Sampleton follow-up synthetic"
+        },
+        {
+          "at": "2026-09-23T16:00:30-07:00",
+          "event": "rails_resolved",
+          "detail": "all green"
+        },
+        {
+          "at": "2026-09-23T16:01:05-07:00",
+          "event": "ai_error",
+          "detail": "schema_invalid"
+        },
+        {
+          "at": "2026-09-23T16:01:06-07:00",
+          "event": "circuit_breaker",
+          "detail": "AI path disabled for session"
+        },
+        {
+          "at": "2026-09-23T16:03:20-07:00",
+          "event": "ai_draft",
+          "detail": "template fallback"
+        },
+        {
+          "at": "2026-09-23T16:05:08-07:00",
+          "event": "human_approve",
+          "detail": "Accepted template"
+        },
+        {
+          "at": "2026-09-23T16:05:08-07:00",
+          "event": "gate_pass",
+          "detail": "ok"
+        },
+        {
+          "at": "2026-09-23T16:05:08-07:00",
+          "event": "decision_logged",
+          "detail": "dec-mira-002"
+        }
+      ]
+    }
+  ],
+  "metricsSnapshot": {
+    "seedVersion": "coverstack-demo-seed-v1",
+    "disclaimer": "Synthetic Lab history only. Obviously fake names. Not PHI. Not a coverage determination.",
+    "caseCount": 6,
+    "decisionCount": 6,
+    "timeToDecisionMsMedian": 142000,
+    "timeToDecisionMsMean": 126666,
+    "trustScoreMean": 4.17,
+    "overrideRate": 0.33,
+    "gateBlockRate": 0.17,
+    "railHitRate": {
+      "plan": 1.0,
+      "pap": 1.0,
+      "foundation": 1.0
+    },
+    "aiErrorKillRate": 0.33,
+    "aiErrorEventCount": 2,
+    "highlights": {
+      "overrideExample": "dec-mira-001",
+      "gateBlockExample": "dec-luna-001",
+      "aiFallbackExample": "dec-mira-002"
+    }
+  }
+}

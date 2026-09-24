@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoverStack Lab v0 — Stack legal rails under this insurance type</title>
+  <meta name="description" content="CoverStack Lab demo: plan + PAP + foundation stacking with HITL gate. Synthetic data only." />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main</a>
+
+  <div class="disclaimer-banner" role="status">
+    <strong>Synthetic Lab data only.</strong>
+    Obviously fake names · Not PHI ·
+    <em>Not a coverage determination.</em>
+    Demo rules from public page patterns.
+  </div>
+
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">CS</div>
+      <div>
+        <h1>CoverStack <span class="badge-lab">Lab v0</span></h1>
+        <p class="tagline">Stack legal rails under this insurance type — HITL required</p>
+      </div>
+    </div>
+    <div class="header-controls">
+      <span class="data-source-indicator" id="dataSourceIndicator" title="Where case/rail data was loaded from">
+        Data source: <strong id="dataSourceLabel">…</strong>
+      </span>
+      <label class="kill-switch" title="When off, rationale uses template only (no simulated AI draft)">
+        <input type="checkbox" id="aiDraftsEnabled" checked />
+        <span>AI_DRAFTS_ENABLED</span>
+      </label>
+      <button type="button" class="btn btn-ghost" id="btnResetSeed" title="Clear localStorage and reload seed">Reset seed</button>
+      <a class="btn btn-ghost" href="docs/06-prd.md" target="_blank" rel="noopener">PRD</a>
+    </div>
+  </header>
+
+  <main id="main" class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Sample cases</h2>
+          <span class="muted">5 synthetic members</span>
+        </div>
+        <div id="memberList" class="member-list" role="listbox" aria-label="Sample members"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Historical cases</h2>
+          <span class="muted">Seeded · reopen</span>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section class="panel metrics-panel">
+        <div class="panel-head">
+          <h2>Experiment readout</h2>
+          <span class="muted" id="metricsSeedLabel">seed</span>
+        </div>
+        <div id="metricsCard" class="metrics-grid"></div>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div id="emptyState" class="empty-state">
+        <h2>Pick a sample member</h2>
+        <p>Open Mira, Theo, Luna, Axel, or Nora to resolve rails, compare Policy A vs B, edit the draft, and run the hard gate.</p>
+        <p class="muted">Try <strong>Luna</strong> (Medicaid PAP trap) or <strong>Nora</strong> (legal approve path) first for the 60s skim.</p>
+      </div>
+
+      <div id="caseWorkspace" class="case-workspace" hidden>
+        <div class="case-header">
+          <div>
+            <p class="eyebrow" id="caseEyebrow">Case</p>
+            <h2 id="caseTitle">—</h2>
+            <p class="case-meta" id="caseMeta"></p>
+          </div>
+          <div class="case-actions">
+            <button type="button" class="btn btn-secondary" id="btnNewDecision">New decision</button>
+            <span class="status-pill" id="caseStatusPill">open</span>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Rail Resolver</h3>
+            <span class="muted">plan · pap · foundation — mocked from public patterns</span>
+          </div>
+          <div id="railsGrid" class="rails-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Policy A vs B</h3>
+            <div class="policy-toggle" role="group" aria-label="Policy variant">
+              <button type="button" class="toggle-btn active" data-policy="A" id="policyA">A · Plan-first</button>
+              <button type="button" class="toggle-btn" data-policy="B" id="policyB">B · PAP-first</button>
+            </div>
+          </div>
+          <div id="policySplit" class="policy-split"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>HITL draft</h3>
+            <span class="ai-label" id="aiLabel">AI draft — edit required</span>
+          </div>
+          <div id="rationaleBox" class="rationale"></div>
+          <div class="failure-modes" id="failureModes"></div>
+          <div class="split-editor" id="splitEditor">
+            <label>Plan $
+              <input type="number" min="0" step="10" id="editPlan" />
+            </label>
+            <label>PAP $
+              <input type="number" min="0" step="10" id="editPap" />
+            </label>
+            <label>Foundation $
+              <input type="number" min="0" step="10" id="editFoundation" />
+            </label>
+            <label>Order
+              <select id="editOrder">
+                <option value="plan,pap,foundation">plan → pap → foundation</option>
+                <option value="pap,plan,foundation">pap → plan → foundation</option>
+                <option value="plan,foundation,pap">plan → foundation → pap</option>
+                <option value="foundation,plan,pap">foundation → plan → pap</option>
+                <option value="pap,foundation,plan">pap → foundation → plan</option>
+                <option value="foundation,pap,plan">foundation → pap → plan</option>
+              </select>
+            </label>
+          </div>
+          <div class="oop-bar">
+            <span>OOP gap: <strong id="oopGap">$0</strong></span>
+            <span>Split sum: <strong id="splitSum">$0</strong></span>
+            <span id="oopCoverHint" class="muted"></span>
+          </div>
+          <div class="hitl-actions">
+            <button type="button" class="btn btn-primary" id="btnApprove">Approve &amp; run gate</button>
+            <button type="button" class="btn btn-ghost" id="btnRegenDraft">Regenerate draft</button>
+          </div>
+          <div id="gateResult" class="gate-result" hidden></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Audit log</h3>
+            <span class="muted">Append-only lifecycle</span>
+          </div>
+          <ol id="auditLog" class="audit-log"></ol>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>CoverStack Lab · seed <code id="seedVersionLabel">—</code></span>
+    <span><a href="docs/03-system-architecture.md" target="_blank" rel="noopener">Architecture</a> · <a href="docs/07-decision-log.md" target="_blank" rel="noopener">Decision log</a> · <a href="README.md">README</a></span>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
