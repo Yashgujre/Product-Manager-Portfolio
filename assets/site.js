@@ -75,6 +75,7 @@ const navLinks = Array.from(document.querySelectorAll('.nav-pills a'));
 const pathname = window.location.pathname.replace(/\/+$/, '');
 const pathLower = pathname.toLowerCase();
 const isLabNested = /\/lab\//.test(pathLower);
+const isFieldNotesNested = /\/field-notes\//.test(pathLower);
 const segments = pathname.split('/').filter(Boolean);
 let currentFile = segments[segments.length - 1] || 'index.html';
 if (!currentFile.includes('.')) currentFile = 'index.html';
@@ -83,8 +84,11 @@ navLinks.forEach((link) => {
   const target = link.getAttribute('href') || '';
   const targetPath = target.split('/').pop()?.split('#')[0]?.split('?')[0] || '';
   const isLabLink = targetPath === 'lab.html';
+  const isFieldNotesLink = targetPath === 'field-notes.html';
   const isActive = isLabNested
     ? isLabLink
+    : isFieldNotesNested
+    ? isFieldNotesLink
     : targetPath === currentFile ||
       (currentFile === 'index.html' && (targetPath === 'index.html' || targetPath === ''));
   link.classList.toggle('active', Boolean(isActive));

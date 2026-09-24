@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A care coordinator stakes someone&#x27;s care on the recommendation, so being able to see why and override it matters more than getting it fast." />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-prism.svg" />
+  <title>Why control beats speed when care is on the line | Field Notes | Yash Gujre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20260924b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="../index.html">Yash Gujre</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-pills" data-nav>
+        <a href="../index.html">Overview</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../lab.html">Lab</a>
+        <a href="../field-notes.html">Field Notes</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section shell reveal note-page" data-delay="0">
+      <article class="note-article">
+        <a class="note-back" href="../field-notes.html">← Field Notes</a>
+        <header class="note-header">
+          <p class="lab-kicker">Field Note 01</p>
+          <h1>Why control beats speed when care is on the line</h1>
+          <p class="note-dek">A care coordinator stakes someone’s care on the recommendation, so being able to see why and override it matters more than getting it fast.</p>
+          <p class="note-meta"><time datetime="2026-09-24">Sep 24, 2026</time> · 3 min read</p>
+        </header>
+        <div class="note-body">
+          <p>For CoverStack, I decided the thing that earns a care coordinator’s trust is control, not speed. If the coordinator can see the rules, change the inputs, and trust that an illegal stack can’t get through, they’ll act on the recommendation. If they can’t, it doesn’t matter how fast it was.</p>
+          <h2>The stakes</h2>
+          <p>CoverStack is a Lab demo I built to help a care coordinator stack three funding rails for an expensive drug: the health plan, a manufacturer patient assistance program (PAP), and a charitable foundation. Each rail has its own eligibility rules, and they interact. Some plan types rule out PAP money entirely. Get the stack wrong and the packet comes back, or worse, someone’s therapy gets delayed while it’s sorted out.</p>
+          <p>That’s the part I kept coming back to. The coordinator isn’t picking a restaurant. They’re putting their name on a funding plan for someone’s care, and their supervisor may ask them to defend it. So the question I cared about wasn’t “can the AI find a stack faster than a person?” It was “will the person trust the stack enough to send it?”</p>
+          <h2>A concrete case</h2>
+          <p>The demo has a synthetic Medicaid member named Luna. The AI draft suggests a split that includes PAP dollars. It looks reasonable on the surface. It’s also illegal under the Medicaid rail rule for her plan type, so it can’t ship.</p>
+          <p>In CoverStack, the per-rail constraints sit next to the draft where you can read and edit them. When the coordinator tries to approve Luna’s draft, a hard gate blocks it and says why in one line: which rail, which rule, which amount. The coordinator repairs it by zeroing out PAP and funding the gap with plan plus foundation. The gate clears and they can lock and export the decision.</p>
+          <p>That flow is the product. The AI does the drafting. The human understands it, fixes it, and owns it. The gate makes sure the fix actually happens.</p>
+          <h2>What I rejected</h2>
+          <p>The obvious alternative was to lead with speed. “Faster than searching three rails by hand” is an easy pitch, and it’s easy to measure. I didn’t pick it for three reasons.</p>
+          <p>First, speed doesn’t survive a single bad recommendation. If a fast answer sends an illegal stack, the coordinator stops trusting every answer after it.</p>
+          <p>Second, a black-box recommendation that’s fast still leaves the coordinator redoing the work to check it. That’s not saving time, it’s moving it.</p>
+          <p>Third, leading with speed pushes the design toward fewer steps and softer gates. That’s the wrong direction for something that touches care.</p>
+          <p>So speed stays, but as a guardrail. If the controlled flow is painfully slow, that’s a problem I’ll fix by cutting steps. It isn’t the thing I’m trying to win on.</p>
+          <h2>How I’ll test it</h2>
+          <p>This hasn’t been run with real coordinators yet. CoverStack runs on synthetic data, and what I have is a test I set up and wrote down before building more. Here’s the test I set up: five coordinator proxies work the Luna case in two versions, one black-box recommendation and one with visible, editable constraints and the hard gate. The pass line is at least 80% refusing the illegal draft and producing a legal stack in the control version, plus a clear lift over the black-box version. Time-to-act is tracked, but I won’t kill the idea on speed alone.</p>
+          <h2>What would change my mind</h2>
+          <p>If coordinators abandon a controlled stack purely because it’s slow, I’d rethink the balance. Same if control passes but the flow is so heavy nobody would use it on a real Tuesday. And if people still treat the AI draft as the authority even with the rules in front of them, the control surface isn’t doing its job and I’d go back to a simpler research-assist tool.</p>
+          <p>You can try the Luna case yourself in the <a href="../lab/coverstack/">CoverStack demo</a>. The rest of the Lab is <a href="../lab.html">here</a>.</p>
+        </div>
+        <footer class="note-footer">
+          <a class="btn btn-primary" href="../lab/coverstack/">Open CoverStack demo</a>
+          <a class="btn btn-secondary" href="../field-notes.html">All Field Notes</a>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 Yash Gujre</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="../index.html">Overview</a>
+      <a href="../experience.html">Experience</a>
+      <a href="../lab.html">Lab</a>
+      <a href="../field-notes.html">Field Notes</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="../assets/site.js?v=20260924b"></script>
+</body>
+</html>
